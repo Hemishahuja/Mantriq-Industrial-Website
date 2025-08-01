@@ -8,49 +8,49 @@ All colors MUST be HSL.
 
 @layer base {
   :root {
-    --background: 0 0% 100%;
-    --foreground: 222.2 84% 4.9%;
+    --background: 210 12% 97%;
+    --foreground: 240 24% 15%;
 
-    --card: 0 0% 100%;
-    --card-foreground: 222.2 84% 4.9%;
+    --card: 210 12% 97%;
+    --card-foreground: 240 24% 15%;
 
-    --popover: 0 0% 100%;
-    --popover-foreground: 222.2 84% 4.9%;
+    --popover: 210 12% 97%;
+    --popover-foreground: 240 24% 15%;
 
-    /* Industrial yellow/gold primary color inspired by Northern Cam */
-    --primary: 43 100% 50%;
-    --primary-foreground: 0 0% 5%;
+    /* Royal Blue primary color */
+    --primary: 221 100% 50%;
+    --primary-foreground: 210 12% 97%;
 
-    --secondary: 0 0% 96%;
-    --secondary-foreground: 0 0% 20%;
+    --secondary: 184 100% 50%;
+    --secondary-foreground: 240 24% 15%;
 
-    --muted: 0 0% 96%;
-    --muted-foreground: 0 0% 40%;
+    --muted: 210 12% 85%;
+    --muted-foreground: 240 24% 45%;
 
-    --accent: 43 100% 50%;
-    --accent-foreground: 0 0% 5%;
+    --accent: 251 73% 55%;
+    --accent-foreground: 210 12% 97%;
 
-    --destructive: 0 84.2% 60.2%;
+    --destructive: 0 84% 60%;
     --destructive-foreground: 210 40% 98%;
 
-    --border: 0 0% 90%;
-    --input: 0 0% 95%;
-    --ring: 43 100% 50%;
+    --border: 210 12% 85%;
+    --input: 210 12% 85%;
+    --ring: 221 100% 50%;
 
     /* Custom industrial design tokens */
-    --industrial-dark: 220 13% 18%;
-    --industrial-gray: 220 9% 46%;
-    --industrial-light: 220 9% 96%;
-    --canadian-red: 0 100% 50%;
-    --machinery-metal: 220 9% 46%;
+    --industrial-dark: 240 24% 15%;
+    --industrial-gray: 210 12% 65%;
+    --industrial-light: 210 12% 85%;
+    --canadian-red: 0 84% 60%;
+    --highlight-orange: 25 100% 50%;
     
     /* Gradients */
-    --gradient-hero: linear-gradient(135deg, hsl(220 13% 18%), hsl(220 13% 25%));
-    --gradient-accent: linear-gradient(135deg, hsl(43 100% 50%), hsl(43 100% 60%));
+    --gradient-hero: linear-gradient(135deg, hsl(240 24% 15%), hsl(240 24% 22%));
+    --gradient-accent: linear-gradient(135deg, hsl(221 100% 50%), hsl(221 100% 60%));
     
     /* Shadows */
-    --shadow-industrial: 0 10px 30px -10px hsl(220 13% 18% / 0.3);
-    --shadow-card: 0 4px 20px -4px hsl(220 13% 18% / 0.1);
+    --shadow-industrial: 0 10px 30px -10px hsl(240 24% 15% / 0.3);
+    --shadow-card: 0 4px 20px -4px hsl(240 24% 15% / 0.1);
 
     --radius: 0.5rem;
 
@@ -72,37 +72,37 @@ All colors MUST be HSL.
   }
 
   .dark {
-    --background: 220 13% 18%;
-    --foreground: 0 0% 95%;
+    --background: 240 24% 15%;
+    --foreground: 210 12% 97%;
 
-    --card: 220 13% 20%;
-    --card-foreground: 0 0% 95%;
+    --card: 240 24% 18%;
+    --card-foreground: 210 12% 97%;
 
-    --popover: 220 13% 20%;
-    --popover-foreground: 0 0% 95%;
+    --popover: 240 24% 18%;
+    --popover-foreground: 210 12% 97%;
 
-    --primary: 43 100% 50%;
-    --primary-foreground: 0 0% 5%;
+    --primary: 221 100% 55%;
+    --primary-foreground: 240 24% 15%;
 
-    --secondary: 220 13% 25%;
-    --secondary-foreground: 0 0% 95%;
+    --secondary: 184 100% 55%;
+    --secondary-foreground: 240 24% 15%;
 
-    --muted: 220 13% 25%;
-    --muted-foreground: 0 0% 65%;
+    --muted: 240 24% 25%;
+    --muted-foreground: 210 12% 75%;
 
-    --accent: 43 100% 50%;
-    --accent-foreground: 0 0% 5%;
+    --accent: 251 73% 60%;
+    --accent-foreground: 240 24% 15%;
 
-    --destructive: 0 62.8% 30.6%;
-    --destructive-foreground: 0 0% 95%;
+    --destructive: 0 84% 65%;
+    --destructive-foreground: 240 24% 15%;
 
-    --border: 220 13% 25%;
-    --input: 220 13% 25%;
-    --ring: 43 100% 50%;
+    --border: 240 24% 25%;
+    --input: 240 24% 25%;
+    --ring: 221 100% 55%;
     
-    --industrial-dark: 220 13% 15%;
-    --industrial-gray: 0 0% 65%;
-    --industrial-light: 220 13% 25%;
+    --industrial-dark: 240 24% 12%;
+    --industrial-gray: 210 12% 75%;
+    --industrial-light: 240 24% 25%;
     --sidebar-background: 240 5.9% 10%;
     --sidebar-foreground: 240 4.8% 95.9%;
     --sidebar-primary: 224.3 76.3% 48%;
