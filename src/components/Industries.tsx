@@ -43,7 +43,7 @@ const Industries = () => {
   return (
     <section id="industries" className="py-20 bg-secondary">
       <div className="container mx-auto px-4">
-        <div className="text-center mb-16">
+        <div className="text-center mb-16 animate-fade-in">
           <h2 className="text-4xl md:text-5xl font-bold text-foreground mb-4">
             Industries We Serve
           </h2>
@@ -54,23 +54,24 @@ const Industries = () => {
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {industries.map((industry) => (
+          {industries.map((industry, index) => (
             <Card 
               key={industry.name} 
-              className="group hover:shadow-lg transition-all duration-300 hover:scale-105 cursor-pointer border-0 shadow-md"
+              className="group hover:shadow-xl transition-all duration-500 hover-lift cursor-pointer border-0 shadow-md animate-scale-in hover-glow"
+              style={{ animationDelay: `${index * 0.1}s` }}
             >
               <CardContent className="p-8 text-center">
-                <div className="w-20 h-20 mx-auto mb-6 bg-muted rounded-full flex items-center justify-center group-hover:bg-primary/10 transition-colors duration-300">
+                <div className="w-20 h-20 mx-auto mb-6 bg-muted rounded-full flex items-center justify-center group-hover:bg-primary/20 transition-all duration-500 hover-scale animate-float" style={{ animationDelay: `${index * 0.2}s` }}>
                   <img 
                     src={industry.icon} 
                     alt={industry.name}
-                    className="w-12 h-12 object-contain"
+                    className="w-12 h-12 object-contain transition-transform duration-300 group-hover:scale-110"
                   />
                 </div>
                 <h3 className="text-xl font-bold text-foreground mb-3 group-hover:text-primary transition-colors duration-300">
                   {industry.name}
                 </h3>
-                <p className="text-muted-foreground">
+                <p className="text-muted-foreground group-hover:text-foreground transition-colors duration-300">
                   {industry.description}
                 </p>
               </CardContent>

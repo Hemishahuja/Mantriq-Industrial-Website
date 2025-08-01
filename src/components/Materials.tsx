@@ -36,7 +36,7 @@ const Materials = () => {
     <section id="materials" className="py-20 bg-secondary">
       <div className="container mx-auto px-4">
         {/* Header */}
-        <div className="text-center mb-16">
+        <div className="text-center mb-16 animate-fade-in">
           <h2 className="text-4xl md:text-5xl font-bold text-foreground mb-4">
             Materials We Work With
           </h2>
@@ -52,14 +52,15 @@ const Materials = () => {
           {materials.map((material, index) => (
             <Card 
               key={index}
-              className="group hover:shadow-lg transition-all duration-300 hover:scale-105 cursor-pointer border-0 shadow-md h-full"
+              className="group hover:shadow-xl transition-all duration-500 hover-lift cursor-pointer border-0 shadow-md h-full hover-glow animate-scale-in"
+              style={{ animationDelay: `${index * 0.1}s` }}
             >
               <CardContent className="p-6 h-full flex flex-col">
                 <div className="flex-grow">
                   <h3 className="text-xl font-bold text-foreground mb-3 group-hover:text-primary transition-colors duration-300">
                     {material.name}
                   </h3>
-                  <p className="text-muted-foreground text-sm leading-relaxed">
+                  <p className="text-muted-foreground text-sm leading-relaxed group-hover:text-foreground transition-colors duration-300">
                     {material.description}
                   </p>
                 </div>
@@ -69,7 +70,7 @@ const Materials = () => {
         </div>
 
         {/* Bottom Description */}
-        <div className="text-center mt-12">
+        <div className="text-center mt-12 animate-fade-in stagger-6">
           <div className="max-w-4xl mx-auto">
             <p className="text-lg text-muted-foreground">
               Each material is carefully selected and processed to meet specific application requirements, 

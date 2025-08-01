@@ -15,12 +15,12 @@ const Header = () => {
   ];
 
   return (
-    <header className="fixed top-0 w-full bg-background/95 backdrop-blur-sm border-b border-border z-50">
+    <header className="fixed top-0 w-full bg-background/95 backdrop-blur-sm border-b border-border z-50 animate-slide-up transition-all duration-300 hover-glow">
       <div className="container mx-auto px-4">
         <div className="flex items-center justify-between h-16">
           {/* Logo */}
-          <div className="flex items-center space-x-3">
-            <div className="w-10 h-10 bg-primary rounded-lg flex items-center justify-center">
+          <div className="flex items-center space-x-3 animate-fade-in">
+            <div className="w-10 h-10 bg-primary rounded-lg flex items-center justify-center hover-scale animate-pulse-glow">
               <span className="text-primary-foreground font-bold text-lg">MI</span>
             </div>
             <div>
@@ -30,12 +30,13 @@ const Header = () => {
           </div>
 
           {/* Desktop Navigation */}
-          <nav className="hidden md:flex items-center space-x-8">
-            {navItems.map((item) => (
+          <nav className="hidden md:flex items-center space-x-8 animate-fade-in stagger-2">
+            {navItems.map((item, index) => (
               <a
                 key={item.label}
                 href={item.href}
-                className="text-foreground hover:text-primary transition-colors duration-200 font-medium"
+                className="text-foreground hover:text-primary transition-all duration-300 font-medium hover:scale-105 relative after:content-[''] after:absolute after:w-full after:scale-x-0 after:h-0.5 after:bottom-0 after:left-0 after:bg-primary after:origin-bottom-right after:transition-transform after:duration-300 hover:after:scale-x-100 hover:after:origin-bottom-left"
+                style={{ animationDelay: `${0.1 + index * 0.1}s` }}
               >
                 {item.label}
               </a>
@@ -43,8 +44,8 @@ const Header = () => {
           </nav>
 
           {/* CTA Button */}
-          <div className="hidden md:block">
-            <Button variant="default" className="bg-primary hover:bg-primary/90">
+          <div className="hidden md:block animate-fade-in stagger-6">
+            <Button variant="default" className="bg-primary hover:bg-primary/90 hover-scale hover-glow transition-all duration-300">
               Get Quote
             </Button>
           </div>
