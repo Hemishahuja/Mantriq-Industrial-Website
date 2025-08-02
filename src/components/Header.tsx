@@ -22,9 +22,6 @@ const Header = () => {
         <div className="flex items-center justify-between h-16">
           {/* Logo */}
           <Link to="/" className="flex items-center space-x-3 animate-fade-in hover-scale transition-all duration-300">
-            <div className="w-10 h-10 bg-primary rounded-lg flex items-center justify-center hover-scale animate-pulse-glow">
-              <span className="text-primary-foreground font-bold text-lg">MI</span>
-            </div>
             <div>
               <h1 className="text-xl font-bold text-foreground">MANTRIQ</h1>
               <p className="text-xs text-muted-foreground">INDUSTRIAL</p>
