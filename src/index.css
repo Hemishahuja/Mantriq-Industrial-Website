@@ -51,6 +51,20 @@ All colors MUST be HSL.
     /* Shadows */
     --shadow-industrial: 0 10px 30px -10px hsl(240 24% 15% / 0.3);
     --shadow-card: 0 4px 20px -4px hsl(240 24% 15% / 0.1);
+    
+    /* Glass Effects */
+    --glass-bg: hsla(var(--background), 0.05);
+    --glass-bg-strong: hsla(var(--background), 0.1);
+    --glass-border: hsla(var(--border), 0.15);
+    --glass-backdrop: blur(20px);
+    --glass-shadow: 0 8px 32px hsla(var(--primary), 0.1);
+    --glass-hover: hsla(var(--primary), 0.05);
+    
+    /* Background Patterns */
+    --gradient-mesh: radial-gradient(circle at 20% 50%, hsla(var(--primary), 0.08) 0%, transparent 60%),
+                     radial-gradient(circle at 80% 20%, hsla(var(--secondary), 0.06) 0%, transparent 60%),
+                     radial-gradient(circle at 40% 80%, hsla(var(--accent), 0.05) 0%, transparent 60%),
+                     linear-gradient(135deg, hsla(var(--background), 0.95) 0%, hsla(var(--background), 0.8) 100%);
 
     --radius: 0.5rem;
 
@@ -103,6 +117,21 @@ All colors MUST be HSL.
     --industrial-dark: 240 24% 12%;
     --industrial-gray: 210 12% 75%;
     --industrial-light: 240 24% 25%;
+    
+    /* Glass Effects Dark Mode */
+    --glass-bg: hsla(var(--background), 0.1);
+    --glass-bg-strong: hsla(var(--background), 0.15);
+    --glass-border: hsla(var(--border), 0.2);
+    --glass-backdrop: blur(20px);
+    --glass-shadow: 0 8px 32px hsla(var(--primary), 0.15);
+    --glass-hover: hsla(var(--primary), 0.08);
+    
+    /* Background Patterns Dark Mode */
+    --gradient-mesh: radial-gradient(circle at 20% 50%, hsla(var(--primary), 0.12) 0%, transparent 60%),
+                     radial-gradient(circle at 80% 20%, hsla(var(--secondary), 0.1) 0%, transparent 60%),
+                     radial-gradient(circle at 40% 80%, hsla(var(--accent), 0.08) 0%, transparent 60%),
+                     linear-gradient(135deg, hsla(var(--background), 0.9) 0%, hsla(var(--background), 0.7) 100%);
+                     
     --sidebar-background: 240 5.9% 10%;
     --sidebar-foreground: 240 4.8% 95.9%;
     --sidebar-primary: 224.3 76.3% 48%;
@@ -120,7 +149,33 @@ All colors MUST be HSL.
   }
 
   body {
-    @apply bg-background text-foreground;
+    background: var(--gradient-mesh);
+    color: hsl(var(--foreground));
+    font-feature-settings: "rlig" 1, "calt" 1;
+    min-height: 100vh;
+  }
+
+  /* Glass morphism utility classes */
+  .glass {
+    background: var(--glass-bg);
+    backdrop-filter: var(--glass-backdrop);
+    -webkit-backdrop-filter: var(--glass-backdrop);
+    border: 1px solid var(--glass-border);
+    box-shadow: var(--glass-shadow);
+  }
+
+  .glass-strong {
+    background: var(--glass-bg-strong);
+    backdrop-filter: var(--glass-backdrop);
+    -webkit-backdrop-filter: var(--glass-backdrop);
+    border: 1px solid var(--glass-border);
+    box-shadow: var(--glass-shadow);
+  }
+
+  .glass-hover:hover {
+    background: var(--glass-hover);
+    transform: translateY(-2px);
+    box-shadow: 0 12px 40px hsla(var(--primary), 0.15);
   }
 }
 

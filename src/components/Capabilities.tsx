@@ -56,7 +56,7 @@ const Capabilities = () => {
           {features.map((feature, index) => (
             <Card 
               key={index} 
-              className="border-0 shadow-md hover:shadow-xl transition-all duration-500 hover-lift hover-glow animate-scale-in"
+              className="glass-strong hover-lift hover-glow animate-scale-in transition-all duration-500"
               style={{ animationDelay: `${index * 0.2}s` }}
             >
               <CardContent className="p-8 text-center">
@@ -79,7 +79,7 @@ const Capabilities = () => {
         {/* Detailed Capabilities */}
         <div className="grid lg:grid-cols-2 gap-12">
           {/* CNC Turning */}
-          <Card className="border-0 shadow-lg hover-lift hover-glow animate-slide-in-left">
+          <Card className="glass-strong hover-lift hover-glow animate-slide-in-left">
             <CardContent className="p-8">
               <h3 className="text-2xl font-bold text-foreground mb-6 flex items-center">
                 <Settings className="w-6 h-6 mr-3 text-primary animate-float" />
@@ -101,7 +101,7 @@ const Capabilities = () => {
           </Card>
 
           {/* CNC Milling */}
-          <Card className="border-0 shadow-lg hover-lift hover-glow animate-slide-in-right">
+          <Card className="glass-strong hover-lift hover-glow animate-slide-in-right">
             <CardContent className="p-8">
               <h3 className="text-2xl font-bold text-foreground mb-6 flex items-center">
                 <Target className="w-6 h-6 mr-3 text-primary animate-float" style={{ animationDelay: '1s' }} />

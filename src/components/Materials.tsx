@@ -52,7 +52,7 @@ const Materials = () => {
           {materials.map((material, index) => (
             <Card 
               key={index}
-              className="group hover:shadow-xl transition-all duration-500 hover-lift cursor-pointer border-0 shadow-md h-full hover-glow animate-scale-in"
+              className="group glass-strong hover-lift cursor-pointer h-full hover-glow animate-scale-in transition-all duration-500"
               style={{ animationDelay: `${index * 0.1}s` }}
             >
               <CardContent className="p-6 h-full flex flex-col">

@@ -48,7 +48,7 @@ const Contact = () => {
 
         <div className="grid lg:grid-cols-2 gap-16">
           {/* Contact Form */}
-          <Card className="border-0 shadow-lg hover-glow animate-slide-in-left">
+          <Card className="glass-strong hover-glow animate-slide-in-left">
             <CardContent className="p-8">
               <h3 className="text-2xl font-bold text-foreground mb-6">
                 Request a Quote
@@ -135,7 +135,7 @@ const Contact = () => {
               {contactInfo.map((info, index) => (
                 <Card 
                   key={index} 
-                  className="border-0 shadow-md hover:shadow-lg transition-all duration-300 hover-lift hover-glow animate-scale-in"
+                  className="glass-strong hover-lift hover-glow animate-scale-in transition-all duration-300"
                   style={{ animationDelay: `${index * 0.1}s` }}
                 >
                   <CardContent className="p-6">
@@ -163,7 +163,7 @@ const Contact = () => {
             </div>
 
             {/* Additional Info */}
-            <Card className="border-0 shadow-md bg-primary/5 hover-glow animate-fade-in stagger-5">
+            <Card className="glass-strong bg-primary/5 hover-glow animate-fade-in stagger-5">
               <CardContent className="p-6">
                 <h4 className="font-bold text-foreground mb-3">
                   Why Choose Mantriq Industrial?

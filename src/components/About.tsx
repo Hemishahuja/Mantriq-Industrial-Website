@@ -73,7 +73,7 @@ const About = () => {
               {pillars.map((pillar, index) => (
                 <Card 
                   key={index} 
-                  className="border-0 shadow-md hover:shadow-xl transition-all duration-500 hover-lift hover-glow animate-scale-in"
+                  className="glass-strong hover-lift hover-glow animate-scale-in transition-all duration-500"
                   style={{ animationDelay: `${index * 0.2}s` }}
                 >
                   <CardContent className="p-6 text-center">
