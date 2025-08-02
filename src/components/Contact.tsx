@@ -1,10 +1,101 @@
+import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
+import { useToast } from "@/hooks/use-toast";
 import { Phone, Mail, MapPin, Clock } from "lucide-react";
 
 const Contact = () => {
+  const { toast } = useToast();
+  const [isLoading, setIsLoading] = useState(false);
+  const [webhookUrl, setWebhookUrl] = useState("");
+  const [formData, setFormData] = useState({
+    firstName: "",
+    lastName: "",
+    company: "",
+    email: "",
+    phone: "",
+    industry: "",
+    projectDetails: ""
+  });
+
+  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+    const { name, value } = e.target;
+    setFormData(prev => ({
+      ...prev,
+      [name]: value
+    }));
+  };
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setIsLoading(true);
+
+    try {
+      // Netlify Forms submission
+      const netlifyFormData = new FormData();
+      netlifyFormData.append("form-name", "contact");
+      netlifyFormData.append("firstName", formData.firstName);
+      netlifyFormData.append("lastName", formData.lastName);
+      netlifyFormData.append("company", formData.company);
+      netlifyFormData.append("email", formData.email);
+      netlifyFormData.append("phone", formData.phone);
+      netlifyFormData.append("industry", formData.industry);
+      netlifyFormData.append("projectDetails", formData.projectDetails);
+
+      const netlifyResponse = await fetch("/", {
+        method: "POST",
+        headers: { "Content-Type": "application/x-www-form-urlencoded" },
+        body: new URLSearchParams(netlifyFormData as any).toString()
+      });
+
+      if (netlifyResponse.ok) {
+        toast({
+          title: "Quote Request Sent!",
+          description: "Thank you for your inquiry. We'll get back to you within 24 hours.",
+        });
+
+        // If Zapier webhook is provided, trigger it too
+        if (webhookUrl) {
+          await fetch(webhookUrl, {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+            },
+            mode: "no-cors",
+            body: JSON.stringify({
+              ...formData,
+              timestamp: new Date().toISOString(),
+              triggered_from: window.location.origin,
+            }),
+          });
+        }
+
+        // Reset form
+        setFormData({
+          firstName: "",
+          lastName: "",
+          company: "",
+          email: "",
+          phone: "",
+          industry: "",
+          projectDetails: ""
+        });
+      } else {
+        throw new Error("Failed to submit form");
+      }
+    } catch (error) {
+      console.error("Error submitting form:", error);
+      toast({
+        title: "Error",
+        description: "Failed to send quote request. Please try again.",
+        variant: "destructive",
+      });
+    } finally {
+      setIsLoading(false);
+    }
+  };
   const contactInfo = [
     {
       icon: <Phone className="w-6 h-6" />,
@@ -54,19 +145,41 @@ const Contact = () => {
                 Request a Quote
               </h3>
               
-              <form className="space-y-6">
+              <form 
+                name="contact" 
+                method="POST" 
+                data-netlify="true" 
+                onSubmit={handleSubmit}
+                className="space-y-6"
+              >
+                <input type="hidden" name="form-name" value="contact" />
+                
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                   <div className="animate-fade-in stagger-1">
                     <label className="block text-sm font-medium text-foreground mb-2">
                       First Name *
                     </label>
-                    <Input placeholder="John" className="border-input hover-scale transition-all duration-200" />
+                    <Input 
+                      name="firstName"
+                      value={formData.firstName}
+                      onChange={handleInputChange}
+                      placeholder="John" 
+                      className="border-input hover-scale transition-all duration-200"
+                      required 
+                    />
                   </div>
                   <div className="animate-fade-in stagger-2">
                     <label className="block text-sm font-medium text-foreground mb-2">
                       Last Name *
                     </label>
-                    <Input placeholder="Doe" className="border-input hover-scale transition-all duration-200" />
+                    <Input 
+                      name="lastName"
+                      value={formData.lastName}
+                      onChange={handleInputChange}
+                      placeholder="Doe" 
+                      className="border-input hover-scale transition-all duration-200"
+                      required 
+                    />
                   </div>
                 </div>
 
@@ -74,28 +187,54 @@ const Contact = () => {
                   <label className="block text-sm font-medium text-foreground mb-2">
                     Company
                   </label>
-                  <Input placeholder="Your Company Name" className="border-input hover-scale transition-all duration-200" />
+                  <Input 
+                    name="company"
+                    value={formData.company}
+                    onChange={handleInputChange}
+                    placeholder="Your Company Name" 
+                    className="border-input hover-scale transition-all duration-200" 
+                  />
                 </div>
 
                 <div className="animate-fade-in stagger-4">
                   <label className="block text-sm font-medium text-foreground mb-2">
                     Email Address *
                   </label>
-                  <Input type="email" placeholder="john@company.com" className="border-input hover-scale transition-all duration-200" />
+                  <Input 
+                    type="email" 
+                    name="email"
+                    value={formData.email}
+                    onChange={handleInputChange}
+                    placeholder="john@company.com" 
+                    className="border-input hover-scale transition-all duration-200"
+                    required 
+                  />
                 </div>
 
                 <div className="animate-fade-in stagger-5">
                   <label className="block text-sm font-medium text-foreground mb-2">
                     Phone Number
                   </label>
-                  <Input placeholder="+1 (555) 123-4567" className="border-input hover-scale transition-all duration-200" />
+                  <Input 
+                    name="phone"
+                    value={formData.phone}
+                    onChange={handleInputChange}
+                    placeholder="+1 (555) 123-4567" 
+                    className="border-input hover-scale transition-all duration-200" 
+                  />
                 </div>
 
                 <div className="animate-fade-in stagger-6">
                   <label className="block text-sm font-medium text-foreground mb-2">
                     Industry
                   </label>
-                  <Input placeholder="e.g., Automotive, Aerospace, Medical" className="border-input hover-scale transition-all duration-200" />
+                  <Input 
+                    name="industry"
+                    value={formData.industry}
+                    onChange={handleInputChange}
+                    placeholder="e.g., Automotive, Aerospace, Medical" 
+                    className="border-input hover-scale transition-all duration-200" 
+                  />
                 </div>
 
                 <div className="animate-fade-in stagger-7">
@@ -103,17 +242,38 @@ const Contact = () => {
                     Project Details *
                   </label>
                   <Textarea 
+                    name="projectDetails"
+                    value={formData.projectDetails}
+                    onChange={handleInputChange}
                     placeholder="Please describe your machining requirements, materials, quantities, tolerances, and timeline..."
                     className="border-input min-h-[120px] hover-scale transition-all duration-200"
+                    required
                   />
+                </div>
+
+                <div className="animate-fade-in stagger-8">
+                  <label className="block text-sm font-medium text-foreground mb-2">
+                    Zapier Webhook URL (Optional)
+                  </label>
+                  <Input 
+                    type="url"
+                    value={webhookUrl}
+                    onChange={(e) => setWebhookUrl(e.target.value)}
+                    placeholder="https://hooks.zapier.com/hooks/catch/..." 
+                    className="border-input hover-scale transition-all duration-200" 
+                  />
+                  <p className="text-xs text-muted-foreground mt-1">
+                    Add your Zapier webhook URL for additional integrations (optional)
+                  </p>
                 </div>
 
                 <Button 
                   type="submit" 
                   size="lg" 
-                  className="w-full bg-primary hover:bg-primary/90 text-primary-foreground hover-lift hover-glow transition-all duration-300 animate-scale-in stagger-8"
+                  disabled={isLoading}
+                  className="w-full bg-primary hover:bg-primary/90 text-primary-foreground hover-lift hover-glow transition-all duration-300 animate-scale-in stagger-9"
                 >
-                  Send Quote Request
+                  {isLoading ? "Sending..." : "Send Quote Request"}
                 </Button>
               </form>
             </CardContent>
