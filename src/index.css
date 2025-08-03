@@ -6,6 +6,21 @@
 All colors MUST be HSL.
 */
 
+/* Mantriq Four-Blues + White palette */
+:root{
+  --spacecadet:#1A1B41;  /* primary nav, footer, hero overlays */
+  --oceansteel:#1E586B;  /* buttons, links, charts, hover states */
+  --polarice:#CBE7F0;    /* section backgrounds, cards, inputs */
+  --page-bg:#FFFFFF;     /* main page background */
+  --text-body:#222222;   /* body copy */
+
+  /* Derived states */
+  --oceansteel-hover: color-mix(in oklab, var(--oceansteel) 110%, white);
+  --oceansteel-active: color-mix(in oklab, var(--oceansteel) 95%, black);
+  --shadow-ink: 0 2px 6px rgba(26,27,65,0.25);
+  --overlay-hero: rgba(26,27,65,0.45);
+}
+
 @layer base {
   :root {
     --background: 210 12% 97%;
@@ -27,7 +42,8 @@ All colors MUST be HSL.
     --muted: 210 12% 85%;
     --muted-foreground: 240 24% 45%;
 
-    --accent: 251 73% 55%;
+    /* Replace accent system with oceansteel */
+    --accent: 197 57% 27%; /* approx #1E586B in HSL for Tailwind tokens */
     --accent-foreground: 210 12% 97%;
 
     --destructive: 0 84% 60%;
@@ -149,8 +165,8 @@ All colors MUST be HSL.
   }
 
   body {
-    background: var(--gradient-mesh);
-    color: hsl(var(--foreground));
+    background: var(--page-bg);
+    color: var(--text-body);
     font-feature-settings: "rlig" 1, "calt" 1;
     min-height: 100vh;
   }
@@ -180,70 +196,70 @@ All colors MUST be HSL.
 }
 
 @layer utilities {
-  /* Animation utilities */
-  .animate-fade-in {
-    animation: fadeIn 0.8s ease-out forwards;
+  /* Motion tokens */
+  .ease-hover { transition-timing-function: cubic-bezier(0.25,0.8,0.5,1); }
+  .ease-lift { transition-timing-function: cubic-bezier(0.2,0.75,0.4,1); }
+  .t-hover { transition-duration: 150ms; }
+  .t-lift { transition-duration: 180ms; }
+  .t-fade { transition-duration: 400ms; }
+
+  /* GPU-friendly helpers */
+  .will-transform { will-change: transform; transform: translateZ(0); }
+  .will-opacity { will-change: opacity; transform: translateZ(0); }
+
+  /* Reveal on scroll (opacity + small translate only) */
+  .reveal {
+    opacity: 0;
+    transform: translateY(8px);
+    transition-property: opacity, transform;
+    transition-duration: 400ms;
+    transition-timing-function: ease-out;
   }
-  
-  .animate-slide-up {
-    animation: slideUp 0.8s ease-out forwards;
+  .reveal.is-visible {
+    opacity: 1;
+    transform: translateY(0);
   }
-  
-  .animate-slide-in-left {
-    animation: slideInLeft 0.8s ease-out forwards;
-  }
-  
-  .animate-slide-in-right {
-    animation: slideInRight 0.8s ease-out forwards;
-  }
-  
-  .animate-scale-in {
-    animation: scaleIn 0.6s ease-out forwards;
-  }
-  
-  .animate-float {
-    animation: float 3s ease-in-out infinite;
-  }
-  
-  .animate-pulse-glow {
-    animation: pulseGlow 2s ease-in-out infinite;
-  }
-  
-  .animate-bounce-subtle {
-    animation: bounceSubtle 2s ease-in-out infinite;
-  }
-  
-  .stagger-1 { animation-delay: 0.1s; }
-  .stagger-2 { animation-delay: 0.2s; }
-  .stagger-3 { animation-delay: 0.3s; }
-  .stagger-4 { animation-delay: 0.4s; }
-  .stagger-5 { animation-delay: 0.5s; }
-  .stagger-6 { animation-delay: 0.6s; }
-  
-  .hover-lift {
-    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-  }
-  
-  .hover-lift:hover {
-    transform: translateY(-8px);
-    box-shadow: 0 20px 40px -12px hsl(var(--primary) / 0.25);
-  }
-  
-  .hover-glow {
-    transition: all 0.3s ease;
-  }
-  
-  .hover-glow:hover {
-    box-shadow: 0 0 30px hsl(var(--primary) / 0.3);
-  }
-  
+
+  /* Button hover pulse: scale only + mint overlay via outline ring (no shadow anim) */
   .hover-scale {
-    transition: transform 0.3s ease;
+    transition-property: transform;
+    transition-duration: 150ms;
+    transition-timing-function: cubic-bezier(0.25,0.8,0.5,1);
   }
-  
-  .hover-scale:hover {
-    transform: scale(1.05);
+  .hover-scale:hover { transform: scale(1.02); }
+
+  /* Card lift: translate only; keep shadow static (no animated box-shadow) */
+  .hover-lift {
+    transition-property: transform;
+    transition-duration: 180ms;
+    transition-timing-function: cubic-bezier(0.2,0.75,0.4,1);
   }
+  .hover-lift:hover { transform: translateY(-4px); }
+
+  /* Hover outline cue using oceansteel */
+  .hover-glow {
+    transition: opacity 150ms ease-out;
+    outline: 0;
+    position: relative;
+  }
+  .hover-glow::after {
+    content: "";
+    position: absolute; inset: -2px;
+    border-radius: inherit;
+    pointer-events: none;
+    opacity: 0;
+    background: color-mix(in oklab, var(--oceansteel) 30%, transparent);
+  }
+  .hover-glow:hover::after { opacity: 1; }
+}
+
+/* Respect reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  .hover-scale, .hover-lift {
+    transition-duration: 0ms !important;
+    transform: none !important;
+  }
+  .reveal { opacity: 1 !important; transform: none !important; }
 }
 
 @keyframes fadeIn {
@@ -306,14 +322,8 @@ All colors MUST be HSL.
   50% { transform: translateY(-10px); }
 }
 
-@keyframes pulseGlow {
-  0%, 100% { 
-    box-shadow: 0 0 20px hsl(var(--primary) / 0.2);
-  }
-  50% { 
-    box-shadow: 0 0 40px hsl(var(--primary) / 0.4);
-  }
-}
+/* Removed animated box-shadow glow to avoid repaints */
+@keyframes pulseGlow {}
 
 @keyframes bounceSubtle {
   0%, 100% { transform: translateY(0); }

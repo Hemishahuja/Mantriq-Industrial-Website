@@ -6,8 +6,11 @@ const IndustriesPage = () => {
   return (
     <div className="min-h-screen">
       <Header />
-      <main className="pt-16">
-        <Industries />
+      {/* Match other pages: neutral page background and NO outer card wrapper */}
+      <main className="pt-16 bg-[var(--page-bg)]">
+        <section className="container mx-auto px-4 py-12">
+          <Industries />
+        </section>
       </main>
       <Footer />
     </div>

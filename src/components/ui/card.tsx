@@ -9,7 +9,8 @@ const Card = React.forwardRef<
   <div
     ref={ref}
     className={cn(
-      "rounded-lg glass text-card-foreground glass-hover transition-all duration-300",
+      // Mantriq Four-Blues card: Polar Ice surface, subtle Space Cadet border, ink shadow on hover
+      "rounded-lg bg-[var(--polarice)] border border-[color-mix(in_oklab,var(--spacecadet)_15%,transparent)] text-[var(--text-body)] transition-shadow duration-300 hover:shadow-[var(--shadow-ink)]",
       className
     )}
     {...props}
@@ -36,7 +37,7 @@ const CardTitle = React.forwardRef<
   <h3
     ref={ref}
     className={cn(
-      "text-2xl font-semibold leading-none tracking-tight",
+      "text-2xl font-semibold leading-none tracking-tight text-[var(--spacecadet)]",
       className
     )}
     {...props}
@@ -50,7 +51,7 @@ const CardDescription = React.forwardRef<
 >(({ className, ...props }, ref) => (
   <p
     ref={ref}
-    className={cn("text-sm text-muted-foreground", className)}
+    className={cn("text-sm text-[color-mix(in_oklab,var(--text-body)_70%,white)]", className)}
     {...props}
   />
 ))

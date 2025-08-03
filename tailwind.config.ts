@@ -18,7 +18,20 @@ export default {
 			}
 		},
 		extend: {
+			fontFamily: {
+				sans: ['"Source Sans Pro"', 'ui-sans-serif', 'system-ui', 'sans-serif'],
+				display: ['Inter', 'ui-sans-serif', 'system-ui', 'sans-serif']
+			},
 			colors: {
+				/* Theme switchable aliases */
+				accentActive: 'var(--accent-active)',
+				ctaActive: 'var(--cta-active)',
+				ctaHover: 'var(--cta-hover)',
+				ctaActivePress: 'var(--cta-active-press)',
+				tealAccent: 'var(--teal-accent)',
+				amberCta: 'var(--amber-cta)',
+				amberHover: 'var(--amber-hover)',
+				amberActive: 'var(--amber-active)',
 				border: 'hsl(var(--border))',
 				input: 'hsl(var(--input))',
 				ring: 'hsl(var(--ring))',
@@ -52,6 +65,14 @@ export default {
 					DEFAULT: 'hsl(var(--card))',
 					foreground: 'hsl(var(--card-foreground))'
 				},
+				/* Industrial Mint palette mapped to Tailwind tokens */
+				deepNavy: 'var(--deep-navy)',
+				arcticMint: 'var(--arctic-mint)',
+				slateSteel: 'var(--slate-steel)',
+				concrete: 'var(--concrete)',
+				signalOrg: 'var(--signal-org)',
+				pageBg: 'var(--page-bg)',
+				textBody: 'var(--text-body)',
 				industrial: {
 					dark: 'hsl(var(--industrial-dark))',
 					gray: 'hsl(var(--industrial-gray))',

@@ -41,13 +41,13 @@ const Industries = () => {
   ];
 
   return (
-    <section id="industries" className="py-20 bg-secondary">
+    <section id="industries" className="py-20 bg-[var(--page-bg)]">
       <div className="container mx-auto px-4">
         <div className="text-center mb-16 animate-fade-in">
-          <h2 className="text-4xl md:text-5xl font-bold text-foreground mb-4">
+          <h2 className="text-4xl md:text-5xl font-bold text-[var(--spacecadet)] mb-4">
             Industries We Serve
           </h2>
-          <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
+          <p className="text-xl text-[color-mix(in_oklab,var(--text-body)_85%,white)] max-w-3xl mx-auto">
             Our precision CNC machining capabilities serve diverse industries across Canada, 
             delivering components that meet the highest standards of quality and performance.
           </p>
@@ -57,21 +57,22 @@ const Industries = () => {
           {industries.map((industry, index) => (
             <Card 
               key={industry.name} 
-              className="group hover:shadow-xl transition-all duration-500 hover-lift cursor-pointer border-0 shadow-md animate-scale-in hover-glow"
+              className="group hover:shadow-xl transition-all duration-500 hover-lift cursor-pointer animate-scale-in hover-glow"
               style={{ animationDelay: `${index * 0.1}s` }}
             >
               <CardContent className="p-8 text-center">
-                <div className="w-20 h-20 mx-auto mb-6 bg-muted rounded-full flex items-center justify-center group-hover:bg-primary/20 transition-all duration-500 hover-scale animate-float" style={{ animationDelay: `${index * 0.2}s` }}>
+                <div className="w-20 h-20 mx-auto mb-6 rounded-full flex items-center justify-center transition-all duration-500 hover-scale animate-float"
+                     style={{ backgroundColor: "color-mix(in oklab, var(--oceansteel) 12%, white)", animationDelay: `${index * 0.2}s` }}>
                   <img 
                     src={industry.icon} 
                     alt={industry.name}
                     className="w-12 h-12 object-contain transition-transform duration-300 group-hover:scale-110"
                   />
                 </div>
-                <h3 className="text-xl font-bold text-foreground mb-3 group-hover:text-primary transition-colors duration-300">
+                <h3 className="text-xl font-bold text-[var(--spacecadet)] mb-3 transition-colors duration-300 group-hover:text-[var(--oceansteel)]">
                   {industry.name}
                 </h3>
-                <p className="text-muted-foreground group-hover:text-foreground transition-colors duration-300">
+                <p className="text-[color-mix(in_oklab,var(--text-body)_80%,white)] transition-colors duration-300 group-hover:text-[var(--text-body)]">
                   {industry.description}
                 </p>
               </CardContent>
