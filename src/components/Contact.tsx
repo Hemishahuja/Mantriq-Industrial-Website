@@ -299,12 +299,11 @@ const Contact = () => {
               {contactInfo.map((info, index) => (
                 <Card 
                   key={index} 
-                  className="glass-strong hover-lift hover-glow animate-scale-in transition-all duration-300"
-                  style={{ animationDelay: `${index * 0.1}s` }}
+                  className={cn(`glass-strong hover-lift hover-glow hover-scale animate-scale-in ease-lift stagger-${index + 1}`)}
                 >
                   <CardContent className="p-6">
                     <div className="flex items-start space-x-4">
-                      <div className="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center flex-shrink-0 hover-scale animate-pulse-glow">
+                      <div className="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center flex-shrink-0 micro-lift hover-scale t-lift animate-pulse-glow">
                         <div className="text-primary">
                           {info.icon}
                         </div>
@@ -327,18 +326,18 @@ const Contact = () => {
             </div>
 
             {/* Additional Info */}
-            <Card className="glass-strong bg-primary/5 hover-glow animate-fade-in stagger-5">
+            <Card className={cn("glass-strong bg-primary/5 hover-glow hover-lift ease-lift animate-fade-in stagger-10")}>
               <CardContent className="p-6">
-                <h4 className="font-bold text-foreground mb-3">
+                <h4 className="font-bold text-foreground mb-3 t-fade ease-lift">
                   Why Choose Mantriq Industrial?
                 </h4>
                 <ul className="text-muted-foreground space-y-2">
-                  <li className="animate-fade-in stagger-1">• Canadian-owned and operated</li>
-                  <li className="animate-fade-in stagger-2">• Serving industries nationwide</li>
-                  <li className="animate-fade-in stagger-3">• State-of-the-art CNC equipment</li>
-                  <li className="animate-fade-in stagger-4">• Rigorous quality control</li>
-                  <li className="animate-fade-in stagger-5">• Competitive pricing</li>
-                  <li className="animate-fade-in stagger-6">• Fast turnaround times</li>
+                  <li className="animate-fade-in stagger-1 t-fade ease-lift">• Canadian-owned and operated</li>
+                  <li className="animate-fade-in stagger-2 t-fade ease-lift">• Serving industries nationwide</li>
+                  <li className="animate-fade-in stagger-3 t-fade ease-lift">• State-of-the-art CNC equipment</li>
+                  <li className="animate-fade-in stagger-4 t-fade ease-lift">• Rigorous quality control</li>
+                  <li className="animate-fade-in stagger-5 t-fade ease-lift">• Competitive pricing</li>
+                  <li className="animate-fade-in stagger-6 t-fade ease-lift">• Fast turnaround times</li>
                 </ul>
               </CardContent>
             </Card>

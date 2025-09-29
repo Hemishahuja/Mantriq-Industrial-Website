@@ -2,19 +2,19 @@ import { useState } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Menu, X } from "lucide-react";
+import { cn } from "@/lib/utils";
 
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const location = useLocation();
 
   const navItems = [
+    { label: "Home", href: "/" },
     { label: "About", href: "/about" },
     { label: "Capabilities", href: "/capabilities" },
     { label: "Industries", href: "/industries" },
     { label: "Equipment", href: "/equipment" },
     { label: "Quality", href: "/quality" },
-    { label: "Case Studies", href: "/case-studies" },
-    { label: "Cost Advantage", href: "/cost-advantage" },
     { label: "Blog", href: "/blog" },
   ];
 
@@ -39,11 +39,11 @@ const Header = () => {
                 <Link
                   key={item.label}
                   to={item.href}
-                  className={`relative font-medium transition-colors ${active ? 'text-white' : 'text-white/85 hover:text-white'}`}
+                  className={`relative group font-medium micro-lift t-hover hover-glow transition-colors ${active ? 'text-white' : 'text-white/85 hover:text-white'}`}
                   aria-current={active ? 'page' : undefined}
                 >
                   {item.label}
-                  <span className={`absolute -bottom-1 left-0 h-0.5 bg-[var(--oceansteel)] transition-all ${active ? 'w-full' : 'w-0 group-hover:w-full'}`} />
+                  <span className={`absolute -bottom-1 left-0 h-0.5 bg-[var(--oceansteel)] transition-all ease-lift ${active ? 'w-full' : 'w-0 group-hover:w-full'}`} />
                 </Link>
               )
             })}
@@ -67,25 +67,29 @@ const Header = () => {
         </div>
 
         {/* Mobile Navigation */}
-        {isMenuOpen && (
-          <div className="md:hidden py-4 border-t border-white/15 bg-[var(--spacecadet)]/95">
-            <nav className="flex flex-col space-y-3">
-              {navItems.map((item) => (
-                <Link
-                  key={item.label}
-                  to={item.href}
-                  className={`font-medium py-2 ${location.pathname === item.href ? 'text-white' : 'text-white/90 hover:text-white'}`}
-                  onClick={() => setIsMenuOpen(false)}
-                >
-                  {item.label}
-                </Link>
-              ))}
-              <Button variant="default" className="mt-4" onClick={() => { setIsMenuOpen(false); window.location.href = "/quote"; }}>
-                Get Quote
-              </Button>
-            </nav>
-          </div>
-        )}
+        <div className={cn(
+          "md:hidden overflow-hidden transition-all duration-300 ease-lift py-4 border-t border-white/15 bg-[var(--spacecadet)]/95 transform -translate-y-full opacity-0",
+          isMenuOpen && "translate-y-0 opacity-100"
+        )}>
+          <nav className="flex flex-col space-y-3">
+            {navItems.map((item, index) => (
+              <Link
+                key={item.label}
+                to={item.href}
+                className={cn(
+                  "font-medium py-2 hover-glow micro-lift t-hover stagger-" + (index + 1),
+                  location.pathname === item.href ? 'text-white' : 'text-white/90 hover:text-white'
+                )}
+                onClick={() => setIsMenuOpen(false)}
+              >
+                {item.label}
+              </Link>
+            ))}
+            <Button variant="default" className="mt-4 stagger-8" onClick={() => { setIsMenuOpen(false); window.location.href = "/quote"; }}>
+              Get Quote
+            </Button>
+          </nav>
+        </div>
       </div>
     {/* Mobile FAB: fixed Get Quote button */}
     <Link to="/quote" className="md:hidden fixed right-4 bottom-4 z-[60]">

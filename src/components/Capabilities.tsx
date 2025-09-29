@@ -1,6 +1,7 @@
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { ArrowRight, Settings, Zap, Target } from "lucide-react";
+import { cn } from "@/lib/utils";
 
 const Capabilities = () => {
   const turningCapabilities = [
@@ -56,11 +57,10 @@ const Capabilities = () => {
           {features.map((feature, index) => (
               <Card 
                 key={index} 
-                className="hover-lift hover-glow animate-scale-in transition-all duration-500"
-              style={{ animationDelay: `${index * 0.2}s` }}
-            >
+                className={cn(`hover-lift hover-glow hover-scale animate-scale-in ease-lift stagger-${index + 1}`)}
+              >
               <CardContent className="p-8 text-center">
-                <div className="w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4 hover-scale animate-pulse-glow" style={{ backgroundColor: "color-mix(in oklab, var(--oceansteel) 12%, white)" }}>
+                <div className="w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4 micro-lift hover-scale animate-pulse-glow t-lift" style={{ backgroundColor: "color-mix(in oklab, var(--oceansteel) 12%, white)" }}>
                   <div className="text-[var(--oceansteel)]">
                     {feature.icon}
                   </div>
@@ -89,10 +89,10 @@ const Capabilities = () => {
                 {turningCapabilities.map((capability, index) => (
                   <li 
                     key={index} 
-                    className="flex items-start animate-fade-in"
+                    className={`flex items-start animate-fade-in t-fade ease-lift stagger-${4 + index}`}
                     style={{ animationDelay: `${0.5 + index * 0.1}s` }}
                   >
-                    <ArrowRight className="w-5 h-5 text-[var(--oceansteel)] mr-3 mt-0.5 flex-shrink-0 hover-scale" />
+                    <ArrowRight className="w-5 h-5 text-[var(--oceansteel)] mr-3 mt-0.5 flex-shrink-0 micro-lift hover-glow" />
                     <span className="text-[color-mix(in_oklab,var(--text-body)_80%,white)]">{capability}</span>
                   </li>
                 ))}
@@ -111,10 +111,10 @@ const Capabilities = () => {
                 {millingCapabilities.map((capability, index) => (
                   <li 
                     key={index} 
-                    className="flex items-start animate-fade-in"
-                    style={{ animationDelay: `${0.5 + index * 0.1}s` }}
+                    className={`flex items-start animate-fade-in t-fade ease-lift stagger-${9 + index}`}
+                    style={{ animationDelay: `${1.0 + index * 0.1}s` }}
                   >
-                    <ArrowRight className="w-5 h-5 text-[var(--oceansteel)] mr-3 mt-0.5 flex-shrink-0 hover-scale" />
+                    <ArrowRight className="w-5 h-5 text-[var(--oceansteel)] mr-3 mt-0.5 flex-shrink-0 micro-lift hover-glow" />
                     <span className="text-[color-mix(in_oklab,var(--text-body)_80%,white)]">{capability}</span>
                   </li>
                 ))}
@@ -124,10 +124,10 @@ const Capabilities = () => {
         </div>
 
         {/* CTA */}
-        <div className="text-center mt-12 animate-fade-in stagger-6">
+        <div className="text-center mt-12 animate-fade-in stagger-6 t-fade ease-lift">
           <Button 
             size="lg" 
-            className="px-8 hover-lift hover-glow transition-all duration-300"
+            className="px-8 hover-lift micro-lift hover-glow ease-lift"
             onClick={() => (window.location.href = '/quote')}
           >
             Request a Quote

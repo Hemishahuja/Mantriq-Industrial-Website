@@ -196,9 +196,9 @@ All colors MUST be HSL.
 }
 
 @layer utilities {
-  /* Motion tokens */
-  .ease-hover { transition-timing-function: cubic-bezier(0.25,0.8,0.5,1); }
-  .ease-lift { transition-timing-function: cubic-bezier(0.2,0.75,0.4,1); }
+  /* Motion tokens - refined easing for smoother, more natural feel */
+  .ease-hover { transition-timing-function: cubic-bezier(0.34, 0.04, 0.5, 1.2); }
+  .ease-lift { transition-timing-function: cubic-bezier(0.34, 0.04, 0.5, 1.2); }
   .t-hover { transition-duration: 150ms; }
   .t-lift { transition-duration: 180ms; }
   .t-fade { transition-duration: 400ms; }
@@ -251,15 +251,57 @@ All colors MUST be HSL.
     background: color-mix(in oklab, var(--oceansteel) 30%, transparent);
   }
   .hover-glow:hover::after { opacity: 1; }
+
+  /* Micro-lift for subtle hovers on small elements */
+  .micro-lift {
+    transition: transform 0.15s cubic-bezier(0.34, 0.04, 0.5, 1.2);
+  }
+  .micro-lift:hover {
+    transform: translateY(-2px);
+  }
+
+  /* Ripple effect setup */
+  .ripple {
+    position: relative;
+    overflow: hidden;
+  }
+  .ripple:active::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 5px;
+    height: 5px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.6);
+    transform: translate(-50%, -50%) scale(0);
+    transform-origin: center;
+    animation: ripple 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  /* Stagger animation delays for reveals (extend existing stagger usage) */
+  .stagger-1 { animation-delay: 0.1s; }
+  .stagger-2 { animation-delay: 0.2s; }
+  .stagger-3 { animation-delay: 0.3s; }
+  .stagger-4 { animation-delay: 0.4s; }
+  .stagger-5 { animation-delay: 0.5s; }
 }
 
 /* Respect reduced motion */
 @media (prefers-reduced-motion: reduce) {
-  .hover-scale, .hover-lift {
+  .hover-scale, .hover-lift, .micro-lift, .ripple {
     transition-duration: 0ms !important;
     transform: none !important;
   }
   .reveal { opacity: 1 !important; transform: none !important; }
+  .ripple::after {
+    animation: none !important;
+  }
+  [class*="stagger-"] { animation-delay: 0s !important; }
+  * {
+    animation: none !important;
+    transition: none !important;
+  }
 }
 
 @keyframes fadeIn {
@@ -328,4 +370,21 @@ All colors MUST be HSL.
 @keyframes bounceSubtle {
   0%, 100% { transform: translateY(0); }
   50% { transform: translateY(-5px); }
+}
+
+/* New keyframes for enhanced micro-interactions */
+@keyframes ripple {
+  0% {
+    transform: translate(-50%, -50%) scale(0);
+    opacity: 1;
+  }
+  100% {
+    transform: translate(-50%, -50%) scale(4);
+    opacity: 0;
+  }
+}
+
+@keyframes subtleParallax {
+  0% { background-position: center 0%; }
+  100% { background-position: center -10px; }
 }

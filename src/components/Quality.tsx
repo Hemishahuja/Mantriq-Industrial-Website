@@ -1,6 +1,7 @@
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { Shield, Eye, Award, Users } from "lucide-react";
+import { cn } from "@/lib/utils";
 
 const Quality = () => {
   const qualityFeatures = [
@@ -37,24 +38,24 @@ const Quality = () => {
             </h2>
             
             <div className="text-lg text-muted-foreground mb-8 space-y-4">
-              <p className="font-semibold text-foreground animate-fade-in stagger-1">
+              <p className="font-semibold text-foreground animate-fade-in stagger-1 t-fade ease-lift">
                 <strong>Mantriq Industrial has built an invaluable reputation for quality and service. 
                 We provide superior service by managing all aspects of our business to rigorous standards 
                 and maintain full traceability throughout our management systems.</strong>
               </p>
               
-              <p className="animate-fade-in stagger-2">
+              <p className="animate-fade-in stagger-2 t-fade ease-lift">
                 Quality is never compromised, and our procedures and processes are continually reviewed 
                 and improved to ensure that our customers receive products and services to the highest standard.
               </p>
               
-              <p className="animate-fade-in stagger-3">
+              <p className="animate-fade-in stagger-3 t-fade ease-lift">
                 Our impressive inspection facilities include high-quality digital and conventional gauges 
                 and instruments, Coordinate Measuring Machines (CMM), and Shadowgraph equipment for 
                 comprehensive quality verification.
               </p>
               
-              <p className="animate-fade-in stagger-4">
+              <p className="animate-fade-in stagger-4 t-fade ease-lift">
                 We welcome our customers to visit our manufacturing facility to inspect our capabilities 
                 for themselves and witness our commitment to quality firsthand.
               </p>
@@ -62,38 +63,37 @@ const Quality = () => {
 
             <Button 
               size="lg" 
-              className="bg-primary hover:bg-primary/90 text-primary-foreground hover-lift hover-glow transition-all duration-300 animate-scale-in stagger-5"
+              className="bg-primary hover:bg-primary/90 text-primary-foreground hover-lift micro-lift hover-glow ease-lift t-lift animate-scale-in stagger-5"
             >
               Learn More About Our Quality Process
             </Button>
           </div>
 
           {/* Right Content - Quality Features */}
-          <div className="animate-slide-in-right">
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
-              {qualityFeatures.map((feature, index) => (
-                <Card 
-                  key={index} 
-                  className="glass-strong hover-lift hover-glow animate-scale-in transition-all duration-500"
-                  style={{ animationDelay: `${index * 0.2}s` }}
-                >
-                  <CardContent className="p-6 text-center">
-                    <div className="w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center mx-auto mb-4 hover-scale animate-pulse-glow">
-                      <div className="text-primary">
-                        {feature.icon}
+            <div className="animate-slide-in-right">
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                {qualityFeatures.map((feature, index) => (
+                  <Card 
+                    key={index} 
+                    className={cn(`glass-strong hover-lift hover-glow hover-scale animate-scale-in ease-lift stagger-${index + 1}`)}
+                  >
+                    <CardContent className="p-6 text-center">
+                      <div className="w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center mx-auto mb-4 micro-lift hover-scale t-lift animate-pulse-glow">
+                        <div className="text-primary">
+                          {feature.icon}
+                        </div>
                       </div>
-                    </div>
-                    <h4 className="font-bold text-foreground mb-3">
-                      {feature.title}
-                    </h4>
-                    <p className="text-sm text-muted-foreground">
-                      {feature.description}
-                    </p>
-                  </CardContent>
-                </Card>
-              ))}
+                      <h4 className="font-bold text-foreground mb-3">
+                        {feature.title}
+                      </h4>
+                      <p className="text-sm text-muted-foreground">
+                        {feature.description}
+                      </p>
+                    </CardContent>
+                  </Card>
+                ))}
+              </div>
             </div>
-          </div>
         </div>
       </div>
     </section>

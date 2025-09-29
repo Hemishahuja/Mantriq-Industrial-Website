@@ -12,6 +12,12 @@ const posts = [
       "A buyer’s guide to common grades for screws and studs, with when to specify SS 304/316 vs mild steel or brass.",
   },
   {
+    title: "Cost Advantage of Manufacturing in India vs Importing from Canada",
+    date: "2025-08-15",
+    summary:
+      "Compare the landed costs of manufacturing in India versus importing from Canada, highlighting labor differentials, shipping efficiencies, and standardization benefits for bulk-standard CNC components.",
+  },
+  {
     title: "Bulk vs Precision Machining: Cost Drivers",
     date: "2025-07-24",
     summary:
@@ -55,6 +61,16 @@ export default function BlogPage() {
                 </CardHeader>
                 <CardContent>
                   <p className="text-sm">{p.summary}</p>
+                  {p.title === "Cost Advantage of Manufacturing in India vs Importing from Canada" && (
+                    <div className="mt-4 p-4 bg-muted rounded-md">
+                      <h4 className="font-semibold mb-2">Key Factors:</h4>
+                      <ul className="text-xs space-y-1">
+                        <li>• Labor Differential: Up to 35% savings vs North American shops</li>
+                        <li>• Shipping Aggregation: Consolidated ocean + last-mile for predictable ETAs</li>
+                        <li>• Standardization: Focus on repeatable, standard-tolerance parts for cost leadership</li>
+                      </ul>
+                    </div>
+                  )}
                 </CardContent>
               </Card>
             ))}
