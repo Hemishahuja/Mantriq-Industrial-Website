@@ -3,22 +3,22 @@ const Footer = () => {
 
   const footerLinks = {
     company: [
-      { label: "About Us", href: "#about" },
-      { label: "Our Team", href: "#team" },
-      { label: "Careers", href: "#careers" },
-      { label: "News", href: "#news" }
+      { label: "About Us", href: "/about" },
+      { label: "Our Team", href: "/about#team" },
+      { label: "Careers", href: "/about#careers" },
+      { label: "News", href: "/blog" }
     ],
     services: [
-      { label: "CNC Turning", href: "#capabilities" },
-      { label: "CNC Milling", href: "#capabilities" },
-      { label: "Quality Control", href: "#quality" },
-      { label: "Materials", href: "#materials" }
+      { label: "CNC Turning", href: "/capabilities" },
+      { label: "CNC Milling", href: "/capabilities" },
+      { label: "Quality Control", href: "/quality" },
+      { label: "Materials", href: "/materials" }
     ],
     industries: [
-      { label: "Automotive", href: "#industries" },
-      { label: "Aerospace", href: "#industries" },
-      { label: "Oil & Gas", href: "#industries" },
-      { label: "Medical", href: "#industries" }
+      { label: "Automotive", href: "/industries" },
+      { label: "Aerospace", href: "/industries" },
+      { label: "Oil & Gas", href: "/industries" },
+      { label: "Medical", href: "/industries" }
     ]
   };
 
