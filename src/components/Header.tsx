@@ -52,7 +52,7 @@ const Header = () => {
 
           {/* Mobile Menu Button */}
           <button
-            className="lg:hidden p-2 text-white"
+            className="lg:hidden p-2 text-white rounded-md border border-white/20 bg-white/5"
             onClick={() => setIsMenuOpen(!isMenuOpen)}
             aria-label="Toggle menu"
           >
@@ -77,17 +77,10 @@ const Header = () => {
                   {item.label}
                 </Link>
               ))}
-              <Button variant="default" className="mt-4" onClick={() => { setIsMenuOpen(false); window.location.href = "/quote"; }}>
-                Get Quote
-              </Button>
             </nav>
           </div>
         )}
       </div>
-    {/* Mobile FAB: fixed Get Quote button */}
-    <Link to="/quote" className="md:hidden fixed right-4 bottom-4 z-[60]">
-      <Button variant="default" className="shadow-lg hover-scale">Get Quote</Button>
-    </Link>
     </header>
   );
 };
