@@ -67,29 +67,28 @@ const Header = () => {
         </div>
 
         {/* Mobile Navigation */}
-        <div className={cn(
-          "md:hidden overflow-hidden transition-all duration-300 ease-lift border-t border-white/15 bg-[var(--spacecadet)]/95",
-          isMenuOpen ? "max-h-[400px] opacity-100 py-4" : "max-h-0 opacity-0 py-0"
-        )}>
-          <nav className="flex flex-col space-y-3">
-            {navItems.map((item, index) => (
-              <Link
-                key={item.label}
-                to={item.href}
-                className={cn(
-                  "font-medium py-2 hover-glow micro-lift t-hover stagger-" + (index + 1),
-                  location.pathname === item.href ? 'text-white' : 'text-white/90 hover:text-white'
-                )}
-                onClick={() => setIsMenuOpen(false)}
-              >
-                {item.label}
-              </Link>
-            ))}
-            <Button variant="default" className="mt-4 stagger-8" onClick={() => { setIsMenuOpen(false); window.location.href = "/quote"; }}>
-              Get Quote
-            </Button>
-          </nav>
-        </div>
+        {isMenuOpen && (
+          <div className="md:hidden absolute top-16 left-0 right-0 bg-[var(--spacecadet)] border-t border-white/15 shadow-lg animate-fade-in z-50">
+            <nav className="flex flex-col space-y-3 px-4 py-4">
+              {navItems.map((item, index) => (
+                <Link
+                  key={item.label}
+                  to={item.href}
+                  className={cn(
+                    "font-medium py-2 hover-glow micro-lift t-hover",
+                    location.pathname === item.href ? 'text-white' : 'text-white/90 hover:text-white'
+                  )}
+                  onClick={() => setIsMenuOpen(false)}
+                >
+                  {item.label}
+                </Link>
+              ))}
+              <Button variant="default" className="mt-4" onClick={() => { setIsMenuOpen(false); window.location.href = "/quote"; }}>
+                Get Quote
+              </Button>
+            </nav>
+          </div>
+        )}
       </div>
     {/* Mobile FAB: fixed Get Quote button */}
     <Link to="/quote" className="md:hidden fixed right-4 bottom-4 z-[60]">
