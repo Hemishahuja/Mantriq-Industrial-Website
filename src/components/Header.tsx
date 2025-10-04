@@ -32,7 +32,7 @@ const Header = () => {
           </Link>
 
           {/* Desktop Navigation */}
-          <nav className="hidden md:flex items-center space-x-8">
+          <nav className="hidden lg:flex items-center space-x-8">
             {navItems.map((item) => {
               const active = location.pathname === item.href
               return (
@@ -49,16 +49,10 @@ const Header = () => {
             })}
           </nav>
 
-          {/* CTA Button */}
-          <div className="hidden md:block">
-            <Button variant="default" className="hover-scale" onClick={() => (window.location.href = "/quote")}>
-              Get Quote
-            </Button>
-          </div>
 
           {/* Mobile Menu Button */}
           <button
-            className="md:hidden p-2 text-white"
+            className="lg:hidden p-2 text-white"
             onClick={() => setIsMenuOpen(!isMenuOpen)}
             aria-label="Toggle menu"
           >
