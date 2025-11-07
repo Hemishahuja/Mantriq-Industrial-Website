@@ -8,17 +8,18 @@ All colors MUST be HSL.
 
 /* Mantriq Four-Blues + White palette */
 :root{
-  --spacecadet:#1A1B41;  /* primary nav, footer, hero overlays */
-  --oceansteel:#1E586B;  /* buttons, links, charts, hover states */
-  --polarice:#CBE7F0;    /* section backgrounds, cards, inputs */
-  --page-bg:#FFFFFF;     /* main page background */
-  --text-body:#222222;   /* body copy */
+  /* Core brand palette */
+  --spacecadet:#111827;  /* main background, header, footer, strong text on light */
+  --oceansteel:#1E40AF;  /* primary accent: buttons, links, key icons */
+  --polarice:#EFF6FF;    /* soft section backgrounds / cards */
+  --page-bg:#FFFFFF;     /* base background */
+  --text-body:#111827;   /* high-contrast body text */
 
   /* Derived states */
-  --oceansteel-hover: color-mix(in oklab, var(--oceansteel) 110%, white);
-  --oceansteel-active: color-mix(in oklab, var(--oceansteel) 95%, black);
-  --shadow-ink: 0 2px 6px rgba(26,27,65,0.25);
-  --overlay-hero: rgba(26,27,65,0.45);
+  --oceansteel-hover: color-mix(in oklab, var(--oceansteel) 115%, white);
+  --oceansteel-active: color-mix(in oklab, var(--oceansteel) 90%, black);
+  --shadow-ink: 0 10px 30px rgba(15,23,42,0.14);
+  --overlay-hero: rgba(15,23,42,0.55);
 }
 
 @layer base {

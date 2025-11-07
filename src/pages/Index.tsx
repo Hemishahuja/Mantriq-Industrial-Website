@@ -36,67 +36,17 @@ export default function Index() {
   ];
 
   const { toast } = useToast();
-  const [isLoading, setIsLoading] = useState(false);
-  const [miniFormData, setMiniFormData] = useState({
-    name: "",
-    email: "",
-    message: ""
-  });
-
-  const handleMiniInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
-    const { name, value } = e.target;
-    setMiniFormData(prev => ({
-      ...prev,
-      [name]: value
-    }));
-  };
-
-  const handleMiniSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
-    setIsLoading(true);
-
-    try {
-      const netlifyFormData = new FormData();
-      netlifyFormData.append("form-name", "mini-contact");
-      netlifyFormData.append("name", miniFormData.name);
-      netlifyFormData.append("email", miniFormData.email);
-      netlifyFormData.append("message", miniFormData.message);
-
-      const netlifyResponse = await fetch("/", {
-        method: "POST",
-        headers: { "Content-Type": "application/x-www-form-urlencoded" },
-        body: new URLSearchParams(netlifyFormData as any).toString()
-      });
-
-      if (netlifyResponse.ok) {
-        toast({
-          title: "Quote Request Sent!",
-          description: "Thank you! We'll respond within 24 hours.",
-        });
-        setMiniFormData({ name: "", email: "", message: "" });
-      } else {
-        throw new Error("Failed to submit");
-      }
-    } catch (error) {
-      console.error("Error:", error);
-      toast({
-        title: "Error",
-        description: "Please try again or visit the full contact page.",
-        variant: "destructive",
-      });
-    } finally {
-      setIsLoading(false);
-    }
-  };
 
   return (
     <>
 <Helmet>
-  <title>Mantriq Industrial</title>
+  <title>Bulk CNC Machined Components | Landed Cost Advantage | Mantriq</title>
   <meta
     name="description"
-    content="Leading Canadian supplier of high-quality precision CNC machined components. Serving automotive, aerospace, oil & gas, medical, construction and marine industries across Canada."
+    content="Bulk CNC turned and milled components with standard-tolerance, repeatable quality, clear landed costs, and responsive technical support for OEMs and distributors."
   />
+  <meta name="robots" content="index,follow" />
+  <link rel="canonical" href="https://mantriqindustrial.ca/" />
 </Helmet>
       <Header />
       <main>
@@ -133,9 +83,11 @@ export default function Index() {
                 <li>• Standardized processes for repeatability</li>
               </ul>
               <div className="mt-8 flex gap-3">
-                <Button onClick={() => (window.location.href = "/quote")}>Get a Quote</Button>
-                <Button variant="outline" onClick={() => (window.location.href = "/cost-advantage")}>
-                  Compare Your Costs
+                <Button asChild>
+                  <a href="/quote">Get a Quote</a>
+                </Button>
+                <Button asChild variant="outline">
+                  <a href="/cost-advantage">Compare Your Costs</a>
                 </Button>
               </div>
             </div>
@@ -273,67 +225,29 @@ export default function Index() {
                 </Card>
               </div>
 
-              {/* Mini Quote Form */}
+              {/* Single primary RFQ CTA */}
               <Card className="hover-lift animate-slide-in-right">
                 <CardContent className="p-8">
-                  <h3 className="text-2xl font-bold text-[var(--spacecadet)] mb-6">
-                    Quick Quote Request
+                  <h3 className="text-2xl font-bold text-[var(--spacecadet)] mb-4">
+                    Ready for a precise landed-cost quote?
                   </h3>
                   <p className="text-[var(--text-body)] mb-6 text-sm">
-                    Fill out this form for a fast response. For detailed projects, visit our full contact page.
+                    Share your drawings, batch size, and requirements via our secure RFQ form. You will get a clear, no‑surprises quotation.
                   </p>
-                  <form 
-                    name="mini-contact" 
-                    method="POST" 
-                    data-netlify="true"
-                    onSubmit={handleMiniSubmit}
-                    className="space-y-4"
+                  <Button
+                    asChild
+                    size="lg"
+                    className="w-full"
                   >
-                    <input type="hidden" name="form-name" value="mini-contact" />
-                    <div className="animate-fade-in stagger-1">
-                      <label className="block text-sm font-medium text-[var(--spacecadet)] mb-2">Name *</label>
-                      <Input 
-                        name="name"
-                        value={miniFormData.name}
-                        onChange={handleMiniInputChange}
-                        placeholder="Your Name" 
-                        required 
-                      />
-                    </div>
-                    <div className="animate-fade-in stagger-2">
-                      <label className="block text-sm font-medium text-[var(--spacecadet)] mb-2">Email *</label>
-                      <Input 
-                        type="email" 
-                        name="email"
-                        value={miniFormData.email}
-                        onChange={handleMiniInputChange}
-                        placeholder="your@email.com" 
-                        required 
-                      />
-                    </div>
-                    <div className="animate-fade-in stagger-3">
-                      <label className="block text-sm font-medium text-[var(--spacecadet)] mb-2">Message *</label>
-                      <Textarea 
-                        name="message"
-                        value={miniFormData.message}
-                        onChange={handleMiniInputChange}
-                        placeholder="Briefly describe your project (materials, quantity, timeline)..." 
-                        rows={4}
-                        required
-                      />
-                    </div>
-                    <Button 
-                      type="submit" 
-                      size="lg" 
-                      disabled={isLoading}
-                      className="w-full"
-                    >
-                      {isLoading ? "Sending..." : "Get Free Quote"}
-                    </Button>
-                    <p className="text-xs text-muted-foreground text-center mt-2">
-                      Or <a href="/contact" className="text-[var(--oceansteel)] hover:underline">visit full contact page</a>
-                    </p>
-                  </form>
+                    <a href="/quote">Open RFQ Form</a>
+                  </Button>
+                  <p className="text-xs text-muted-foreground text-center mt-3">
+                    Prefer email? Write to{" "}
+                    <a href="mailto:info@mantriqindustrial.ca" className="text-[var(--oceansteel)] hover:underline">
+                      info@mantriqindustrial.ca
+                    </a>
+                    .
+                  </p>
                 </CardContent>
               </Card>
             </div>
@@ -367,9 +281,11 @@ export default function Index() {
               <p className="text-white/85">Upload your drawings and requirements. We'll respond within one business day.</p>
             </div>
             <div className="flex gap-3">
-              <Button size="lg" onClick={() => (window.location.href = "/quote")}>Request Quote</Button>
-              <Button size="lg" variant="outline" onClick={() => (window.location.href = "/blog")}>
-                Read Insights
+              <Button asChild size="lg">
+                <a href="/quote">Request Quote</a>
+              </Button>
+              <Button asChild size="lg" variant="outline">
+                <a href="/blog">Read Insights</a>
               </Button>
             </div>
           </div>

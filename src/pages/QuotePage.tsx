@@ -1,3 +1,4 @@
+m 
 import { Helmet } from "react-helmet-async";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
@@ -11,23 +12,6 @@ export default function QuotePage() {
   const [submitting, setSubmitting] = useState(false);
   const [error, setError] = useState<string | null>(null);
 
-  function validateFiles(input: HTMLInputElement) {
-    const files = input.files;
-    if (!files) return true;
-    const allowed = [".step", ".stp", ".dxf"];
-    for (const f of Array.from(files)) {
-      const ext = f.name.toLowerCase().slice(f.name.lastIndexOf("."));
-      if (!allowed.includes(ext)) {
-        setError("Only .STEP, .STP, .DXF files are allowed.");
-        return false;
-      }
-      if (f.size > 10 * 1024 * 1024) {
-        setError("Each file must be ≤ 10 MB.");
-        return false;
-      }
-    }
-    return true;
-  }
 
   const onSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -82,26 +66,33 @@ export default function QuotePage() {
     "@context": "https://schema.org",
     "@type": "Organization",
     "name": "Mantriq Industrial",
-    "url": "https://mantriq.example.com",
-    "address": { "@type": "PostalAddress", "addressCountry": "IN" }
+    "url": "https://mantriqindustrial.ca",
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "18 King St E, Suite 2400",
+      "addressLocality": "Toronto",
+      "addressRegion": "ON",
+      "postalCode": "M5C 1C4",
+      "addressCountry": "CA"
+    }
   };
 
   return (
     <>
       <Helmet>
-        <title>Request Bulk CNC Quote | Upload Your Drawing | Mantriq</title>
+        <title>Request a Consultation or Quote | Mantriq Industrial</title>
         <meta
           name="description"
-          content="Submit your RFQ for bulk-standard CNC fasteners. Upload STEP or DXF, specify batch size, material, finish, tolerances, and delivery location."
+          content="Share your requirements and questions with Mantriq Industrial. Our team will review your message and respond directly from info@mantriqindustrial.ca."
         />
         <script type="application/ld+json">{JSON.stringify(orgJsonLd)}</script>
       </Helmet>
       <Header />
       <main className="container mx-auto px-4 pt-28 pb-20">
         <section ref={ref} className="reveal">
-          <h1 className="text-3xl md:text-4xl font-bold text-[var(--deep-navy)]">Request Quote</h1>
+          <h1 className="text-3xl md:text-4xl font-bold text-[var(--deep-navy)]">Request a Consultation or Quote</h1>
           <p className="mt-3 text-[color-mix(in_oklab,var(--text-body)_80%,white)]">
-            Send drawings and requirements for a fast, no‑obligation price. We focus on bulk-standard parts.
+            Tell us about your components, expected volumes, and timelines. Our team will review your message and follow up from info@mantriqindustrial.ca.
           </p>
 
           <Card className="mt-8">
@@ -110,7 +101,7 @@ export default function QuotePage() {
               <CardDescription>Provide as much detail as possible for accurate landed-costs.</CardDescription>
             </CardHeader>
             <CardContent>
-              {/* Netlify Forms: visible form with proper name */}
+              {/* Single unified Netlify RFQ form */}
               <form
                 name="rfq"
                 method="POST"
@@ -144,54 +135,28 @@ export default function QuotePage() {
                   <span>Phone</span>
                   <input className="border rounded-lg px-3 py-2" name="phone" />
                 </label>
-                <label className="flex flex-col gap-1">
-                  <span>Batch size (pcs)</span>
-                  <input required type="number" className="border rounded-lg px-3 py-2" name="batch" min={1000} />
-                </label>
-                <label className="flex flex-col gap-1">
-                  <span>Material</span>
-                  <select name="material" className="border rounded-lg px-3 py-2">
-                    <option>SS 304</option>
-                    <option>SS 316</option>
-                    <option>Brass</option>
-                    <option>Mild Steel</option>
-                    <option>Aluminium</option>
-                  </select>
-                </label>
-                <label className="flex flex-col gap-1">
-                  <span>Finish</span>
-                  <select name="finish" className="border rounded-lg px-3 py-2">
-                    <option>None</option>
-                    <option>Zinc</option>
-                    <option>Black oxide</option>
-                  </select>
-                </label>
-                <label className="flex flex-col gap-1">
-                  <span>Tolerance policy</span>
-                  <select name="tolerance" className="border rounded-lg px-3 py-2">
-                    <option>Standard production tolerances</option>
-                    <option>Other (attach note)</option>
-                  </select>
-                </label>
                 <label className="flex flex-col gap-1 md:col-span-2">
-                  <span>Delivery location (City, Country)</span>
-                  <input className="border rounded-lg px-3 py-2" name="location" />
-                </label>
-                <label className="flex flex-col gap-1 md:col-span-2">
-                  <span>Project details</span>
-                  <textarea className="border rounded-lg px-3 py-2 min-h-32" name="details" required />
-                </label>
-                <label className="flex flex-col gap-1 md:col-span-2">
-                  <span>Upload drawings (.STEP, .DXF)</span>
-                  <input type="file" className="border rounded-lg px-3 py-2" name="files" multiple />
+                  <span>How can we help?</span>
+                  <textarea
+                    className="border rounded-lg px-3 py-2 min-h-32"
+                    name="message"
+                    required
+                    placeholder="Briefly describe your components, approximate volumes, timelines, and any specific questions."
+                  />
                 </label>
 
                 {error && <div className="md:col-span-2 text-red-600 text-sm">{error}</div>}
 
-                <div className="md:col-span-2">
+                <div className="md:col-span-2 flex flex-col gap-1 text-sm text-gray-600">
                   <Button className="hover-scale" type="submit" disabled={submitting}>
-                    {submitting ? "Submitting..." : "Submit RFQ"}
+                    {submitting ? "Submitting..." : "Send Message"}
                   </Button>
+                  <p>
+                    Or email us directly at{" "}
+                    <a href="mailto:info@mantriqindustrial.ca" className="text-[var(--oceansteel)] hover:underline">
+                      info@mantriqindustrial.ca
+                    </a>.
+                  </p>
                 </div>
               </form>
             </CardContent>

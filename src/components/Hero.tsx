@@ -1,4 +1,5 @@
 import { Button } from "@/components/ui/button";
+import { Link } from "react-router-dom";
 const cncGif = "https://media1.giphy.com/media/YUeNYlkCFrDTZnrZtg/giphy.gif";
 
 const Hero = () => {
@@ -38,20 +39,24 @@ const Hero = () => {
             </p>
             
             <div className="flex flex-col sm:flex-row gap-4 animate-fade-in stagger-4 t-fade ease-lift">
-              <Button 
+              <Button
+                asChild
                 size="lg"
                 className="px-8 py-4 text-lg hover-lift micro-lift hover-glow ease-lift"
-                onClick={() => (window.location.href = "/capabilities")}
               >
-                View Our Capabilities
+                <Link to="/capabilities">
+                  View Our Capabilities
+                </Link>
               </Button>
-              <Button 
-                size="lg" 
-                variant="outline" 
+              <Button
+                asChild
+                size="lg"
+                variant="outline"
                 className="px-8 py-4 text-lg hover-lift micro-lift ease-lift"
-                onClick={() => (window.location.href = "/quote")}
               >
-                Get Quote
+                <Link to="/quote">
+                  Get Quote
+                </Link>
               </Button>
             </div>
           </div>

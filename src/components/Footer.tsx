@@ -44,7 +44,7 @@ const Footer = () => {
             <div className="space-y-2 text-sm text-white/80">
               <p>📧 info@mantriqindustrial.ca</p>
               <p>📞 +1 (555) 123-4567</p>
-              <p>📍 Ontario, Canada</p>
+              <p>📍 18 King St E, Suite 2400, Toronto, ON M5C 1C4</p>
             </div>
           </div>
 
