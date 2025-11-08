@@ -18,6 +18,7 @@ const CaseStudiesPage = lazy(() => import("./pages/CaseStudiesPage"));
 const CostAdvantagePage = lazy(() => import("./pages/CostAdvantagePage"));
 const FAQPage = lazy(() => import("./pages/FAQPage"));
 const BlogPage = lazy(() => import("./pages/BlogPage"));
+const BlogPostPage = lazy(() => import("./pages/BlogPostPage"));
 const QuotePage = lazy(() => import("./pages/QuotePage"));
 const ThankYouPage = lazy(() => import("./pages/ThankYouPage"));
 const NotFound = lazy(() => import("./pages/NotFound"));
@@ -45,6 +46,7 @@ const App = () => (
               <Route path="/cost-advantage" element={<CostAdvantagePage />} />
               <Route path="/faq" element={<FAQPage />} />
               <Route path="/blog" element={<BlogPage />} />
+              <Route path="/blog/:slug" element={<BlogPostPage />} />
               <Route path="/quote" element={<QuotePage />} />
               <Route path="/thank-you" element={<ThankYouPage />} />
               <Route path="*" element={<NotFound />} />

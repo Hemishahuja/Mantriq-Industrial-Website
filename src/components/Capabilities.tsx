@@ -6,10 +6,10 @@ import { cn } from "@/lib/utils";
 const Capabilities = () => {
   const turningCapabilities = [
     "Manufacturing turned components from 2mm to 300mm",
-    "Live tooling, cross drilling and milling capabilities", 
+    "Live tooling, cross drilling and milling capabilities",
     "Large batch volumes to single prototype components",
     "Latest automated barfeed technology",
-    "Automated unmanned night running for competitive pricing"
+    "Night running (manned)"
   ];
 
   const millingCapabilities = [

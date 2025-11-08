@@ -18,9 +18,9 @@ import { Phone, Mail, MapPin, Clock } from "lucide-react";
  */
 export default function Index() {
     const kpis = [
-      { label: "MOQ per line", value: "1,000 pcs" },
-      { label: "Lead time", value: "4–8 weeks" },
-      { label: "Materials", value: "SS 304/316, Brass, MS, Al" },
+      { label: "MOQ per line", value: "High volume" },
+      { label: "Lead time", value: "7-8 weeks" },
+      { label: "Materials", value: "SS, Brass, MS, Aluminum, Copper, Nylon" },
       { label: "Tolerance", value: "Industrial standard" },
     ];
 
@@ -97,7 +97,7 @@ export default function Index() {
                   <CardTitle className="text-lg">Turning</CardTitle>
                 </CardHeader>
                 <CardContent>
-                  Ø 2–50 mm, threads, knurling, slotting. Batch production with sample inspections.
+                  Ø 2 - 200 mm, threads, knurling, slotting. Batch production with sample inspections.
                 </CardContent>
               </Card>
               <Card className="hover-lift">
@@ -113,7 +113,7 @@ export default function Index() {
                   <CardTitle className="text-lg">Materials</CardTitle>
                 </CardHeader>
                 <CardContent>
-                  SS 304/316, Brass, Mild Steel, Aluminium. Certificates on request.
+                  SS, Brass, MS, Aluminum, Copper, Nylon Moulding Parts. Certificates on request.
                 </CardContent>
               </Card>
               <Card className="hover-lift">
@@ -121,7 +121,7 @@ export default function Index() {
                   <CardTitle className="text-lg">QA & Traceability</CardTitle>
                 </CardHeader>
                 <CardContent>
-                  In‑process checks, 2.5D vision system. Roadmap to ISO 9001.
+                  In‑process checks, 2.5D vision system. ISO 9001 certified. UCAS certified clients.
                 </CardContent>
               </Card>
             </div>
@@ -262,11 +262,11 @@ export default function Index() {
               <CardHeader>
                 <CardTitle className="flex items-center">
                   <MapPin className="w-5 h-5 mr-2 text-[var(--oceansteel)]" />
-                  Northern Cam
+                  Trusted Suppliers
                 </CardTitle>
               </CardHeader>
               <CardContent>
-                <p className="text-sm text-[var(--text-body)]">Automotive precision parts manufacturer based in Ontario.</p>
+                <p className="text-sm text-[var(--text-body)]">Our suppliers have been serving major businesses in the UK for 15 years.</p>
               </CardContent>
             </Card>
             {/* Add more clients if needed */}
