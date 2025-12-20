@@ -1,20 +1,27 @@
+import { Helmet } from "react-helmet-async";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import Capabilities from "@/components/Capabilities";
 
 const CapabilitiesPage = () => {
   return (
-    <div className="min-h-screen">
-      <Header />
-      <main className="pt-16 bg-[var(--page-bg)]">
-        {/* Wrap in a neutral page background to avoid light blue full-bleed */}
-        {/* Remove outer white card to match other pages */}
-        <section className="container mx-auto px-4 py-12">
+    <>
+      <Helmet>
+        <title>Manufacturing Capabilities | Avail Exports - Precision Engineering</title>
+        <meta
+          name="description"
+          content="15+ years of precision engineering expertise. CNC turning, milling, and multi-turret machining across 3 manufacturing units. Trusted UK supplier partnership."
+        />
+        <meta name="robots" content="index,follow" />
+      </Helmet>
+      <div className="min-h-screen">
+        <Header />
+        <main className="pt-16 bg-[var(--page-bg)]">
           <Capabilities />
-        </section>
-      </main>
-      <Footer />
-    </div>
+        </main>
+        <Footer />
+      </div>
+    </>
   );
 };
 
