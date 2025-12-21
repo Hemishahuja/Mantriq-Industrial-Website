@@ -4,7 +4,7 @@ import { ChevronRight, ArrowRight } from "lucide-react";
 
 const Hero = () => {
   return (
-    <section className="relative min-h-screen flex items-center overflow-hidden">
+    <section className="relative min-h-screen flex items-center overflow-hidden pb-60">
       {/* Background Media */}
       <div className="absolute inset-0 z-0">
         <video
@@ -68,7 +68,7 @@ const Hero = () => {
           </div>
 
           {/* Quick Stats */}
-          <div className="grid grid-cols-3 gap-8 mt-20 pt-10 border-t border-white/10 animate-fade-in [animation-delay:0.6s] opacity-0 [animation-fill-mode:forwards]">
+          <div className="grid grid-cols-3 gap-8 mt-12 pt-10 border-t border-white/10 animate-fade-in [animation-delay:0.6s] opacity-0 [animation-fill-mode:forwards]">
             <div>
               <p className="text-3xl font-extrabold text-white">7-8</p>
               <p className="text-xs text-white/60 uppercase tracking-widest mt-1">Week Delivery</p>

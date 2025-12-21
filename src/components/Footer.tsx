@@ -20,10 +20,11 @@ const Footer = () => {
           <div>
             <h5 className="font-bold mb-8 text-accent uppercase tracking-[0.3em] text-[10px]">Solutions</h5>
             <ul className="space-y-4 text-sm font-medium opacity-60">
-              <li><Link to="/capabilities" className="hover:text-accent transition-colors">CNC Machining</Link></li>
+              <li><Link to="/capabilities" className="hover:text-accent transition-colors">Capabilities & Materials</Link></li>
               <li><Link to="/industries" className="hover:text-accent transition-colors">Key Industries Focus</Link></li>
               <li><Link to="/quality" className="hover:text-accent transition-colors">Quality Control Standards</Link></li>
-              <li><Link to="/quote" className="hover:text-accent transition-colors">Custom Quotation</Link></li>
+              <li><Link to="/about" className="hover:text-accent transition-colors">About Our Heritage</Link></li>
+              <li><Link to="/faq" className="hover:text-accent transition-colors">Technical FAQ</Link></li>
             </ul>
           </div>
 

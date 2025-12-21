@@ -4,27 +4,27 @@ const Materials = () => {
   const materials = [
     {
       name: "Stainless Steel",
-      description: "Grades 303, 304, 316, and 400-series. Optimized for corrosion resistance and industrial durability."
+      description: "Seamless and welded pipes, tubes, and bars. Optimized for extreme corrosion resistance and high-temp durability."
     },
     {
-      name: "Mild Steel",
-      description: "1018, 12L14, and custom alloy steels. The workhorse material for high-volume structural components."
+      name: "Carbon & Alloy Steel",
+      description: "Round (4–105mm), Hex (8–108mm), and Square bars. Premium alloy grades for high-performance structural needs."
     },
     {
-      name: "Aluminum Alloys",
-      description: "6061-T6, 7075, and 2000-series. High-speed machining for lightweight aerospace and automotive parts."
+      name: "Aluminum & Non-Ferrous",
+      description: "6061-T6, Brass, and Copper. High-speed machining for lightweight aerospace and electrical components."
     },
     {
-      name: "Brass & Copper",
-      description: "High-conductivity grades for electrical and plumbing applications. Superior surface finish results."
+      name: "Precision Tubes & Pipes",
+      description: "ERW/CRW welded and seamless. Range: 1/8\" NPS to 12\" NPS (5mm to 600mm) across multiple technical grades."
     },
     {
       name: "Engineering Plastics",
-      description: "Acetal, Nylon, PEEK, and PTFE. Precision machining for lightweight, low-friction applications."
+      description: "Acetal, Nylon, PEEK, and PTFE. Precision machining for lightweight, low-friction B2B applications."
     },
     {
-      name: "Exotic Alloys",
-      description: "Inconel, Titanium, and Cobalt. Specialized tooling and feed strategies for high-temp environments."
+      name: "Custom Sourcing",
+      description: "Strategic partnerships with leading global mills to source custom alloy steels and specialized wires for volume production."
     }
   ];
 
@@ -53,10 +53,10 @@ const Materials = () => {
       {/* Certification Note */}
       <div className="mt-20 p-10 bg-white border border-border rounded-[32px] flex flex-col md:flex-row items-center justify-between">
         <div className="mb-6 md:mb-0">
-          <h4 className="text-xl font-bold text-spacecadet mb-2 underline decoration-accent decoration-2 underline-offset-4">Full Material Certifications</h4>
-          <p className="text-sm text-slate-text opacity-70">We provide mill reports and chemical analysis for every production lot.</p>
+          <h4 className="text-xl font-bold text-spacecadet mb-2 underline decoration-accent decoration-2 underline-offset-4">Vetted Strategic Supply Chain</h4>
+          <p className="text-sm text-slate-text opacity-70">We leverage long-standing partnerships with reputable global stockists to ensure consistent material quality.</p>
         </div>
-        <button className="text-primary font-bold hover:underline decoration-2 underline-offset-4 text-sm">Download Sample MTRs</button>
+        <button className="text-primary font-bold hover:underline decoration-2 underline-offset-4 text-sm">Review Technical QA Standards</button>
       </div>
     </div>
   );

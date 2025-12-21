@@ -39,7 +39,7 @@ const About = () => {
                 Mantriq Industrial provides precision manufacturing services for North American OEMs who require volume, consistency, and a simplified supply chain.
               </p>
               <p>
-                Founded in Toronto, we bridge the gap between global manufacturing scale and local accountability. We don't just supply parts; we supply predictability.
+                Founded on over 15 years of industry expertise, we bridge the gap between global manufacturing scale and local accountability. Our leadership team began as hands-on machine operators, growing through logistics and inspection supervision to deliver high-paced precision engineering since 2011.
               </p>
             </div>
           </div>
@@ -64,8 +64,8 @@ const About = () => {
 
         <div className="grid md:grid-cols-2 gap-10 max-w-5xl mx-auto">
           {[
-            { name: "Hemish Ahuja", role: "Founder & Technical Director", initial: "HA", bio: "Hemish Ahuja leads Mantriq with a vision to modernize the industrial procurement landscape through technical innovation." },
-            { name: "Himanshu Loomba", role: "Chief Manufacturing Engineer", initial: "HL", bio: "Himanshu brings over a decade of deep expertise in precision machining and high-output manufacturing logistics." }
+            { name: "Hemish Ahuja", role: "Founder & Technical Director", initial: "HA", bio: "Leading Mantriq since 2010 with deep-rooted expertise in precision machining and international logistics management." },
+            { name: "Himanshu Loomba", role: "Chief Manufacturing Engineer", initial: "HL", bio: "Directing precision engineering protocols with over a decade of experience in high-output manufacturing and zero-defect quality control." }
           ].map((member, i) => (
             <div key={i} className="bg-spacecadet p-12 rounded-[48px] text-white flex flex-col items-start group hover:bg-primary transition-colors duration-500">
               <div className="w-16 h-16 bg-white/20 rounded-2xl flex items-center justify-center mb-8 border border-white/20 text-xl font-black text-white group-hover:bg-white group-hover:text-primary transition-all">

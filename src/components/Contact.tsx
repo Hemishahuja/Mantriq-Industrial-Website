@@ -127,31 +127,6 @@ const Contact = () => {
           </form>
         </div>
       </div>
-      {/* Meet the Team Section */}
-      <div className="mt-40">
-        <div className="text-center mb-16">
-          <h4 className="text-xs font-bold uppercase tracking-[0.3em] text-primary mb-4">Points of Contact</h4>
-          <h5 className="text-3xl md:text-5xl font-extrabold text-spacecadet tracking-tighter">Meet Your Technical Leads<span className="text-primary">.</span></h5>
-        </div>
-
-        <div className="grid md:grid-cols-2 gap-10 max-w-5xl mx-auto">
-          {[
-            { name: "Hemish Ahuja", role: "Founder & Technical Director", initial: "HA", bio: "Available for high-level project strategy and technical fulfillment coordination across North America." },
-            { name: "Himanshu Loomba", role: "Chief Manufacturing Engineer", initial: "HL", bio: "Directing precision engineering protocols and ensuring zero-defect repeatability for all high-volume production lots." }
-          ].map((member, i) => (
-            <div key={i} className="bg-spacecadet p-12 rounded-[48px] text-white flex flex-col items-start group hover:bg-primary transition-colors duration-500">
-              <div className="w-16 h-16 bg-white/20 rounded-2xl flex items-center justify-center mb-8 border border-white/20 text-xl font-black text-white group-hover:bg-white group-hover:text-primary transition-all">
-                {member.initial}
-              </div>
-              <h4 className="text-2xl font-extrabold mb-2 tracking-tight">{member.name}</h4>
-              <p className="text-accent text-[10px] font-black uppercase tracking-widest mb-6">{member.role}</p>
-              <p className="text-white/80 text-sm leading-relaxed transition-colors">
-                {member.bio}
-              </p>
-            </div>
-          ))}
-        </div>
-      </div>
     </div>
   );
 };
