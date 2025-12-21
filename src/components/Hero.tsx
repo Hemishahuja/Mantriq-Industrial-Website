@@ -24,7 +24,7 @@ const Hero = () => {
         <div className="absolute inset-0 bg-gradient-to-t from-spacecadet via-transparent to-transparent opacity-40" />
       </div>
 
-      <div className="container relative z-10 mx-auto px-4 pt-20">
+      <div className="container relative z-10 mx-auto px-4 pt-32 md:pt-40">
         <div className="max-w-3xl">
           {/* Trust Badge */}
           <div className="inline-flex items-center space-x-2 bg-white/10 backdrop-blur-md border border-white/20 px-4 py-2 rounded-full mb-8 animate-fade-in opacity-0 [animation-fill-mode:forwards]">

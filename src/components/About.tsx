@@ -39,7 +39,7 @@ const About = () => {
                 Mantriq Industrial provides precision manufacturing services for North American OEMs who require volume, consistency, and a simplified supply chain.
               </p>
               <p>
-                Founded on over 15 years of industry expertise, we bridge the gap between global manufacturing scale and local accountability. Our leadership team began as hands-on machine operators, growing through logistics and inspection supervision to deliver high-paced precision engineering since 2011.
+                Founded on over 15 years of industry expertise, we bridge the gap between global manufacturing scale and local accountability. Our leadership team began as hands-on machine operators, growing through logistics and inspection supervision to deliver high-paced precision engineering.
               </p>
             </div>
           </div>
@@ -64,7 +64,7 @@ const About = () => {
 
         <div className="grid md:grid-cols-2 gap-10 max-w-5xl mx-auto">
           {[
-            { name: "Hemish Ahuja", role: "Founder & Technical Director", initial: "HA", bio: "Leading Mantriq since 2010 with deep-rooted expertise in precision machining and international logistics management." },
+            { name: "Hemish Ahuja", role: "Founder & Technical Director", initial: "HA", bio: "Leading Mantriq with deep-rooted expertise in precision machining and international logistics management." },
             { name: "Himanshu Loomba", role: "Chief Manufacturing Engineer", initial: "HL", bio: "Directing precision engineering protocols with over a decade of experience in high-output manufacturing and zero-defect quality control." }
           ].map((member, i) => (
             <div key={i} className="bg-spacecadet p-12 rounded-[48px] text-white flex flex-col items-start group hover:bg-primary transition-colors duration-500">

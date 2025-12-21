@@ -58,7 +58,17 @@ const Footer = () => {
         </div>
 
         <div className="pt-12 border-t border-white/5 flex flex-col md:flex-row justify-between items-center opacity-30 text-[9px] uppercase tracking-[0.4em] font-black">
-          <p>© {currentYear} Mantriq Industrial Inc. All Rights Reserved.</p>
+          <div className="flex flex-col items-center md:items-start text-center md:text-left">
+            <p>© {currentYear} Mantriq Industrial Inc. All Rights Reserved.</p>
+            <a
+              href="https://omniananetsolutions.in/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="mt-2 hover:text-white transition-colors block underline underline-offset-2"
+            >
+              IT Sevices by Omniana net solutions
+            </a>
+          </div>
           <div className="flex space-x-10 mt-6 md:mt-0">
             <Link to="/privacy" className="hover:text-white transition-colors">Privacy Policy</Link>
             <Link to="/terms" className="hover:text-white transition-colors">Terms of Service</Link>

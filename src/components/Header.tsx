@@ -47,7 +47,7 @@ const Header = () => {
       <div className={cn(
         "transition-all duration-300 border-b",
         scrolled
-          ? "bg-white/95 backdrop-blur-md py-4 border-border shadow-sm"
+          ? "bg-white/95 backdrop-blur-md py-6 border-border shadow-sm"
           : "bg-transparent py-6 border-transparent"
       )}>
         <div className="container mx-auto px-4">
