@@ -121,7 +121,14 @@ const Index = () => {
                     </div>
                   </div>
                 </div>
-                <div className="hidden lg:block w-1/3 aspect-square border-[20px] border-white/5 rounded-full animate-pulse" />
+                <div className="hidden lg:block w-1/3 aspect-square relative group">
+                  <div className="absolute inset-0 bg-accent/20 rounded-full blur-3xl opacity-20 group-hover:opacity-40 transition-opacity"></div>
+                  <img
+                    src="/brand/logistics-visual.png"
+                    alt="Mantriq Industrial Logistics - Technical Supply Chain Management"
+                    className="w-full h-full object-cover rounded-3xl relative z-10 border border-white/10 shadow-2xl"
+                  />
+                </div>
               </div>
             </div>
           </div>
@@ -149,8 +156,13 @@ const Index = () => {
                   </div>
                 </div>
               </div>
-              <div className="aspect-video bg-spacecadet/5 rounded-[40px] border border-border flex items-center justify-center p-20 grayscale opacity-50">
-                <Truck className="w-20 h-20 text-spacecadet/20" />
+              <div className="relative group overflow-hidden rounded-[40px] border border-border aspect-video">
+                <img
+                  src="/brand/toronto-map.png"
+                  alt="Mantriq Industrial Toronto Headquarters - 18 King Street East"
+                  className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+                />
+                <div className="absolute inset-0 bg-spacecadet/10 group-hover:bg-transparent transition-colors duration-500"></div>
               </div>
             </div>
           </div>

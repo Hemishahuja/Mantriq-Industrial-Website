@@ -11,6 +11,11 @@ export default defineConfig(({ mode }) => ({
   },
   plugins: [
     react(),
+    /* 
+       NOTE: vite-plugin-prerender is currently disabled due to "require is not defined" ESM errors during build.
+       We are using standard client-side SEO with react-helmet-async and an automated sitemap instead.
+    */
+    /*
     prerender({
       staticDir: path.join(__dirname, "dist"),
       routes: [
@@ -30,6 +35,7 @@ export default defineConfig(({ mode }) => ({
         "/thank-you",
       ],
     }),
+    */
   ].filter(Boolean),
   resolve: {
     alias: {

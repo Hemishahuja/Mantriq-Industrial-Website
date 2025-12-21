@@ -1,0 +1,15 @@
+
+> vite_react_shadcn_ts@0.0.0 build
+> vite build
+
+failed to load config from C:\Users\hemis\Desktop\Projects\Mantriq Industrial Projects\Mantriq-Industrial-Website\vite.config.ts
+error during build:
+ReferenceError: require is not defined in ES module scope, you can use import instead
+    at file:///C:/Users/hemis/Desktop/Projects/Mantriq%20Industrial%20Projects/Mantriq-Industrial-Website/node_modules/vite-plugin-prerender/dist/index.mjs:6:21
+    at ModuleJob.run (node:internal/modules/esm/module_job:329:25)
+    at async onImport.tracePromise.__proto__ (node:internal/modules/esm/loader:644:26)
+    at async loadConfigFromBundledFile (file:///C:/Users/hemis/Desktop/Projects/Mantriq%20Industrial%20Projects/Mantriq-Industrial-Website/node_modules/vite/dist/node/chunks/dep-BWSbWtLw.js:66691:15)
+    at async loadConfigFromFile (file:///C:/Users/hemis/Desktop/Projects/Mantriq%20Industrial%20Projects/Mantriq-Industrial-Website/node_modules/vite/dist/node/chunks/dep-BWSbWtLw.js:66532:24)
+    at async resolveConfig (file:///C:/Users/hemis/Desktop/Projects/Mantriq%20Industrial%20Projects/Mantriq-Industrial-Website/node_modules/vite/dist/node/chunks/dep-BWSbWtLw.js:66140:24)
+    at async build (file:///C:/Users/hemis/Desktop/Projects/Mantriq%20Industrial%20Projects/Mantriq-Industrial-Website/node_modules/vite/dist/node/chunks/dep-BWSbWtLw.js:65237:18)
+    at async CAC.<anonymous> (file:///C:/Users/hemis/Desktop/Projects/Mantriq%20Industrial%20Projects/Mantriq-Industrial-Website/node_modules/vite/dist/node/cli.js:828:5)
