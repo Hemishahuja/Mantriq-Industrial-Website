@@ -1,20 +1,20 @@
-import { Factory, Truck, Building2, Anchor, Zap, Cpu } from "lucide-react";
+import { Factory, Truck, Building2, Anchor, Zap, Plane, Cog, Car } from "lucide-react";
 
 const Industries = () => {
   const industries = [
     {
       name: "Automotive",
-      icon: Factory,
+      icon: Car,
       description: "High-volume precision components for OEM assembly lines and tier‑1 suppliers."
     },
     {
       name: "Aerospace",
-      icon: Cpu,
+      icon: Plane,
       description: "Critical components meeting stringent aerospace standards for durability and weight."
     },
     {
       name: "Industrial Mach.",
-      icon: Building2,
+      icon: Cog,
       description: "Custom wear parts and structural components for heavy machinery and automation."
     },
     {

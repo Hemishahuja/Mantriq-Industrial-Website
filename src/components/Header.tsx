@@ -21,29 +21,23 @@ const Header = () => {
     { label: "Quality", href: "/quality" },
     { label: "About", href: "/about" },
     { label: "FAQ", href: "/faq" },
-    { label: "Contact", href: "/contact" },
   ];
 
   return (
     <header className="fixed top-0 w-full z-50 transition-all duration-300">
       {/* Trust Bar / Top Bar */}
-      <div className="bg-primary text-primary-foreground py-2 text-[11px] sm:text-xs font-medium">
+      <div className={cn(
+        "bg-primary text-primary-foreground py-2 text-[11px] sm:text-xs font-medium transition-all duration-300 overflow-hidden",
+        scrolled ? "h-0 opacity-0 py-0" : "h-auto opacity-100"
+      )}>
         <div className="container mx-auto px-4 flex justify-between items-center">
           <div className="flex items-center space-x-6">
-            <div className="flex items-center space-x-1.5 opacity-90">
-              <MapPin className="w-3.5 h-3.5" />
-              <span>18 King St E, Suite 1400, Toronto, ON</span>
-            </div>
             <div className="hidden sm:flex items-center space-x-1.5 opacity-90">
-              <Phone className="w-3.5 h-3.5" />
-              <span>+1 (555) 123-4567</span>
+              <Mail className="w-3.5 h-3.5" />
+              <span>info@mantriqindustrial.ca</span>
             </div>
           </div>
           <div className="flex items-center space-x-4">
-            <div className="flex items-center space-x-1.5 opacity-90">
-              <Mail className="w-3.5 h-3.5" />
-              <span className="hidden xs:inline">info@mantriqindustrial.ca</span>
-            </div>
             <span className="hidden md:inline bg-white/20 px-2 py-0.5 rounded text-[10px] uppercase tracking-wider">Serving Canada & USA</span>
           </div>
         </div>
@@ -53,8 +47,8 @@ const Header = () => {
       <div className={cn(
         "transition-all duration-300 border-b",
         scrolled
-          ? "bg-white/95 backdrop-blur-md py-3 border-border shadow-sm"
-          : "bg-transparent py-5 border-transparent"
+          ? "bg-white/95 backdrop-blur-md py-4 border-border shadow-sm"
+          : "bg-transparent py-6 border-transparent"
       )}>
         <div className="container mx-auto px-4">
           <div className="flex items-center justify-between">
@@ -106,7 +100,7 @@ const Header = () => {
                     ? "bg-primary text-white shadow-lg shadow-primary/20 hover:bg-primary/90"
                     : "bg-white text-primary hover:bg-white/90"
                 )}>
-                  Request Quote
+                  Get in Touch
                 </button>
               </Link>
             </nav>

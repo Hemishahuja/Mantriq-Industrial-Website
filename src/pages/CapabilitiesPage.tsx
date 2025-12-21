@@ -4,7 +4,7 @@ import SEO from "@/components/SEO";
 import Materials from "@/components/Materials";
 import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
-import { Factory, Cog, Search, Layers, Shield, Zap, ArrowRight, CheckCircle2 } from "lucide-react";
+import { Factory, Cog, Search, Layers, Zap, ArrowRight } from "lucide-react";
 
 const machineUnits = [
   {
@@ -13,26 +13,22 @@ const machineUnits = [
       {
         name: "CNC Turning Centers",
         items: [
-          "LMW Machining Masters – 6\" chuck (2 units)",
-          "LMW Machining Masters – 5\" chuck (1 unit)",
-          "ACE Machining Master – 6\" chuck (1 unit)",
-          "Takang Slant Bed Linear CNCs – 6\" chuck (2 units)",
-          "Multi-station LNS bar feeders for high-speed production"
+          "6x CNC Turning Centers: LMW, ACE, & Takang (5\"-6\" Chucks)",
+          "Equipped with Multi-station LNS bar feeders for high-speed production"
         ]
       },
       {
         name: "Semi-Auto Traub Machines",
         items: [
-          "6-tool turn/attachment with bar feed (8 units total)",
-          "Through-bore: Ø15 mm to Ø40 mm"
+          "8x Semi-Auto Traubs: 6-tool turret, bar feed systems",
+          "Capacity: Through-bore Ø15 mm to Ø40 mm"
         ]
       },
       {
         name: "Support Equipment",
         items: [
-          "Adda Machines: 2 ft - 2.5 ft (3 units)",
-          "10-ton Power Press",
-          "Drill range: Ø3 mm – Ø25 mm technical set"
+          "Auxiliary: 3x Adda Machines, 10-ton Power Press",
+          "Precision Drilling: Ø3 mm – Ø25 mm technical set"
         ]
       }
     ]
@@ -43,19 +39,15 @@ const machineUnits = [
       {
         name: "Advanced Turning",
         items: [
-          "Miyano BNC 32 – Turret & Sub-turret (2 units)",
-          "Miyano BNC 25 – 4\" chuck (1 unit)",
-          "Miyano BNC 42 – 6\" chuck (1 unit)",
-          "Koyo 42 Turn – Turret & Sub-turret (1 unit)",
-          "LMW Machining Master – 6\" chuck (1 unit)"
+          "4x Miyano CNCs: BNC Models (32/25/42) with Turret & Sub-turret",
+          "2x Precision Turning: Koyo 42 & LMW Machining Master"
         ]
       },
       {
         name: "Support & Drill",
         items: [
-          "Ø42 mm through-bore Traubs with bar feed (2 units)",
-          "4-station Gang Drill for parallel operations",
-          "AImicro 300 mm Geometric DRO inspection (Unit 2 cell)"
+          "Support: 2x Traubs (Ø42mm) & 4-station Gang Drill",
+          "Metrology: AImicro 300 mm Geometric DRO inspection cell"
         ]
       }
     ]
@@ -66,28 +58,20 @@ const machineUnits = [
       {
         name: "Heavy-Duty CNC",
         items: [
-          "Doosan CNCs – 8\" chuck (2 units)",
-          "Phillar CNCs – 8\" & 6\" chuck (2 units)",
-          "Okamahowa CNC – 6\" chuck (1 unit)"
+          "5x Heavy-Duty CNCs: Doosan, Phillar, & Okamahowa (6\"-8\" Chucks)"
         ]
       },
       {
         name: "Processing",
         items: [
-          "Automatic Bandsaw: Ø5 mm – Ø240 mm (Bundle cutting)",
-          "AImicro 300 mm Geometric DRO inspection (Unit 3 cell)"
+          "Processing: Automatic Bandsaw (up to Ø240mm bundle cutting)",
+          "Metrology: AImicro 300 mm Geometric DRO inspection cell"
         ]
       }
     ]
   }
 ];
 
-const inspectionTech = [
-  "Mitoya VM2515 2.5D Vision Measurement",
-  "Baty 500 mm Profile Projector (10×)",
-  "Shadowgraph System (10×)",
-  "AImicro 300 mm Geometric DRO (Surface Illum.)"
-];
 
 const CapabilitiesPage = () => {
   return (
@@ -107,7 +91,7 @@ const CapabilitiesPage = () => {
               Technical Infrastructure & Materials<span className="text-accent">.</span>
             </h2>
             <p className="text-xl text-slate-text leading-relaxed">
-              We operate three specialized manufacturing cells in Ludhiana, Punjab, optimized for high-volume repeatability and diverse component geometries.
+              We operate three specialized manufacturing cells in India, optimized for high-volume repeatability and diverse component geometries.
             </p>
           </div>
         </section>
@@ -142,33 +126,6 @@ const CapabilitiesPage = () => {
           ))}
         </section>
 
-        {/* Technical Inspection */}
-        <section className="container mx-auto px-4 mt-32">
-          <div className="grid lg:grid-cols-2 gap-20 items-center">
-            <div>
-              <h2 className="text-xs font-bold uppercase tracking-widest text-primary mb-6">Quality Control</h2>
-              <h3 className="text-4xl font-extrabold text-spacecadet mb-8 tracking-tighter">In-House Metrology.</h3>
-              <p className="text-lg text-slate-text mb-10 leading-relaxed opacity-80">
-                Every batch undergoes rigorous verification using our vision measurement systems and profile projectors, ensuring repeatable high-volume consistency.
-              </p>
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
-                {inspectionTech.map((tech, i) => (
-                  <div key={i} className="flex items-center space-x-3 text-sm font-bold text-spacecadet">
-                    <CheckCircle2 className="w-5 h-5 text-accent" />
-                    <span>{tech}</span>
-                  </div>
-                ))}
-              </div>
-            </div>
-            <div className="bg-spacecadet p-16 rounded-[60px] text-white flex flex-col justify-center items-center text-center">
-              <Shield className="w-16 h-16 text-accent mb-8" />
-              <h4 className="text-2xl font-extrabold mb-4">Certified Compliance</h4>
-              <p className="text-white/60 text-sm max-w-xs leading-relaxed">
-                Full traceability and material certs (MTC) provided for all high-volume industrial shipments.
-              </p>
-            </div>
-          </div>
-        </section>
 
         {/* Technical Materials Integration */}
         <section className="mt-32">
@@ -184,9 +141,8 @@ const CapabilitiesPage = () => {
 
         {/* CTA */}
         <section className="container mx-auto px-4 mt-40 text-center">
-          <div className="bg-primary rounded-[60px] py-24 px-10 relative overflow-hidden text-white shadow-2xl shadow-primary/20">
+          <div className="bg-primary rounded-[60px] py-16 px-10 relative overflow-hidden text-white shadow-2xl shadow-primary/20">
             <div className="relative z-10 max-w-3xl mx-auto">
-              <h2 className="text-4xl md:text-5xl font-extrabold mb-8 tracking-tighter">7-8 Week Lead Time Guaranteed.</h2>
               <p className="text-lg text-white/80 mb-12">Submit your technical drawings today for a firm landed-cost quotation.</p>
               <Button asChild size="lg" className="bg-white text-primary hover:bg-white/90 px-12 h-16 rounded-full font-black uppercase tracking-widest transition-all hover:scale-105 active:scale-95 border-none shadow-xl">
                 <Link to="/quote">Open Technical RFQ</Link>

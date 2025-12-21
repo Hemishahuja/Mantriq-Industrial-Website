@@ -12,7 +12,6 @@ const IndustriesPage = lazy(() => import("./pages/IndustriesPage"));
 const CapabilitiesPage = lazy(() => import("./pages/CapabilitiesPage"));
 const QualityPage = lazy(() => import("./pages/QualityPage"));
 const MaterialsPage = lazy(() => import("./pages/MaterialsPage"));
-const ContactPage = lazy(() => import("./pages/ContactPage"));
 const EquipmentPage = lazy(() => import("./pages/EquipmentPage"));
 const CaseStudiesPage = lazy(() => import("./pages/CaseStudiesPage"));
 const CostAdvantagePage = lazy(() => import("./pages/CostAdvantagePage"));
@@ -42,7 +41,6 @@ const App = () => (
               <Route path="/capabilities" element={<CapabilitiesPage />} />
               <Route path="/quality" element={<QualityPage />} />
               <Route path="/materials" element={<CapabilitiesPage />} />
-              <Route path="/contact" element={<ContactPage />} />
               <Route path="/equipment" element={<EquipmentPage />} />
               <Route path="/case-studies" element={<CaseStudiesPage />} />
               <Route path="/cost-advantage" element={<CostAdvantagePage />} />

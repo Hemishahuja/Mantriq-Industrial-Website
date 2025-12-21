@@ -13,12 +13,10 @@ export default function QuotePage() {
   const { toast } = useToast();
   const [submitting, setSubmitting] = useState(false);
   const [formData, setFormData] = useState({
-    firstName: "",
-    lastName: "",
+    name: "",
     company: "",
     email: "",
     phone: "",
-    batch: "",
     message: ""
   });
 
@@ -29,12 +27,6 @@ export default function QuotePage() {
 
   const onSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-
-    const qty = Number(formData.batch);
-    if (qty < 1000) {
-      toast({ title: "Inquiry Notice", description: "Our minimum production run is typically 1,000 units. Smaller quantities may incur precision-shop rates.", variant: "destructive" });
-    }
-
     setSubmitting(true);
 
     try {
@@ -102,48 +94,50 @@ export default function QuotePage() {
                   ))}
                 </div>
 
-                <div className="p-8 border-l-4 border-primary bg-spacecadet text-white rounded-r-3xl">
-                  <p className="text-xs font-black uppercase tracking-widest text-primary mb-4">Toronto Office</p>
-                  <p className="text-sm opacity-60 leading-relaxed">
-                    Our local engineering team reviews all RFQs within 24 business hours.
-                  </p>
+                <div className="p-8 border-l-4 border-primary bg-spacecadet text-white rounded-r-3xl space-y-6">
+                  <div>
+                    <p className="text-xs font-black uppercase tracking-widest text-primary mb-2">Toronto Office</p>
+                    <p className="text-sm opacity-80 leading-relaxed">
+                      18 King Street East, Suite 1400<br />
+                      Toronto, Ontario M5C 1C4 Canada
+                    </p>
+                  </div>
+                  <div className="grid grid-cols-1 gap-4 pt-4 border-t border-white/10">
+                    <div>
+                      <p className="text-[10px] uppercase tracking-widest opacity-50 font-bold mb-1">Direct Line</p>
+                      <p className="text-sm font-bold">+1 (555) 123-4567</p>
+                    </div>
+                    <div>
+                      <p className="text-[10px] uppercase tracking-widest opacity-50 font-bold mb-1">Email Desk</p>
+                      <p className="text-sm font-bold">info@mantriqindustrial.ca</p>
+                    </div>
+                  </div>
                 </div>
               </div>
 
               {/* Right Column: RFQ Form */}
               <div className="lg:col-span-3">
                 <div className="bg-white p-10 md:p-14 rounded-[48px] border border-border shadow-2xl shadow-primary/5">
-                  <form onSubmit={onSubmit} className="space-y-8">
-                    <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                      <div className="space-y-2">
-                        <label className="text-xs font-black uppercase tracking-widest text-spacecadet/80 ml-1">First Name</label>
-                        <Input name="firstName" value={formData.firstName} onChange={handleInputChange} required className="h-14 rounded-2xl border-border bg-polarice/5 focus:bg-white transition-all" />
-                      </div>
-                      <div className="space-y-2">
-                        <label className="text-xs font-black uppercase tracking-widest text-spacecadet/80 ml-1">Last Name</label>
-                        <Input name="lastName" value={formData.lastName} onChange={handleInputChange} required className="h-14 rounded-2xl border-border bg-polarice/5 focus:bg-white transition-all" />
-                      </div>
+                  <form onSubmit={onSubmit} name="rfq" data-netlify="true" className="space-y-8">
+                    <input type="hidden" name="form-name" value="rfq" />
+                    <div className="space-y-2">
+                      <label className="text-xs font-black uppercase tracking-widest text-spacecadet/80 ml-1">Name</label>
+                      <Input name="name" value={formData.name} onChange={handleInputChange} required className="h-14 rounded-2xl border-border bg-polarice/5 focus:bg-white transition-all" />
                     </div>
                     <div className="space-y-2">
                       <label className="text-xs font-black uppercase tracking-widest text-spacecadet/80 ml-1">Company</label>
                       <Input name="company" value={formData.company} onChange={handleInputChange} required className="h-14 rounded-2xl border-border bg-polarice/5 focus:bg-white transition-all" />
                     </div>
-                    <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                      <div className="space-y-2">
-                        <label className="text-xs font-black uppercase tracking-widest text-spacecadet/80 ml-1">Email Address</label>
-                        <Input type="email" name="email" value={formData.email} onChange={handleInputChange} required className="h-14 rounded-2xl border-border bg-polarice/5 focus:bg-white transition-all" />
-                      </div>
-                      <div className="space-y-2">
-                        <label className="text-xs font-black uppercase tracking-widest text-spacecadet/80 ml-1">Batch / Annual Qty</label>
-                        <Input name="batch" value={formData.batch} onChange={handleInputChange} required placeholder="e.g. 5,000" className="h-14 rounded-2xl border-border bg-polarice/5 focus:bg-white transition-all" />
-                      </div>
+                    <div className="space-y-2">
+                      <label className="text-xs font-black uppercase tracking-widest text-spacecadet/80 ml-1">Email Address</label>
+                      <Input type="email" name="email" value={formData.email} onChange={handleInputChange} required className="h-14 rounded-2xl border-border bg-polarice/5 focus:bg-white transition-all" />
                     </div>
                     <div className="space-y-2">
                       <label className="text-xs font-black uppercase tracking-widest text-spacecadet/80 ml-1">Message / Requirements</label>
                       <Textarea name="message" value={formData.message} onChange={handleInputChange} required className="min-h-[160px] rounded-2xl border-border bg-polarice/5 focus:bg-white transition-all py-4" placeholder="Briefly describe your components and requirements." />
                     </div>
                     <Button type="submit" disabled={submitting} className="w-full h-18 bg-accent hover:bg-spacecadet text-white rounded-2xl font-black uppercase tracking-widest transition-all shadow-xl shadow-accent/20">
-                      {submitting ? "Processing RFQ..." : "Submit Technical RFQ"}
+                      {submitting ? "Sending..." : "Send Message"}
                       <ArrowRight className="ml-2 w-5 h-5" />
                     </Button>
                     <p className="text-center text-[10px] text-slate-text uppercase tracking-widest font-bold opacity-50 pt-4">
