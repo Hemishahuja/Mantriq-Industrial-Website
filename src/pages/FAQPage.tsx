@@ -6,7 +6,7 @@ import { Link } from "react-router-dom";
 import { HelpCircle, ArrowRight } from "lucide-react";
 
 const faqs = [
-  { q: "What are your typical lead times?", a: "Most production orders deliver in 4-8 weeks. We provide a firm technical ETA upon PO confirmation." },
+  { q: "What are your typical lead times?", a: "Most production orders deliver in 7-8 weeks. We provide a firm technical ETA upon PO confirmation." },
   { q: "What is your Minimum Order Quantity (MOQ)?", a: "We specialize in volume production. Our standard MOQ is 1,000 units per line item to maintain efficiency." },
   { q: "What tolerances do you support?", a: "We specialize in standard industrial tolerances (±0.005\" / ±0.1mm). We typically decline ultra-precision work requiring tighter than ±0.0005\"." },
   { q: "Where is the manufacturing located?", a: "Production is handled at our technically vetted high-volume cells in India, with technical coordination and support from our Toronto office." },
