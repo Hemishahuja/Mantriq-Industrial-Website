@@ -1,39 +1,48 @@
-import { Helmet } from "react-helmet-async";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
-import { Button } from "@/components/ui/button";
-import { useEffect } from "react";
+import SEO from "@/components/SEO";
+import { Link } from "react-router-dom";
+import { CheckCircle2, ArrowLeft, ChevronRight } from "lucide-react";
 
 export default function ThankYouPage() {
-  // Fire GA conversion on load (in case redirect happened without event)
-  useEffect(() => {
-    if (window.gtag) {
-      window.gtag("event", "generate_lead", { method: "rfq_form_thank_you" });
-    }
-  }, []);
-
   return (
-    <>
-      <Helmet>
-        <title>Thank You | Mantriq Industrial</title>
-        <meta name="robots" content="noindex" />
-      </Helmet>
+    <div className="min-h-screen bg-white">
+      <SEO
+        title="RFQ Received | Mantriq Industrial"
+        description="Your technical RFQ has been successfully received. Our engineering team will review your requirements within 24 business hours."
+      />
       <Header />
-      <main className="container mx-auto px-4 pt-28 pb-20">
-        <section className="max-w-2xl">
-          <h1 className="text-3xl md:text-4xl font-bold text-[var(--deep-navy)]">Thank you</h1>
-          <p className="mt-3 text-[color-mix(in_oklab,var(--text-body)_80%,white)]">
-            Your RFQ has been submitted. Our team will reply within one business day.
-          </p>
-          <div className="mt-8 flex gap-4">
-            <Button className="hover-scale" onClick={() => (window.location.href = "/")}>Back to Home</Button>
-            <Button variant="outline" className="hover-scale" onClick={() => (window.location.href = "/case-studies")}>
-              View Case Studies
-            </Button>
+      <main className="pt-40 pb-32">
+        <div className="container mx-auto px-4 text-center">
+          <div className="max-w-2xl mx-auto py-20 px-10 bg-polarice/30 rounded-[60px] border border-border relative overflow-hidden">
+            <div className="w-20 h-20 bg-primary rounded-3xl flex items-center justify-center mx-auto mb-10 shadow-2xl shadow-primary/20">
+              <CheckCircle2 className="w-10 h-10 text-white" />
+            </div>
+            <h1 className="text-4xl md:text-5xl font-extrabold text-spacecadet tracking-tighter mb-6">Transmission Received.</h1>
+            <p className="text-xl text-slate-text leading-relaxed opacity-80 mb-12">
+              Your technical RFQ has been submitted to our Toronto technical office. An engineer will review your drawings and respond within 24 business hours.
+            </p>
+
+            <div className="flex flex-col sm:flex-row gap-6 justify-center">
+              <Link to="/" className="inline-flex items-center justify-center h-16 px-10 bg-spacecadet text-white rounded-2xl font-black uppercase tracking-widest text-xs hover:bg-primary transition-colors">
+                <ArrowLeft className="mr-2 w-4 h-4" />
+                Return Home
+              </Link>
+              <Link to="/case-studies" className="inline-flex items-center justify-center h-16 px-10 bg-white text-primary border border-border rounded-2xl font-black uppercase tracking-widest text-xs hover:bg-polarice transition-colors">
+                View Performance Cases
+                <ChevronRight className="ml-2 w-4 h-4" />
+              </Link>
+            </div>
+
+            <div className="absolute right-[-10%] bottom-[-10%] w-64 h-64 bg-accent/5 rounded-full blur-3xl" />
           </div>
-        </section>
+
+          <div className="mt-20">
+            <p className="text-[10px] font-black uppercase tracking-[0.4em] text-slate-text opacity-40">Reference: RFQ-SUBMISSION-CONFIRMED</p>
+          </div>
+        </div>
       </main>
       <Footer />
-    </>
+    </div>
   );
 }

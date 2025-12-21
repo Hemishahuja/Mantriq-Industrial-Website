@@ -1,86 +1,64 @@
-import { Card, CardContent } from "@/components/ui/card";
+import { ChevronRight } from "lucide-react";
 
 const Materials = () => {
   const materials = [
     {
-      name: "Steel",
-      description: "Manufacture of components from steel in both commercial grade and bespoke grades for demanding applications."
+      name: "Stainless Steel",
+      description: "Grades 303, 304, 316, and 400-series. Optimized for corrosion resistance and industrial durability."
     },
     {
-      name: "Stainless Steel", 
-      description: "Components manufactured from various stainless steel grades including 316, 304 & 303 for corrosion resistance."
+      name: "Mild Steel",
+      description: "1018, 12L14, and custom alloy steels. The workhorse material for high-volume structural components."
     },
     {
-      name: "Aluminum",
-      description: "Manufacturing of lightweight components utilizing aluminum in both commercial grade and specialized alloys."
+      name: "Aluminum Alloys",
+      description: "6061-T6, 7075, and 2000-series. High-speed machining for lightweight aerospace and automotive parts."
     },
     {
-      name: "Brass",
-      description: "Extensive knowledge in machining various brass grades for turning, milling, and crimping applications."
+      name: "Brass & Copper",
+      description: "High-conductivity grades for electrical and plumbing applications. Superior surface finish results."
     },
     {
-      name: "Bronze",
-      description: "Manufacturing bronze components from commercial to cast bronze for specialized industrial applications."
+      name: "Engineering Plastics",
+      description: "Acetal, Nylon, PEEK, and PTFE. Precision machining for lightweight, low-friction applications."
     },
     {
-      name: "Copper",
-      description: "Precision copper components and bends for heating, cooling, and electrical industries leveraging thermal properties."
-    },
-    {
-      name: "Plastics",
-      description: "Machining various plastic grades including acetal, nylon, and engineering plastics for specialized applications."
+      name: "Exotic Alloys",
+      description: "Inconel, Titanium, and Cobalt. Specialized tooling and feed strategies for high-temp environments."
     }
   ];
 
   return (
-    <section id="materials" className="py-20 bg-secondary">
-      <div className="container mx-auto px-4">
-        {/* Header */}
-        <div className="text-center mb-16 animate-fade-in">
-          <h2 className="text-4xl md:text-5xl font-bold text-foreground mb-4">
-            Materials We Work With
-          </h2>
-          <p className="text-xl text-muted-foreground max-w-4xl mx-auto">
-            Our machining capabilities include producing components in a wide range of materials. 
-            We offer diverse material options to service customer needs and supply high-performance 
-            CNC milled and turned quality components.
-          </p>
-        </div>
-
-        {/* Materials Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
-          {materials.map((material, index) => (
-            <Card 
-              key={index}
-              className="group glass-strong hover-lift cursor-pointer h-full hover-glow animate-scale-in transition-all duration-500"
-              style={{ animationDelay: `${index * 0.1}s` }}
-            >
-              <CardContent className="p-6 h-full flex flex-col">
-                <div className="flex-grow">
-                  <h3 className="text-xl font-bold text-foreground mb-3 group-hover:text-primary transition-colors duration-300">
-                    {material.name}
-                  </h3>
-                  <p className="text-muted-foreground text-sm leading-relaxed group-hover:text-foreground transition-colors duration-300">
-                    {material.description}
-                  </p>
-                </div>
-              </CardContent>
-            </Card>
-          ))}
-        </div>
-
-        {/* Bottom Description */}
-        <div className="text-center mt-12 animate-fade-in stagger-6">
-          <div className="max-w-4xl mx-auto">
-            <p className="text-lg text-muted-foreground">
-              Each material is carefully selected and processed to meet specific application requirements, 
-              ensuring optimal performance in your industry's demanding environments. Our expertise 
-              in material selection and processing helps deliver components that exceed expectations.
+    <div className="container mx-auto px-4">
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        {materials.map((mat, i) => (
+          <div
+            key={i}
+            className="group bg-polarice/30 p-10 rounded-[32px] border border-border hover:bg-spacecadet hover:translate-y-[-8px] transition-all duration-500"
+          >
+            <h3 className="text-2xl font-extrabold text-spacecadet mb-4 tracking-tight group-hover:text-accent transition-colors">
+              {mat.name}
+            </h3>
+            <p className="text-slate-text leading-relaxed text-sm opacity-80 group-hover:text-white/60 transition-colors mb-8">
+              {mat.description}
             </p>
+            <div className="mt-auto flex items-center text-xs font-black uppercase tracking-widest text-primary group-hover:text-accent transition-colors">
+              <span>Technical Specs</span>
+              <ChevronRight className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" />
+            </div>
           </div>
-        </div>
+        ))}
       </div>
-    </section>
+
+      {/* Certification Note */}
+      <div className="mt-20 p-10 bg-white border border-border rounded-[32px] flex flex-col md:flex-row items-center justify-between">
+        <div className="mb-6 md:mb-0">
+          <h4 className="text-xl font-bold text-spacecadet mb-2 underline decoration-accent decoration-2 underline-offset-4">Full Material Certifications</h4>
+          <p className="text-sm text-slate-text opacity-70">We provide mill reports and chemical analysis for every production lot.</p>
+        </div>
+        <button className="text-primary font-bold hover:underline decoration-2 underline-offset-4 text-sm">Download Sample MTRs</button>
+      </div>
+    </div>
   );
 };
 

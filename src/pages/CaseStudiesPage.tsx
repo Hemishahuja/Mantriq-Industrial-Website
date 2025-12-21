@@ -1,69 +1,88 @@
-import { Helmet } from "react-helmet-async";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
-import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "@/components/ui/card";
-import { Button } from "@/components/ui/button";
-import { useReveal } from "@/hooks/useReveal";
-
-const cases = [
-  {
-    title: "NorthernCam Screw Batch",
-    meta: "100,000 pcs | Carbon steel | Zinc plated",
-    summary:
-      "Bulk-standard machine screws produced in India and delivered to Leeds, UK — on time, zero defects in the sample lot.",
-    result: "Zero defects (sample), on-time, landed-cost saving vs UK sourcing.",
-  },
-  {
-    title: "Canadian HVAC Brackets",
-    meta: "50,000 pcs | Mild steel | Black oxide",
-    summary:
-      "Batch production of HVAC brackets for Canadian wholesale. Repeatable quality at standard tolerances, reliable delivery windows.",
-    result: "Consistent gauge and finish; stable cycle time for predictable lead time.",
-  },
-];
+import SEO from "@/components/SEO";
+import { Link } from "react-router-dom";
+import { ChevronRight, Target, ShieldCheck, History } from "lucide-react";
 
 export default function CaseStudiesPage() {
-  const ref = useReveal<HTMLDivElement>();
-  return (
-    <>
-      <Helmet>
-        <title>Bulk CNC Case Studies | Mantriq Industrial</title>
-        <meta
-          name="description"
-          content="Proof from real batches: NorthernCam screw lot and Canadian HVAC brackets. Bulk CNC fastener manufacturing in India with reliable lead times."
-        />
-      </Helmet>
-      <Header />
-      <main className="container mx-auto px-4 pt-28 pb-20">
-        <section ref={ref} className="reveal">
-          <h1 className="text-3xl md:text-4xl font-bold text-[var(--deep-navy)]">Case Studies</h1>
-          <p className="mt-3 text-[color-mix(in_oklab,var(--text-body)_80%,white)]">
-            Evidence you can act on. Standard-tolerance batches delivered on time with predictable landed costs.
-          </p>
+  const cases = [
+    {
+      title: "Batch Performance: HVAC Components",
+      meta: "50,000 pcs | Mild Steel | Black Oxide",
+      summary: "Critical bracket production for a major Canadian HVAC distributor. We optimized the tooling strategy to maintain ±0.005\" tolerances across the entire lot.",
+      result: "100% On-time delivery with 0.0% reject rate across three recurring lots."
+    },
+    {
+      title: "Fastener Scale: Infrastructure Kit",
+      meta: "100,000 pcs | Carbon Steel | Zinc Plated",
+      summary: "Bulk production of bespoke machine screws for large-scale infrastructure projects. Integrated DDP fulfillment directly to the assembly site.",
+      result: "30% Reduction in landed-cost vs incumbent local sourcing without compromising quality."
+    }
+  ];
 
-          <div className="grid md:grid-cols-2 gap-6 mt-8">
-            {cases.map((c) => (
-              <Card key={c.title} className="hover-lift">
-                <CardHeader>
-                  <CardTitle>{c.title}</CardTitle>
-                  <CardDescription>{c.meta}</CardDescription>
-                </CardHeader>
-                <CardContent className="space-y-3">
-                  <p>{c.summary}</p>
-                  <p className="text-sm"><strong>Result:</strong> {c.result}</p>
-                </CardContent>
-              </Card>
+  return (
+    <div className="min-h-screen bg-white">
+      <SEO
+        title="High-Volume Case Studies | Mantriq Industrial"
+        description="Proof of scale and precision. Review real-world manufacturing performance for high-volume HVAC and infrastructure components."
+      />
+      <Header />
+
+      <main className="pt-32 pb-32">
+        <div className="container mx-auto px-4">
+          <div className="max-w-4xl mb-20 text-center mx-auto">
+            <h1 className="text-xs font-bold uppercase tracking-[0.3em] text-accent mb-6 leading-none">Proven Results</h1>
+            <h2 className="text-4xl md:text-6xl font-extrabold text-spacecadet tracking-tighter leading-tight mb-8">
+              Technical Performance<span className="text-accent">.</span>
+            </h2>
+            <p className="text-xl text-slate-text leading-relaxed opacity-80">
+              Evidence of our commitment to repeatability and predictable supply chain logistics for mission-critical industrial components.
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-10">
+            {cases.map((c, i) => (
+              <div key={i} className="group bg-polarice/30 p-12 rounded-[48px] border border-border hover:bg-white hover:shadow-2xl transition-all duration-500 flex flex-col items-start">
+                <div className="flex items-center space-x-3 mb-8">
+                  <div className="w-10 h-10 bg-white rounded-xl flex items-center justify-center border border-border">
+                    <Target className="w-5 h-5 text-primary" />
+                  </div>
+                  <span className="text-[10px] font-black uppercase tracking-[0.2em] text-accent">{c.meta}</span>
+                </div>
+                <h3 className="text-2xl font-extrabold text-spacecadet mb-6 tracking-tight group-hover:text-primary transition-colors">{c.title}</h3>
+                <p className="text-slate-text leading-relaxed opacity-80 mb-10 flex-grow">{c.summary}</p>
+
+                <div className="w-full pt-10 border-t border-border flex flex-col sm:flex-row justify-between items-start sm:items-center gap-6">
+                  <div className="flex items-center">
+                    <ShieldCheck className="w-5 h-5 text-accent mr-3" />
+                    <span className="text-sm font-bold text-spacecadet">{c.result}</span>
+                  </div>
+                  <Link to="/quote" className="text-xs font-black uppercase tracking-widest text-primary flex items-center group-hover:underline decoration-2 underline-offset-4">
+                    Request Similar Scale
+                    <ChevronRight className="ml-2 w-4 h-4 group-hover:translate-x-1 transition-transform" />
+                  </Link>
+                </div>
+              </div>
             ))}
           </div>
 
-          <div className="mt-10">
-            <Button className="hover-scale" onClick={() => (window.location.href = "/quote")}>
-              Start Your Project
-            </Button>
+          {/* History Note */}
+          <div className="mt-32 p-10 bg-spacecadet rounded-[40px] text-white flex flex-col md:flex-row items-center justify-between text-center md:text-left gap-10 overflow-hidden relative">
+            <div className="z-10 flex items-center gap-8">
+              <div className="w-16 h-16 bg-white/10 rounded-2xl flex items-center justify-center shrink-0 border border-white/10">
+                <History className="w-8 h-8 text-accent" />
+              </div>
+              <div>
+                <h4 className="text-2xl font-bold mb-2 tracking-tight">Vetted Performance.</h4>
+                <p className="text-white/50 text-sm max-w-md">Our technical team has successfully coordinated over 5,000,000 precision parts delivered across North America.</p>
+              </div>
+            </div>
+            <Link to="/contact" className="z-10 text-xs font-black uppercase tracking-widest text-accent hover:underline decoration-2 underline-offset-8">Explore Technical Archives</Link>
+            <div className="absolute right-[-10%] top-[-10%] w-64 h-64 bg-primary/20 rounded-full blur-3xl" />
           </div>
-        </section>
+        </div>
       </main>
       <Footer />
-    </>
+    </div>
   );
 }

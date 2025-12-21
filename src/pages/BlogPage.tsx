@@ -1,324 +1,85 @@
-import { Helmet } from "react-helmet-async";
-import { Link } from "react-router-dom";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
-import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "@/components/ui/card";
-import { Button } from "@/components/ui/button";
-import { useReveal } from "@/hooks/useReveal";
+import SEO from "@/components/SEO";
+import { Link } from "react-router-dom";
+import { ChevronRight, Calendar, User } from "lucide-react";
 
 const posts = [
   {
     title: "Choosing the Right Fastener Grade",
     slug: "choosing-the-right-fastener-grade",
-    date: "2025-07-10",
-    summary:
-      "A buyer’s guide to common grades for screws and studs, with when to specify SS 304/316 vs mild steel or brass.",
-    fullContent: `
-      <h2>Introduction</h2>
-      <p>Selecting the right fastener grade is crucial for ensuring the performance, safety, and cost-effectiveness of your CNC machined components. Different materials offer varying levels of strength, corrosion resistance, and machinability.</p>
-      
-      <h2>Stainless Steel Grades</h2>
-      <p><strong>SS 304:</strong> The most common stainless steel grade, offering excellent corrosion resistance and formability. Ideal for general-purpose applications where corrosion is a concern but extreme conditions are not present.</p>
-      <p><strong>SS 316:</strong> Superior corrosion resistance, especially in marine or chemical environments. Contains molybdenum for enhanced resistance to pitting and crevice corrosion.</p>
-      
-      <h2>Mild Steel (MS)</h2>
-      <p>Cost-effective option for applications where corrosion resistance is not critical. Excellent machinability and strength, but requires protective coatings in corrosive environments.</p>
-      
-      <h2>Brass</h2>
-      <p>Excellent electrical conductivity and corrosion resistance. Often used in electrical applications or where a decorative finish is desired. Good machinability but lower strength than steel.</p>
-      
-      <h2>When to Choose Each Grade</h2>
-      <ul>
-        <li>Use SS 304 for general indoor applications with moderate corrosion concerns</li>
-        <li>Choose SS 316 for marine, chemical, or high-corrosion environments</li>
-        <li>Opt for MS when cost is the primary concern and corrosion can be managed</li>
-        <li>Select brass for electrical conductivity or decorative applications</li>
-      </ul>
-    `,
+    date: "2024-12-10",
+    summary: "A buyer’s guide to common grades for screws and studs, with when to specify SS 304/316 vs mild steel or brass."
   },
   {
-    title: "Cost Advantage of Manufacturing in India vs Importing from Canada",
+    title: "Cost Advantage: India vs NA Sourcing",
     slug: "cost-advantage-manufacturing-india-vs-canada",
-    date: "2025-08-15",
-    summary:
-      "Compare the landed costs of manufacturing in India versus importing from Canada, highlighting labor differentials, shipping efficiencies, and standardization benefits for bulk-standard CNC components.",
-    fullContent: `
-      <h2>Understanding Landed Cost</h2>
-      <p>Landed cost includes not just the manufacturing price but also shipping, duties, and logistics. For bulk-standard CNC components, manufacturing in India can offer significant advantages over importing from Canada.</p>
-      
-      <h2>Labor Cost Differential</h2>
-      <p>Indian manufacturing benefits from lower labor costs while maintaining high-quality standards. Skilled CNC operators and engineers are available at competitive rates, leading to up to 35% savings compared to North American operations.</p>
-      
-      <h2>Shipping and Logistics Efficiency</h2>
-      <p>Consolidated ocean freight from major Indian ports to North America provides predictable transit times. Bulk shipments reduce per-unit shipping costs and enable better inventory management.</p>
-      
-      <h2>Standardization Benefits</h2>
-      <p>Focus on repeatable, standard-tolerance parts allows for optimized production processes and reduced setup times. This standardization drives down costs for high-volume orders.</p>
-      
-      <h2>Quality Assurance</h2>
-      <p>Modern Indian CNC facilities employ rigorous quality control measures, including in-process inspections and 2.5D vision systems, ensuring consistent quality comparable to North American standards.</p>
-    `,
+    date: "2024-11-25",
+    summary: "Compare the landed costs of manufacturing. How labor differentials and shipping aggregation drive up to 35% savings."
   },
   {
-    title: "Bulk vs Precision Machining: Cost Drivers",
+    title: "Bulk vs Precision Machining Drivers",
     slug: "bulk-vs-precision-machining-cost-drivers",
-    date: "2025-07-24",
-    summary:
-      "Where bulk-standard CNC wins on landed cost — and when ultra-tight tolerances justify premium precision shops.",
-    fullContent: `
-      <h2>The Cost Spectrum</h2>
-      <p>CNC machining costs vary significantly based on tolerance requirements. Understanding when to choose bulk-standard versus precision machining is key to optimizing your manufacturing budget.</p>
-      
-      <h2>Bulk-Standard Machining Advantages</h2>
-      <p>For components with standard tolerances (±0.1mm or looser), bulk-standard machining offers substantial cost savings:</p>
-      <ul>
-        <li>Faster cycle times due to relaxed precision requirements</li>
-        <li>Higher machine utilization with fewer tool changes</li>
-        <li>Economies of scale for large production runs</li>
-        <li>Reduced inspection and quality control costs</li>
-      </ul>
-      
-      <h2>When Precision Pays Off</h2>
-      <p>Ultra-tight tolerances (±0.01mm or better) justify premium pricing when:</p>
-      <ul>
-        <li>Components are part of precision assemblies</li>
-        <li>Surface finish requirements are critical</li>
-        <li>Parts interface with other high-precision components</li>
-        <li>Failure could result in significant safety or performance issues</li>
-      </ul>
-      
-      <h2>Finding the Sweet Spot</h2>
-      <p>Many applications don't require ultra-precision. By designing for standard tolerances where possible, manufacturers can achieve significant cost reductions while maintaining functionality.</p>
-    `,
-  },
-  {
-    title: "Material Selection for CNC Machining: SS, Brass, MS, Aluminum, Copper, and Nylon",
-    slug: "material-selection-cnc-machining",
-    date: "2025-09-01",
-    summary:
-      "Detailed guide on selecting materials for CNC turned and milled components, including properties, applications, and cost considerations for each material type.",
-    fullContent: `
-      <h2>Material Selection Criteria</h2>
-      <p>Choosing the right material for CNC machining involves balancing mechanical properties, cost, machinability, and application requirements.</p>
-      
-      <h2>Stainless Steel (SS)</h2>
-      <p><strong>Properties:</strong> High strength, excellent corrosion resistance, good weldability</p>
-      <p><strong>Applications:</strong> Marine equipment, food processing, medical devices</p>
-      <p><strong>Cost:</strong> Higher material cost, good machinability</p>
-      
-      <h2>Brass</h2>
-      <p><strong>Properties:</strong> Good corrosion resistance, excellent electrical conductivity, attractive finish</p>
-      <p><strong>Applications:</strong> Electrical components, plumbing fittings, decorative hardware</p>
-      <p><strong>Cost:</strong> Moderate material cost, excellent machinability</p>
-      
-      <h2>Mild Steel (MS)</h2>
-      <p><strong>Properties:</strong> High strength, good weldability, magnetic</p>
-      <p><strong>Applications:</strong> Structural components, automotive parts, general engineering</p>
-      <p><strong>Cost:</strong> Low material cost, good machinability</p>
-      
-      <h2>Aluminum</h2>
-      <p><strong>Properties:</strong> Lightweight, good corrosion resistance, excellent thermal conductivity</p>
-      <p><strong>Applications:</strong> Aerospace components, heat sinks, lightweight structures</p>
-      <p><strong>Cost:</strong> Moderate material cost, good machinability</p>
-      
-      <h2>Copper</h2>
-      <p><strong>Properties:</strong> Excellent electrical/thermal conductivity, corrosion resistance, malleable</p>
-      <p><strong>Applications:</strong> Electrical connectors, heat exchangers, plumbing</p>
-      <p><strong>Cost:</strong> Higher material cost, good machinability</p>
-      
-      <h2>Nylon</h2>
-      <p><strong>Properties:</strong> Lightweight, wear-resistant, self-lubricating, electrical insulator</p>
-      <p><strong>Applications:</strong> Gears, bearings, insulators, lightweight components</p>
-      <p><strong>Cost:</strong> Moderate material cost, excellent machinability</p>
-    `,
-  },
-  {
-    title: "Quality Control in Bulk CNC Manufacturing",
-    slug: "quality-control-bulk-cnc-manufacturing",
-    date: "2025-09-15",
-    summary:
-      "How in-process checks, 2.5D vision systems, and traceability ensure consistent quality for high-volume production runs.",
-    fullContent: `
-      <h2>Quality Control Framework</h2>
-      <p>Maintaining consistent quality in high-volume CNC manufacturing requires a comprehensive approach combining technology, processes, and skilled personnel.</p>
-      
-      <h2>In-Process Inspections</h2>
-      <p>Regular dimensional checks during production catch issues early:</p>
-      <ul>
-        <li>First article inspection (FAI) for each production run</li>
-        <li>Periodic sampling throughout the manufacturing process</li>
-        <li>Real-time monitoring of critical dimensions</li>
-      </ul>
-      
-      <h2>2.5D Vision Systems</h2>
-      <p>Automated optical inspection provides:</p>
-      <ul>
-        <li>High-speed dimensional measurement</li>
-        <li>Consistent, operator-independent results</li>
-        <li>Detection of surface defects and dimensional variations</li>
-        <li>Data logging for process improvement</li>
-      </ul>
-      
-      <h2>Traceability Systems</h2>
-      <p>Complete lot traceability ensures:</p>
-      <ul>
-        <li>Material certification tracking</li>
-        <li>Process parameter recording</li>
-        <li>Quality inspection history</li>
-        <li>Recall capability if issues arise</li>
-      </ul>
-      
-      <h2>Statistical Process Control</h2>
-      <p>SPC methods monitor process stability and capability, enabling proactive quality management and continuous improvement.</p>
-    `,
-  },
-  {
-    title: "Shipping and Logistics for International CNC Components",
-    slug: "shipping-logistics-international-cnc-components",
-    date: "2025-10-01",
-    summary:
-      "Optimizing supply chains with consolidated ocean freight, last-mile delivery, and predictable ETAs for bulk-standard parts.",
-    fullContent: `
-      <h2>Supply Chain Optimization</h2>
-      <p>Efficient shipping and logistics are critical for maintaining cost advantages in international CNC component manufacturing.</p>
-      
-      <h2>Consolidated Ocean Freight</h2>
-      <p>Bulk shipping from major Indian ports offers:</p>
-      <ul>
-        <li>Lower per-unit shipping costs for large volumes</li>
-        <li>Regular scheduled sailings with predictable transit times</li>
-        <li>Reduced carbon footprint through optimized container utilization</li>
-      </ul>
-      
-      <h2>Last-Mile Delivery</h2>
-      <p>Local distribution networks ensure:</p>
-      <ul>
-        <li>Fast final delivery to your facility</li>
-        <li>Reduced inventory holding costs</li>
-        <li>Just-in-time delivery capabilities</li>
-      </ul>
-      
-      <h2>Predictable ETAs</h2>
-      <p>Established shipping lanes provide:</p>
-      <ul>
-        <li>Reliable delivery schedules</li>
-        <li>Better production planning</li>
-        <li>Reduced safety stock requirements</li>
-      </ul>
-      
-      <h2>Customs and Documentation</h2>
-      <p>Streamlined processes handle:</p>
-      <ul>
-        <li>Import documentation and compliance</li>
-        <li>Duty optimization</li>
-        <li>Certificate of origin management</li>
-      </ul>
-    `,
-  },
-  {
-    title: "Design for Manufacturability (DFM) Best Practices",
-    slug: "design-manufacturability-dfm-best-practices",
-    date: "2025-10-15",
-    summary:
-      "Tips for designing CNC components that balance functionality, cost, and manufacturability in high-volume production.",
-    fullContent: `
-      <h2>DFM Principles</h2>
-      <p>Design for Manufacturability (DFM) optimizes component design for efficient, cost-effective CNC machining while maintaining functionality.</p>
-      
-      <h2>Material Considerations</h2>
-      <p>Select materials based on:</p>
-      <ul>
-        <li>Application requirements (strength, corrosion resistance, etc.)</li>
-        <li>Machinability characteristics</li>
-        <li>Cost-effectiveness for volume production</li>
-      </ul>
-      
-      <h2>Geometric Simplification</h2>
-      <p>Design for ease of machining:</p>
-      <ul>
-        <li>Avoid deep pockets and thin walls</li>
-        <li>Use standard drill sizes and radii</li>
-        <li>Minimize tool changes and complex operations</li>
-      </ul>
-      
-      <h2>Tolerance Optimization</h2>
-      <p>Specify appropriate tolerances:</p>
-      <ul>
-        <li>Use standard tolerances where possible</li>
-        <li>Avoid unnecessarily tight tolerances</li>
-        <li>Consider process capability in tolerance setting</li>
-      </ul>
-      
-      <h2>Feature Integration</h2>
-      <p>Combine features to reduce operations:</p>
-      <ul>
-        <li>Integrate multiple functions into single components</li>
-        <li>Minimize part count through thoughtful design</li>
-        <li>Optimize for available machine capabilities</li>
-      </ul>
-      
-      <h2>Cost-Benefit Analysis</h2>
-      <p>Balance design complexity with manufacturing costs to achieve optimal landed cost for your application.</p>
-    `,
-  },
+    date: "2024-11-12",
+    summary: "Where bulk-standard CNC wins on landed cost — and when ultra-tight tolerances justify premium precision shops."
+  }
 ];
 
 export default function BlogPage() {
-  const ref = useReveal<HTMLDivElement>();
-  const orgJsonLd = {
-    "@context": "https://schema.org",
-    "@type": "Blog",
-    "name": "Mantriq Insights",
-    "description": "Insights on bulk CNC fastener manufacturing in India, procurement, and operations."
-  };
-
   return (
-    <>
-      <Helmet>
-        <title>Blog & Insights | Mantriq Industrial</title>
-        <meta
-          name="description"
-          content="Bi‑weekly insights on bulk CNC fastener manufacturing in India, materials, and cost drivers for wholesalers."
-        />
-        <script type="application/ld+json">{JSON.stringify(orgJsonLd)}</script>
-      </Helmet>
+    <div className="min-h-screen bg-white">
+      <SEO
+        title="Industrial Insights & Manufacturing Blog | Mantriq Industrial"
+        description="Technical guides on material selection, cost optimization, and high-volume CNC production strategies for industrial wholesalers."
+      />
       <Header />
-      <main className="container mx-auto px-4 pt-28 pb-20">
-        <section ref={ref} className="reveal">
-          <h1 className="text-3xl md:text-4xl font-bold text-[var(--deep-navy)]">Insights</h1>
-          <p className="mt-3 text-[color-mix(in_oklab,var(--text-body)_80%,white)]">
-            Practical content for buyers of bulk-standard fasteners.
-          </p>
 
-          <div className="grid md:grid-cols-2 gap-6 mt-8">
-            {posts.map((p) => (
-              <Card key={p.title} className="hover-lift">
-                <CardHeader>
-                  <CardTitle>{p.title}</CardTitle>
-                  <CardDescription>{new Date(p.date).toLocaleDateString()}</CardDescription>
-                </CardHeader>
-                <CardContent>
-                  <p className="text-sm">{p.summary}</p>
-                  {p.title === "Cost Advantage of Manufacturing in India vs Importing from Canada" && (
-                    <div className="mt-4 p-4 bg-muted rounded-md">
-                      <h4 className="font-semibold mb-2">Key Factors:</h4>
-                      <ul className="text-xs space-y-1">
-                        <li>• Labor Differential: Up to 35% savings vs North American shops</li>
-                        <li>• Shipping Aggregation: Consolidated ocean + last-mile for predictable ETAs</li>
-                        <li>• Standardization: Focus on repeatable, standard-tolerance parts for cost leadership</li>
-                      </ul>
-                    </div>
-                  )}
-                  <Button asChild className="mt-4">
-                    <Link to={`/blog/${p.slug}`}>Read More</Link>
-                  </Button>
-                </CardContent>
-              </Card>
+      <main className="pt-32 pb-32">
+        <div className="container mx-auto px-4">
+          <div className="max-w-4xl mb-20">
+            <h1 className="text-xs font-bold uppercase tracking-[0.3em] text-accent mb-6 leading-none">Industrial Insights</h1>
+            <h2 className="text-4xl md:text-6xl font-extrabold text-spacecadet tracking-tighter leading-tight mb-8">
+              Technical Intelligence<span className="text-accent">.</span>
+            </h2>
+            <p className="text-xl text-slate-text leading-relaxed opacity-80">
+              Expert analysis on global production economics, material science, and supply chain optimization for the modern OEM.
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
+            {posts.map((post, i) => (
+              <div key={i} className="group bg-polarice/30 p-10 rounded-[40px] border border-border hover:bg-white hover:shadow-2xl transition-all duration-500 flex flex-col">
+                <div className="flex items-center space-x-4 mb-6 text-[10px] font-black uppercase tracking-widest text-slate-text opacity-50">
+                  <div className="flex items-center">
+                    <Calendar className="w-3 h-3 mr-1" />
+                    {post.date}
+                  </div>
+                  <div className="flex items-center">
+                    <User className="w-3 h-3 mr-1" />
+                    Editorial Team
+                  </div>
+                </div>
+                <h3 className="text-2xl font-extrabold text-spacecadet mb-6 tracking-tight group-hover:text-primary transition-colors">{post.title}</h3>
+                <p className="text-slate-text text-sm leading-relaxed opacity-70 mb-10 flex-grow">{post.summary}</p>
+                <Link to={`/blog/${post.slug}`} className="inline-flex items-center text-xs font-black uppercase tracking-widest text-primary hover:underline decoration-2 underline-offset-8">
+                  Read Analysis
+                  <ChevronRight className="ml-2 w-4 h-4 group-hover:translate-x-1 transition-transform" />
+                </Link>
+              </div>
             ))}
           </div>
-        </section>
+
+          <div className="mt-32 p-12 bg-polarice/20 border border-border rounded-[48px] text-center">
+            <h4 className="text-xl font-bold text-spacecadet mb-4">Stay Informed on Global Capacity</h4>
+            <p className="text-slate-text text-sm mb-8 opacity-60">Get our bi-monthly technical brief on production windows and material trends.</p>
+            <div className="max-w-md mx-auto flex gap-4">
+              <input type="email" placeholder="Your work email" className="flex-grow h-14 px-6 rounded-2xl border border-border bg-white" />
+              <button className="h-14 px-8 bg-spacecadet text-white rounded-2xl font-black uppercase tracking-widest text-xs hover:bg-primary transition-colors">Join Brief</button>
+            </div>
+          </div>
+        </div>
       </main>
       <Footer />
-    </>
+    </div>
   );
 }

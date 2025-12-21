@@ -1,86 +1,62 @@
-import { Card, CardContent } from "@/components/ui/card";
-import automotiveIcon from "@/assets/icon-automotive.jpg";
-import aerospaceIcon from "@/assets/icon-aerospace.jpg";
-import oilGasIcon from "@/assets/icon-oil-gas.jpg";
-import medicalIcon from "@/assets/icon-medical.jpg";
-import constructionIcon from "@/assets/icon-construction.jpg";
-import marineIcon from "@/assets/icon-marine.jpg";
-import { cn } from "@/lib/utils";
+import { Factory, Truck, Building2, Anchor, Zap, Cpu } from "lucide-react";
 
 const Industries = () => {
   const industries = [
     {
       name: "Automotive",
-      icon: automotiveIcon,
-      description: "Precision components for automotive manufacturing and aftermarket applications."
+      icon: Factory,
+      description: "High-volume precision components for OEM assembly lines and tier‑1 suppliers."
     },
     {
       name: "Aerospace",
-      icon: aerospaceIcon,
-      description: "High-precision parts meeting aerospace industry standards and certifications."
+      icon: Cpu,
+      description: "Critical components meeting stringent aerospace standards for durability and weight."
     },
     {
-      name: "Oil & Gas",
-      icon: oilGasIcon,
-      description: "Durable components designed for harsh environments in the energy sector."
+      name: "Industrial Mach.",
+      icon: Building2,
+      description: "Custom wear parts and structural components for heavy machinery and automation."
     },
     {
-      name: "Medical",
-      icon: medicalIcon,
-      description: "Precision medical device components with strict quality requirements."
+      name: "Renewable Energy",
+      icon: Zap,
+      description: "Specialized parts for solar, wind, and energy storage infrastructure projects."
     },
     {
       name: "Construction",
-      icon: constructionIcon,
-      description: "Heavy-duty components for construction equipment and infrastructure."
+      icon: Building2,
+      description: "Durable metal hardware and fastening systems for large-scale infrastructure."
     },
     {
-      name: "Marine",
-      icon: marineIcon,
-      description: "Corrosion-resistant parts for marine and offshore applications."
+      name: "Marine & Offshore",
+      icon: Anchor,
+      description: "Corrosion-resistant components engineered for harsh saltwater environments."
     }
   ];
 
   return (
-    <section id="industries" className="py-20 bg-[var(--page-bg)]">
-      <div className="container mx-auto px-4">
-        <div className="text-center mb-16 animate-fade-in">
-          <h2 className="text-4xl md:text-5xl font-bold text-[var(--spacecadet)] mb-4">
-            Industries We Serve
-          </h2>
-          <p className="text-xl text-[color-mix(in_oklab,var(--text-body)_85%,white)] max-w-3xl mx-auto">
-            Our precision CNC machining capabilities serve diverse industries across Canada, 
-            delivering components that meet the highest standards of quality and performance.
-          </p>
+    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+      {industries.map((industry, index) => (
+        <div
+          key={industry.name}
+          className="group relative bg-white p-10 rounded-[40px] border border-border hover:border-primary/20 hover:shadow-2xl transition-all duration-500 overflow-hidden"
+        >
+          <div className="relative z-10">
+            <div className="w-14 h-14 bg-polarice rounded-2xl flex items-center justify-center mb-8 border border-border group-hover:bg-primary transition-colors duration-500">
+              <industry.icon className="w-7 h-7 text-primary group-hover:text-white transition-colors duration-500" />
+            </div>
+            <h3 className="text-2xl font-extrabold text-spacecadet mb-4 tracking-tight group-hover:text-primary transition-colors">
+              {industry.name}
+            </h3>
+            <p className="text-slate-text text-sm leading-relaxed opacity-80 group-hover:opacity-100 transition-opacity">
+              {industry.description}
+            </p>
+          </div>
+          {/* Subtle background element */}
+          <div className="absolute -right-4 -bottom-4 w-32 h-32 bg-primary/5 rounded-full blur-2xl group-hover:bg-primary/10 transition-colors" />
         </div>
-
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {industries.map((industry, index) => (
-            <Card 
-              key={industry.name} 
-              className={cn(`group hover:shadow-xl t-lift ease-lift hover-lift cursor-pointer animate-scale-in hover-glow stagger-${index + 1}`)}
-            >
-              <CardContent className="p-8 text-center">
-                <div className="w-20 h-20 mx-auto mb-6 rounded-full flex items-center justify-center t-lift ease-lift micro-lift hover-scale animate-float"
-                     style={{ backgroundColor: "color-mix(in oklab, var(--oceansteel) 12%, white)" }}>
-                  <img 
-                    src={industry.icon} 
-                    alt={industry.name}
-                    className="w-12 h-12 object-contain ease-lift transition-transform t-lift group-hover:scale-110"
-                  />
-                </div>
-                <h3 className="text-xl font-bold text-[var(--spacecadet)] mb-3 t-hover ease-lift transition-colors group-hover:text-[var(--oceansteel)]">
-                  {industry.name}
-                </h3>
-                <p className="text-[color-mix(in_oklab,var(--text-body)_80%,white)] t-hover ease-lift transition-colors group-hover:text-[var(--text-body)]">
-                  {industry.description}
-                </p>
-              </CardContent>
-            </Card>
-          ))}
-        </div>
-      </div>
-    </section>
+      ))}
+    </div>
   );
 };
 

@@ -1,133 +1,86 @@
-import { Button } from "@/components/ui/button";
-import { Card, CardContent } from "@/components/ui/card";
-import { CheckCircle, Users, Award, Cog } from "lucide-react";
-import { cn } from "@/lib/utils";
+import { Factory, Award, Users, ShieldCheck } from "lucide-react";
 
 const About = () => {
   const pillars = [
     {
-      icon: <Cog className="w-8 h-8" />,
-      title: "Latest Technology",
-      description: "Continuous investment in cutting-edge CNC machinery and manufacturing technology"
+      icon: Factory,
+      title: "Advanced Tech",
+      description: "Continuous investment in high-output CNC turning and milling centers."
     },
     {
-      icon: <Award className="w-8 h-8" />,
-      title: "Quality Products",
-      description: "Rigorous quality control ensuring every component meets the highest standards"
+      icon: ShieldCheck,
+      title: "Quality First",
+      description: "Rigorous inspection protocols ensure 100% repeatability for every lot."
     },
     {
-      icon: <Users className="w-8 h-8" />,
+      icon: Users,
       title: "Expert Team",
-      description: "Knowledgeable professionals with decades of precision machining experience"
+      description: "Skilled technical coordinators and engineers managing your supply chain."
     },
     {
-      icon: <CheckCircle className="w-8 h-8" />,
-      title: "Customer Service",
-      description: "Dedicated support ensuring project success from conception to delivery"
+      icon: Award,
+      title: "Reliability",
+      description: "Canadian-owned support with a focus on predictable landed costs."
     }
   ];
 
   return (
-    <section id="about" className="py-20 bg-background">
-      <div className="container mx-auto px-4">
-        <div className="grid lg:grid-cols-2 gap-16 items-center">
-          {/* Left Content */}
-          <div className="animate-slide-in-left">
-            <h2 className="text-4xl md:text-5xl font-bold text-foreground mb-6">
-              About Mantriq Industrial
-            </h2>
-            
-            <div className="text-base sm:text-lg text-muted-foreground mb-8 space-y-4">
-              <p className="font-semibold text-foreground animate-fade-in stagger-1 t-fade ease-lift">
-                <strong>Mantriq Industrial has been providing high-quality precision engineering services 
-                to diverse Canadian industries, delivering components that perform in demanding environments.</strong>
+    <div className="space-y-32">
+      {/* Intro Section */}
+      <section className="container mx-auto px-4">
+        <div className="grid lg:grid-cols-2 gap-20 items-center">
+          <div>
+            <h2 className="text-xs font-bold uppercase tracking-[0.3em] text-primary mb-6">Our Mission</h2>
+            <h3 className="text-4xl md:text-6xl font-extrabold text-spacecadet tracking-tighter leading-tight mb-8">
+              Reliable Industrial Scale<span className="text-primary">.</span>
+            </h3>
+            <div className="space-y-6 text-lg text-slate-text leading-relaxed opacity-80">
+              <p>
+                Mantriq Industrial provides precision manufacturing services for North American OEMs who require volume, consistency, and a simplified supply chain.
               </p>
-              
-              <p className="animate-fade-in stagger-2 t-fade ease-lift">
-                Many of these industries require specialist components that perform in demanding environments. 
-                We understand the critical nature of precision manufacturing and the importance of reliable, 
-                high-quality parts in your operations.
-              </p>
-              
-              <p className="animate-fade-in stagger-3 t-fade ease-lift">
-                Mantriq Industrial is a Canadian-owned business. Our commitment to investing in the best technology, 
-                manufacturing quality products, employing knowledgeable people, and insisting on high levels of 
-                customer service forms the four pillars of our success.
+              <p>
+                Founded in Toronto, we bridge the gap between global manufacturing scale and local accountability. We don't just supply parts; we supply predictability.
               </p>
             </div>
-
-            <Button 
-              size="lg" 
-              className="bg-primary hover:bg-primary/90 text-primary-foreground hover-lift micro-lift hover-glow ease-lift t-lift animate-scale-in stagger-4"
-            >
-              Learn More About Us
-            </Button>
           </div>
-
-          {/* Right Content - Four Pillars */}
-            <div className="animate-slide-in-right">
-              <h3 className="text-xl sm:text-2xl font-bold text-foreground mb-8 text-center stagger-0 t-lift ease-lift">
-                Four Pillars to Our Success
-              </h3>
-              
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
-                {pillars.map((pillar, index) => (
-                  <Card 
-                    key={index} 
-                    className={cn(`glass-strong hover-lift hover-glow hover-scale animate-scale-in ease-lift stagger-${index + 1}`)}
-                  >
-                    <CardContent className="p-4 sm:p-6 text-center">
-                      <div className="w-12 h-12 sm:w-16 sm:h-16 bg-primary/10 rounded-full flex items-center justify-center mx-auto mb-4 micro-lift hover-scale t-lift animate-pulse-glow">
-                        <div className="text-primary">
-                          {pillar.icon}
-                        </div>
-                      </div>
-                      <h4 className="font-bold text-foreground mb-2">
-                        {pillar.title}
-                      </h4>
-                      <p className="text-sm text-muted-foreground">
-                        {pillar.description}
-                      </p>
-                    </CardContent>
-                  </Card>
-                ))}
+          <div className="grid grid-cols-2 gap-6">
+            {pillars.map((pill, i) => (
+              <div key={i} className="p-8 bg-polarice/30 rounded-[32px] border border-border group hover:bg-white hover:shadow-2xl transition-all duration-500">
+                <pill.icon className="w-8 h-8 text-primary mb-6 group-hover:scale-110 transition-transform" />
+                <h4 className="font-bold text-spacecadet text-sm mb-2">{pill.title}</h4>
+                <p className="text-slate-text text-xs leading-relaxed opacity-70">{pill.description}</p>
               </div>
-            </div>
-        </div>
-      </div>
-
-      {/* Team Section - Full width below */}
-      <div className="mt-16 px-4">
-        <div className="container mx-auto">
-          <h3 className="text-xl sm:text-2xl font-bold text-foreground mb-8 text-center stagger-5 t-lift ease-lift">
-            Our Team
-          </h3>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-4xl mx-auto">
-            <Card className="hover-lift hover-glow hover-scale animate-scale-in ease-lift stagger-6">
-              <CardContent className="p-4 sm:p-6 text-center">
-                <div className="w-16 h-16 sm:w-20 sm:h-20 rounded-full bg-primary/10 flex items-center justify-center mx-auto mb-4 micro-lift hover-scale t-lift">
-                  <div className="text-primary font-bold text-lg sm:text-xl">HA</div>
-                </div>
-                <h4 className="font-bold text-foreground mb-2">Hemish Ahuja</h4>
-                <p className="text-sm text-muted-foreground mb-2">Founder and CTO</p>
-                <p className="text-xs sm:text-sm text-muted-foreground">Hemish Ahuja founded Mantriq Industrial to deliver innovative precision manufacturing solutions backed by cutting-edge technology.</p>
-              </CardContent>
-            </Card>
-            <Card className="hover-lift hover-glow hover-scale animate-scale-in ease-lift stagger-7">
-              <CardContent className="p-4 sm:p-6 text-center">
-                <div className="w-16 h-16 sm:w-20 sm:h-20 rounded-full bg-primary/10 flex items-center justify-center mx-auto mb-4 micro-lift hover-scale t-lift">
-                  <div className="text-primary font-bold text-lg sm:text-xl">HL</div>
-                </div>
-                <h4 className="font-bold text-foreground mb-2">Himanshu Loomba</h4>
-                <p className="text-sm text-muted-foreground mb-2">Founding Chief Engineer</p>
-                <p className="text-xs sm:text-sm text-muted-foreground">Himanshu Loomba brings over 10 years of expertise in precision machining, leading our engineering team with innovative problem-solving.</p>
-              </CardContent>
-            </Card>
+            ))}
           </div>
         </div>
-      </div>
+      </section>
 
-    </section>
+      {/* Leadership Section */}
+      <section className="container mx-auto px-4">
+        <div className="text-center mb-16">
+          <h2 className="text-3xl md:text-5xl font-extrabold text-spacecadet tracking-tighter mb-4">Leadership Team</h2>
+          <p className="text-slate-text opacity-60 uppercase text-[10px] font-black tracking-[0.4em]">Engineering Excellence</p>
+        </div>
+
+        <div className="grid md:grid-cols-2 gap-10 max-w-5xl mx-auto">
+          {[
+            { name: "Hemish Ahuja", role: "Founder & Technical Director", initial: "HA", bio: "Hemish Ahuja leads Mantriq with a vision to modernize the industrial procurement landscape through technical innovation." },
+            { name: "Himanshu Loomba", role: "Chief Manufacturing Engineer", initial: "HL", bio: "Himanshu brings over a decade of deep expertise in precision machining and high-output manufacturing logistics." }
+          ].map((member, i) => (
+            <div key={i} className="bg-spacecadet p-12 rounded-[48px] text-white flex flex-col items-start group hover:bg-primary transition-colors duration-500">
+              <div className="w-16 h-16 bg-white/20 rounded-2xl flex items-center justify-center mb-8 border border-white/20 text-xl font-black text-white group-hover:bg-white group-hover:text-primary transition-all">
+                {member.initial}
+              </div>
+              <h4 className="text-2xl font-extrabold mb-2 tracking-tight">{member.name}</h4>
+              <p className="text-accent text-[10px] font-black uppercase tracking-widest mb-6">{member.role}</p>
+              <p className="text-white/80 text-sm leading-relaxed transition-colors">
+                {member.bio}
+              </p>
+            </div>
+          ))}
+        </div>
+      </section>
+    </div>
   );
 };
 
