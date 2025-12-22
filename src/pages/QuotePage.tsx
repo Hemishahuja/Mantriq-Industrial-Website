@@ -105,7 +105,7 @@ export default function QuotePage() {
                   <div className="grid grid-cols-1 gap-4 pt-4 border-t border-white/10">
                     <div>
                       <p className="text-[10px] uppercase tracking-widest opacity-50 font-bold mb-1">Direct Line</p>
-                      <p className="text-sm font-bold">+1 (555) 123-4567</p>
+                      <p className="text-sm font-bold">+1 647 547 6855</p>
                     </div>
                     <div>
                       <p className="text-[10px] uppercase tracking-widest opacity-50 font-bold mb-1">Email Desk</p>

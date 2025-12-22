@@ -46,7 +46,7 @@ const Header = () => {
       {/* Main Navigation */}
       <div className={cn(
         "transition-all duration-300 border-b",
-        scrolled
+        scrolled || location.pathname !== "/"
           ? "bg-white/95 backdrop-blur-md py-6 border-border shadow-sm"
           : "bg-transparent py-6 border-transparent"
       )}>
