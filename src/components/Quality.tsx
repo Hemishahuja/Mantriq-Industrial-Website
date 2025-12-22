@@ -1,102 +1,66 @@
-import { Button } from "@/components/ui/button";
-import { Card, CardContent } from "@/components/ui/card";
-import { Shield, Eye, Award, Users } from "lucide-react";
-import { cn } from "@/lib/utils";
+import { Shield, Eye, Award, CheckCircle2 } from "lucide-react";
 
 const Quality = () => {
-  const qualityFeatures = [
+  const certifications = [
+    { title: "ISO 9001:2015", desc: "Quality Management System" },
+    { title: "UKAS Standards", desc: "Accredited Supply Network" }
+  ];
+
+  const inspectionTech = [
     {
-      icon: <Shield className="w-8 h-8" />,
-      title: "Rigorous Standards",
-      description: "All aspects of our business managed to the highest quality standards with full traceability"
+      icon: Eye,
+      title: "2.5D Vision Systems",
+      description: "Automated optical inspection for high-precision geometries and surface finish verification."
     },
     {
-      icon: <Eye className="w-8 h-8" />,
-      title: "Advanced Inspection",
-      description: "State-of-the-art inspection facilities including CMM, digital gauges, and shadowgraph equipment"
+      icon: Shield,
+      title: "CMM Verification",
+      description: "Coordinate Measuring Machines for complex prismatic part inspections and tolerance logging."
     },
     {
-      icon: <Award className="w-8 h-8" />,
-      title: "Continuous Improvement", 
-      description: "Procedures and processes continually reviewed and improved for superior service delivery"
-    },
-    {
-      icon: <Users className="w-8 h-8" />,
-      title: "Customer Visits",
-      description: "We welcome customers to visit our facility to inspect our capabilities firsthand"
+      icon: Award,
+      title: "Process Traceability",
+      description: "Digital lot tracking from raw material intake to final delivery at your dock."
     }
   ];
 
   return (
-    <section id="quality" className="py-20 bg-background">
-      <div className="container mx-auto px-4">
-        <div className="grid lg:grid-cols-2 gap-16 items-center">
-          {/* Left Content */}
-          <div className="animate-slide-in-left">
-            <h2 className="text-4xl md:text-5xl font-bold text-foreground mb-6">
-              Quality Assurance
-            </h2>
-            
-            <div className="text-lg text-muted-foreground mb-8 space-y-4">
-              <p className="font-semibold text-foreground animate-fade-in stagger-1 t-fade ease-lift">
-                <strong>Mantriq Industrial has built an invaluable reputation for quality and service. 
-                We provide superior service by managing all aspects of our business to rigorous standards 
-                and maintain full traceability throughout our management systems.</strong>
-              </p>
-              
-              <p className="animate-fade-in stagger-2 t-fade ease-lift">
-                Quality is never compromised, and our procedures and processes are continually reviewed 
-                and improved to ensure that our customers receive products and services to the highest standard.
-              </p>
-              
-              <p className="animate-fade-in stagger-3 t-fade ease-lift">
-                Our impressive inspection facilities include high-quality digital and conventional gauges 
-                and instruments, Coordinate Measuring Machines (CMM), and Shadowgraph equipment for 
-                comprehensive quality verification.
-              </p>
-              
-              <p className="animate-fade-in stagger-4 t-fade ease-lift">
-                We welcome our customers to visit our manufacturing facility to inspect our capabilities 
-                for themselves and witness our commitment to quality firsthand.
-              </p>
-            </div>
-
-            <Button 
-              size="lg" 
-              className="bg-primary hover:bg-primary/90 text-primary-foreground hover-lift micro-lift hover-glow ease-lift t-lift animate-scale-in stagger-5"
-            >
-              Learn More About Our Quality Process
-            </Button>
+    <div className="space-y-32">
+      {/* Certifications Strip */}
+      <section className="bg-spacecadet py-16">
+        <div className="container mx-auto px-4">
+          <div className="flex flex-col md:flex-row justify-center items-center gap-12 md:gap-32">
+            {certifications.map((cert, i) => (
+              <div key={i} className="text-center md:text-left border-l border-white/10 pl-8">
+                <h4 className="text-accent font-black text-2xl mb-2">{cert.title}</h4>
+                <p className="text-white/50 text-xs uppercase tracking-widest font-bold">{cert.desc}</p>
+              </div>
+            ))}
           </div>
+        </div>
+      </section>
 
-          {/* Right Content - Quality Features */}
-            <div className="animate-slide-in-right">
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
-                {qualityFeatures.map((feature, index) => (
-                  <Card 
-                    key={index} 
-                    className={cn(`glass-strong hover-lift hover-glow hover-scale animate-scale-in ease-lift stagger-${index + 1}`)}
-                  >
-                    <CardContent className="p-6 text-center">
-                      <div className="w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center mx-auto mb-4 micro-lift hover-scale t-lift animate-pulse-glow">
-                        <div className="text-primary">
-                          {feature.icon}
-                        </div>
-                      </div>
-                      <h4 className="font-bold text-foreground mb-3">
-                        {feature.title}
-                      </h4>
-                      <p className="text-sm text-muted-foreground">
-                        {feature.description}
-                      </p>
-                    </CardContent>
-                  </Card>
-                ))}
+      {/* Advanced Inspection Grid */}
+      <section className="container mx-auto px-4">
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-10">
+          {inspectionTech.map((tech, i) => (
+            <div key={i} className="bg-polarice/30 p-12 rounded-[40px] border border-border flex flex-col items-start hover:bg-white hover:shadow-2xl transition-all duration-500 group">
+              <div className="w-16 h-16 bg-white rounded-2xl flex items-center justify-center mb-10 border border-border group-hover:bg-primary transition-colors duration-500">
+                <tech.icon className="w-8 h-8 text-primary group-hover:text-white transition-colors duration-500" />
+              </div>
+              <h3 className="text-2xl font-extrabold text-spacecadet mb-6 tracking-tight">{tech.title}</h3>
+              <p className="text-slate-text leading-relaxed opacity-80 mb-8">{tech.description}</p>
+              <div className="mt-auto">
+                <span className="flex items-center text-xs font-black uppercase tracking-widest text-primary">
+                  <CheckCircle2 className="w-4 h-4 mr-2 text-accent" />
+                  100% Inspection Rate
+                </span>
               </div>
             </div>
+          ))}
         </div>
-      </div>
-    </section>
+      </section>
+    </div>
   );
 };
 

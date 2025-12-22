@@ -12,7 +12,6 @@ const IndustriesPage = lazy(() => import("./pages/IndustriesPage"));
 const CapabilitiesPage = lazy(() => import("./pages/CapabilitiesPage"));
 const QualityPage = lazy(() => import("./pages/QualityPage"));
 const MaterialsPage = lazy(() => import("./pages/MaterialsPage"));
-const ContactPage = lazy(() => import("./pages/ContactPage"));
 const EquipmentPage = lazy(() => import("./pages/EquipmentPage"));
 const CaseStudiesPage = lazy(() => import("./pages/CaseStudiesPage"));
 const CostAdvantagePage = lazy(() => import("./pages/CostAdvantagePage"));
@@ -21,6 +20,8 @@ const BlogPage = lazy(() => import("./pages/BlogPage"));
 const BlogPostPage = lazy(() => import("./pages/BlogPostPage"));
 const QuotePage = lazy(() => import("./pages/QuotePage"));
 const ThankYouPage = lazy(() => import("./pages/ThankYouPage"));
+const PrivacyPolicy = lazy(() => import("./pages/PrivacyPolicy"));
+const TermsOfService = lazy(() => import("./pages/TermsOfService"));
 const NotFound = lazy(() => import("./pages/NotFound"));
 
 const queryClient = new QueryClient();
@@ -39,8 +40,7 @@ const App = () => (
               <Route path="/industries" element={<IndustriesPage />} />
               <Route path="/capabilities" element={<CapabilitiesPage />} />
               <Route path="/quality" element={<QualityPage />} />
-              <Route path="/materials" element={<MaterialsPage />} />
-              <Route path="/contact" element={<ContactPage />} />
+              <Route path="/materials" element={<CapabilitiesPage />} />
               <Route path="/equipment" element={<EquipmentPage />} />
               <Route path="/case-studies" element={<CaseStudiesPage />} />
               <Route path="/cost-advantage" element={<CostAdvantagePage />} />
@@ -49,6 +49,8 @@ const App = () => (
               <Route path="/blog/:slug" element={<BlogPostPage />} />
               <Route path="/quote" element={<QuotePage />} />
               <Route path="/thank-you" element={<ThankYouPage />} />
+              <Route path="/privacy" element={<PrivacyPolicy />} />
+              <Route path="/terms" element={<TermsOfService />} />
               <Route path="*" element={<NotFound />} />
             </Routes>
           </Suspense>

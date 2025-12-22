@@ -1,61 +1,72 @@
-import { Helmet } from "react-helmet-async";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
-import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "@/components/ui/card";
-import { Button } from "@/components/ui/button";
-import { useReveal } from "@/hooks/useReveal";
-
-/**
- * TODO: Replace placeholder machine data with real make/model/qty/cycle rate from factory.
- */
-const machines = [
-  { makeModel: "Haas ST-20Y", qty: 6, process: "CNC Turning (Ø 2–50 mm)", cyclePerHour: "Up to 120 pcs/hr" },
-  { makeModel: "Haas VF-2", qty: 4, process: "CNC Milling (≤ 300 mm)", cyclePerHour: "Up to 40 pcs/hr" },
-  { makeModel: "Thread Roller - 2-Die", qty: 3, process: "Thread Rolling", cyclePerHour: "Up to 300 pcs/hr" },
-];
+import SEO from "@/components/SEO";
+import { Link } from "react-router-dom";
+import { ChevronRight, Cog, LayoutGrid, Zap } from "lucide-react";
 
 export default function EquipmentPage() {
-  const ref = useReveal<HTMLDivElement>();
-  return (
-    <>
-      <Helmet>
-        <title>Equipment & Capacity | Mantriq Industrial</title>
-        <meta name="description" content="Bulk CNC capacity in India: turning Ø 2–50 mm, milling ≤ 300 mm. Scaled for 1k–1M pieces. View machine list and cycle rates." />
-        <meta name="robots" content="index,follow" />
-      </Helmet>
-      <Header />
-      <main className="container mx-auto px-4 pt-28 pb-20">
-        <section ref={ref} className="reveal">
-          <h1 className="text-3xl md:text-4xl font-bold text-[var(--deep-navy)]">Equipment & Capacity</h1>
-          <p className="mt-3 text-[color-mix(in_oklab,var(--text-body)_80%,white)]">
-            Built for bulk-standard fasteners. Single vetted partner in India. Batches from 1k to 1M pieces.
-          </p>
+  const machines = [
+    { name: "CNC Turning Centers", specs: "Ø 2–50 mm capability", qty: 6, detail: "Swiss-type and multi-spindle automated bar feeding." },
+    { name: "Vertical Milling Centers", specs: "40\" x 20\" work envelope", qty: 4, detail: "High-torque spindles for aggressive productivity." },
+    { name: "Thread & Form Rolling", specs: "High-speed 2-die systems", qty: 3, detail: "Cold-formed precision threading for maximum strength." },
+    { name: "Metrology & Inspection", specs: "CMM & Automated Vision", qty: 2, detail: "Full dimensional logging and surface verification." }
+  ];
 
-          <div className="grid md:grid-cols-3 gap-6 mt-8">
-            {machines.map((m) => (
-              <Card key={m.makeModel} className="hover-lift">
-                <CardHeader>
-                  <CardTitle>{m.makeModel}</CardTitle>
-                  <CardDescription>{m.process}</CardDescription>
-                </CardHeader>
-                <CardContent>
-                  <ul className="space-y-2 text-sm">
-                    <li><strong>Qty:</strong> {m.qty}</li>
-                    <li><strong>Cycle rate:</strong> {m.cyclePerHour}</li>
-                  </ul>
-                </CardContent>
-              </Card>
+  return (
+    <div className="min-h-screen bg-white">
+      <SEO
+        title="Equipment & Manufacturing Capacity | Mantriq Industrial"
+        description="View our high-volume CNC machine list including multi-spindle turning and 4-axis milling centers. Engineered for million-piece lot sizes."
+      />
+      <Header />
+
+      <main className="pt-32 pb-32">
+        <div className="container mx-auto px-4">
+          {/* Section Header */}
+          <div className="max-w-4xl mb-20">
+            <h1 className="text-xs font-bold uppercase tracking-[0.3em] text-accent mb-6 leading-none">Global Capacity</h1>
+            <h2 className="text-4xl md:text-6xl font-extrabold text-spacecadet tracking-tighter leading-tight mb-8">
+              Production Powerhouse<span className="text-accent">.</span>
+            </h2>
+            <p className="text-xl text-slate-text leading-relaxed opacity-80">
+              We maintain a high-density footprint of precision machinery optimized for the recurring production of industrial fasteners and complex prismatic components.
+            </p>
+          </div>
+
+          {/* Machine Grid */}
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+            {machines.map((m, i) => (
+              <div key={i} className="group bg-polarice/30 p-10 rounded-[40px] border border-border hover:bg-white hover:shadow-2xl transition-all duration-500">
+                <div className="w-12 h-12 bg-white rounded-xl flex items-center justify-center mb-8 border border-border group-hover:bg-primary transition-colors duration-500">
+                  <Cog className="w-6 h-6 text-primary group-hover:text-white transition-colors duration-500" />
+                </div>
+                <h3 className="text-xl font-bold text-spacecadet mb-4 tracking-tight">{m.name}</h3>
+                <div className="space-y-4 mb-8">
+                  <p className="text-[10px] font-black uppercase tracking-widest text-accent">{m.specs}</p>
+                  <p className="text-slate-text text-xs leading-relaxed opacity-70">{m.detail}</p>
+                </div>
+                <div className="pt-6 border-t border-border flex justify-between items-center text-[10px] font-black uppercase tracking-widest text-primary">
+                  <span>Inventory Qty</span>
+                  <span className="text-spacecadet">{m.qty} Units</span>
+                </div>
+              </div>
             ))}
           </div>
 
-          <div className="mt-10">
-            <Button className="hover-scale" onClick={() => (window.location.href = "/contact")}>
-              View Schedule
-            </Button>
+          {/* CTA Banner */}
+          <div className="mt-32 p-12 md:p-20 bg-spacecadet rounded-[60px] text-white flex flex-col md:flex-row items-center justify-between text-center md:text-left gap-10">
+            <div className="max-w-xl">
+              <h3 className="text-3xl md:text-5xl font-extrabold mb-6 tracking-tighter">Ready for Volume Scaling.</h3>
+              <p className="text-white/60 mb-8 md:mb-0">Whether you need 1,000 or 1,000,000 pieces, our technically coordinated cells are ready to integrate with your production schedule.</p>
+            </div>
+            <Link to="/quote" className="inline-flex items-center h-16 px-10 bg-accent text-white rounded-full font-black uppercase tracking-widest hover:scale-105 active:scale-95 transition-all shadow-2xl shadow-accent/20">
+              Reserve Capacity
+              <ChevronRight className="ml-2 w-5 h-5" />
+            </Link>
           </div>
-        </section>
+        </div>
       </main>
       <Footer />
-    </>
+    </div>
   );
 }

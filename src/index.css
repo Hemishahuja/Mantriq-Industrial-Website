@@ -1,163 +1,46 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Outfit:wght@600;700;800&display=swap');
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
-/* Definition of the design system. All colors, gradients, fonts, etc should be defined here. 
-All colors MUST be HSL.
-*/
+:root {
+  /* Premium Industrial Palette (HSL) */
+  --spacecadet: 221 39% 11%;
+  --oceansteel: 221 83% 45%;
+  /* Darker Blue */
+  --polarice: 210 20% 98%;
+  /* Very Muted Sky */
+  --safetyorange: 24 95% 40%;
+  /* Darker Orange for contrast on white */
+  --slate-text: 215 16% 35%;
+  /* Darker text */
 
-/* Mantriq Four-Blues + White palette */
-:root{
-  /* Core brand palette */
-  --spacecadet:#111827;  /* main background, header, footer, strong text on light */
-  --oceansteel:#1E40AF;  /* primary accent: buttons, links, key icons */
-  --polarice:#EFF6FF;    /* soft section backgrounds / cards */
-  --page-bg:#FFFFFF;     /* base background */
-  --text-body:#111827;   /* high-contrast body text */
+  /* Derived Design Tokens */
+  --background: 0 0% 100%;
+  --foreground: 222 47% 11%;
 
-  /* Derived states */
-  --oceansteel-hover: color-mix(in oklab, var(--oceansteel) 115%, white);
-  --oceansteel-active: color-mix(in oklab, var(--oceansteel) 90%, black);
-  --shadow-ink: 0 10px 30px rgba(15,23,42,0.14);
-  --overlay-hero: rgba(15,23,42,0.55);
-}
+  --card: 0 0% 100%;
+  --card-foreground: 222 47% 11%;
 
-@layer base {
-  :root {
-    --background: 210 12% 97%;
-    --foreground: 240 24% 15%;
+  --primary: 221 83% 53%;
+  --primary-foreground: 210 40% 98%;
 
-    --card: 210 12% 97%;
-    --card-foreground: 240 24% 15%;
+  --secondary: 210 100% 98%;
+  --secondary-foreground: 222 47% 11%;
 
-    --popover: 210 12% 97%;
-    --popover-foreground: 240 24% 15%;
+  --accent: 24 95% 53%;
+  --accent-foreground: 0 0% 100%;
 
-    /* Royal Blue primary color */
-    --primary: 221 100% 50%;
-    --primary-foreground: 210 12% 97%;
+  --muted: 210 40% 96.1%;
+  --muted-foreground: 215.4 16.3% 46.9%;
 
-    --secondary: 184 100% 50%;
-    --secondary-foreground: 240 24% 15%;
+  --border: 214.3 31.8% 91.4%;
+  --input: 214.3 31.8% 91.4%;
+  --ring: 221 83% 53%;
 
-    --muted: 210 12% 85%;
-    --muted-foreground: 240 24% 45%;
-
-    /* Replace accent system with oceansteel */
-    --accent: 197 57% 27%; /* approx #1E586B in HSL for Tailwind tokens */
-    --accent-foreground: 210 12% 97%;
-
-    --destructive: 0 84% 60%;
-    --destructive-foreground: 210 40% 98%;
-
-    --border: 210 12% 85%;
-    --input: 210 12% 85%;
-    --ring: 221 100% 50%;
-
-    /* Custom industrial design tokens */
-    --industrial-dark: 240 24% 15%;
-    --industrial-gray: 210 12% 65%;
-    --industrial-light: 210 12% 85%;
-    --canadian-red: 0 84% 60%;
-    --highlight-orange: 25 100% 50%;
-    
-    /* Gradients */
-    --gradient-hero: linear-gradient(135deg, hsl(240 24% 15%), hsl(240 24% 22%));
-    --gradient-accent: linear-gradient(135deg, hsl(221 100% 50%), hsl(221 100% 60%));
-    
-    /* Shadows */
-    --shadow-industrial: 0 10px 30px -10px hsl(240 24% 15% / 0.3);
-    --shadow-card: 0 4px 20px -4px hsl(240 24% 15% / 0.1);
-    
-    /* Glass Effects */
-    --glass-bg: hsla(var(--background), 0.05);
-    --glass-bg-strong: hsla(var(--background), 0.1);
-    --glass-border: hsla(var(--border), 0.15);
-    --glass-backdrop: blur(20px);
-    --glass-shadow: 0 8px 32px hsla(var(--primary), 0.1);
-    --glass-hover: hsla(var(--primary), 0.05);
-    
-    /* Background Patterns */
-    --gradient-mesh: radial-gradient(circle at 20% 50%, hsla(var(--primary), 0.08) 0%, transparent 60%),
-                     radial-gradient(circle at 80% 20%, hsla(var(--secondary), 0.06) 0%, transparent 60%),
-                     radial-gradient(circle at 40% 80%, hsla(var(--accent), 0.05) 0%, transparent 60%),
-                     linear-gradient(135deg, hsla(var(--background), 0.95) 0%, hsla(var(--background), 0.8) 100%);
-
-    --radius: 0.5rem;
-
-    --sidebar-background: 0 0% 98%;
-
-    --sidebar-foreground: 240 5.3% 26.1%;
-
-    --sidebar-primary: 240 5.9% 10%;
-
-    --sidebar-primary-foreground: 0 0% 98%;
-
-    --sidebar-accent: 240 4.8% 95.9%;
-
-    --sidebar-accent-foreground: 240 5.9% 10%;
-
-    --sidebar-border: 220 13% 91%;
-
-    --sidebar-ring: 217.2 91.2% 59.8%;
-  }
-
-  .dark {
-    --background: 240 24% 15%;
-    --foreground: 210 12% 97%;
-
-    --card: 240 24% 18%;
-    --card-foreground: 210 12% 97%;
-
-    --popover: 240 24% 18%;
-    --popover-foreground: 210 12% 97%;
-
-    --primary: 221 100% 55%;
-    --primary-foreground: 240 24% 15%;
-
-    --secondary: 184 100% 55%;
-    --secondary-foreground: 240 24% 15%;
-
-    --muted: 240 24% 25%;
-    --muted-foreground: 210 12% 75%;
-
-    --accent: 251 73% 60%;
-    --accent-foreground: 240 24% 15%;
-
-    --destructive: 0 84% 65%;
-    --destructive-foreground: 240 24% 15%;
-
-    --border: 240 24% 25%;
-    --input: 240 24% 25%;
-    --ring: 221 100% 55%;
-    
-    --industrial-dark: 240 24% 12%;
-    --industrial-gray: 210 12% 75%;
-    --industrial-light: 240 24% 25%;
-    
-    /* Glass Effects Dark Mode */
-    --glass-bg: hsla(var(--background), 0.1);
-    --glass-bg-strong: hsla(var(--background), 0.15);
-    --glass-border: hsla(var(--border), 0.2);
-    --glass-backdrop: blur(20px);
-    --glass-shadow: 0 8px 32px hsla(var(--primary), 0.15);
-    --glass-hover: hsla(var(--primary), 0.08);
-    
-    /* Background Patterns Dark Mode */
-    --gradient-mesh: radial-gradient(circle at 20% 50%, hsla(var(--primary), 0.12) 0%, transparent 60%),
-                     radial-gradient(circle at 80% 20%, hsla(var(--secondary), 0.1) 0%, transparent 60%),
-                     radial-gradient(circle at 40% 80%, hsla(var(--accent), 0.08) 0%, transparent 60%),
-                     linear-gradient(135deg, hsla(var(--background), 0.9) 0%, hsla(var(--background), 0.7) 100%);
-                     
-    --sidebar-background: 240 5.9% 10%;
-    --sidebar-foreground: 240 4.8% 95.9%;
-    --sidebar-primary: 224.3 76.3% 48%;
-    --sidebar-primary-foreground: 0 0% 100%;
-    --sidebar-accent: 240 3.7% 15.9%;
-    --sidebar-accent-foreground: 240 4.8% 95.9%;
-    --sidebar-border: 240 3.7% 15.9%;
-    --sidebar-ring: 217.2 91.2% 59.8%;
-  }
+  --radius: 0.75rem;
+  /* Slightly softer corners for premium feel */
 }
 
 @layer base {
@@ -166,161 +49,28 @@ All colors MUST be HSL.
   }
 
   body {
-    background: var(--page-bg);
-    color: var(--text-body);
+    @apply bg-background text-foreground;
     font-feature-settings: "rlig" 1, "calt" 1;
-    min-height: 100vh;
+    font-family: 'Inter', sans-serif;
   }
 
-  /* Glass morphism utility classes */
-  .glass {
-    background: var(--glass-bg);
-    backdrop-filter: var(--glass-backdrop);
-    -webkit-backdrop-filter: var(--glass-backdrop);
-    border: 1px solid var(--glass-border);
-    box-shadow: var(--glass-shadow);
-  }
-
-  .glass-strong {
-    background: var(--glass-bg-strong);
-    backdrop-filter: var(--glass-backdrop);
-    -webkit-backdrop-filter: var(--glass-backdrop);
-    border: 1px solid var(--glass-border);
-    box-shadow: var(--glass-shadow);
-  }
-
-  .glass-hover:hover {
-    background: var(--glass-hover);
-    transform: translateY(-2px);
-    box-shadow: 0 12px 40px hsla(var(--primary), 0.15);
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    @apply font-display tracking-tight text-industrial-dark;
   }
 }
 
-@layer utilities {
-  /* Motion tokens - refined easing for smoother, more natural feel */
-  .ease-hover { transition-timing-function: cubic-bezier(0.34, 0.04, 0.5, 1.2); }
-  .ease-lift { transition-timing-function: cubic-bezier(0.34, 0.04, 0.5, 1.2); }
-  .t-hover { transition-duration: 150ms; }
-  .t-lift { transition-duration: 180ms; }
-  .t-fade { transition-duration: 400ms; }
-
-  /* GPU-friendly helpers */
-  .will-transform { will-change: transform; transform: translateZ(0); }
-  .will-opacity { will-change: opacity; transform: translateZ(0); }
-
-  /* Reveal on scroll (opacity + small translate only) */
-  .reveal {
-    opacity: 0;
-    transform: translateY(8px);
-    transition-property: opacity, transform;
-    transition-duration: 400ms;
-    transition-timing-function: ease-out;
-  }
-  .reveal.is-visible {
-    opacity: 1;
-    transform: translateY(0);
-  }
-
-  /* Button hover pulse: scale only + mint overlay via outline ring (no shadow anim) */
-  .hover-scale {
-    transition-property: transform;
-    transition-duration: 150ms;
-    transition-timing-function: cubic-bezier(0.25,0.8,0.5,1);
-  }
-  .hover-scale:hover { transform: scale(1.02); }
-
-  /* Card lift: translate only; keep shadow static (no animated box-shadow) */
-  .hover-lift {
-    transition-property: transform;
-    transition-duration: 180ms;
-    transition-timing-function: cubic-bezier(0.2,0.75,0.4,1);
-  }
-  .hover-lift:hover { transform: translateY(-4px); }
-
-  /* Hover outline cue using oceansteel */
-  .hover-glow {
-    transition: opacity 150ms ease-out;
-    outline: 0;
-    position: relative;
-  }
-  .hover-glow::after {
-    content: "";
-    position: absolute; inset: -2px;
-    border-radius: inherit;
-    pointer-events: none;
-    opacity: 0;
-    background: color-mix(in oklab, var(--oceansteel) 30%, transparent);
-  }
-  .hover-glow:hover::after { opacity: 1; }
-
-  /* Micro-lift for subtle hovers on small elements */
-  .micro-lift {
-    transition: transform 0.15s cubic-bezier(0.34, 0.04, 0.5, 1.2);
-  }
-  .micro-lift:hover {
-    transform: translateY(-2px);
-  }
-
-  /* Ripple effect setup */
-  .ripple {
-    position: relative;
-    overflow: hidden;
-  }
-  .ripple:active::after {
-    content: '';
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    width: 5px;
-    height: 5px;
-    border-radius: 50%;
-    background: rgba(255, 255, 255, 0.6);
-    transform: translate(-50%, -50%) scale(0);
-    transform-origin: center;
-    animation: ripple 0.6s cubic-bezier(0.4, 0, 0.2, 1);
-  }
-
-  /* Stagger animation delays for reveals (extend existing stagger usage) */
-  .stagger-1 { animation-delay: 0.1s; }
-  .stagger-2 { animation-delay: 0.2s; }
-  .stagger-3 { animation-delay: 0.3s; }
-  .stagger-4 { animation-delay: 0.4s; }
-  .stagger-5 { animation-delay: 0.5s; }
-}
-
-/* Respect reduced motion */
-@media (prefers-reduced-motion: reduce) {
-  .hover-scale, .hover-lift, .micro-lift, .ripple {
-    transition-duration: 0ms !important;
-    transform: none !important;
-  }
-  .reveal { opacity: 1 !important; transform: none !important; }
-  .ripple::after {
-    animation: none !important;
-  }
-  [class*="stagger-"] { animation-delay: 0s !important; }
-  * {
-    animation: none !important;
-    transition: none !important;
-  }
-}
-
+/* Animation Keyframes */
 @keyframes fadeIn {
   from {
     opacity: 0;
-    transform: translateY(20px);
+    transform: translateY(10px);
   }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
 
-@keyframes slideUp {
-  from {
-    opacity: 0;
-    transform: translateY(40px);
-  }
   to {
     opacity: 1;
     transform: translateY(0);
@@ -330,62 +80,45 @@ All colors MUST be HSL.
 @keyframes slideInLeft {
   from {
     opacity: 0;
-    transform: translateX(-40px);
+    transform: translateX(-20px);
   }
+
   to {
     opacity: 1;
     transform: translateX(0);
   }
 }
 
-@keyframes slideInRight {
+@keyframes slideUp {
   from {
     opacity: 0;
-    transform: translateX(40px);
+    transform: translateY(20px);
   }
+
   to {
     opacity: 1;
-    transform: translateX(0);
+    transform: translateY(0);
   }
 }
 
-@keyframes scaleIn {
-  from {
-    opacity: 0;
-    transform: scale(0.9);
-  }
-  to {
-    opacity: 1;
-    transform: scale(1);
-  }
+.animate-fade-in {
+  animation: fadeIn 0.6s ease-out forwards;
 }
 
-@keyframes float {
-  0%, 100% { transform: translateY(0px); }
-  50% { transform: translateY(-10px); }
+.animate-slide-in-left {
+  animation: slideInLeft 0.6s ease-out forwards;
 }
 
-/* Removed animated box-shadow glow to avoid repaints */
-@keyframes pulseGlow {}
-
-@keyframes bounceSubtle {
-  0%, 100% { transform: translateY(0); }
-  50% { transform: translateY(-5px); }
+.animate-slide-up {
+  animation: slideUp 0.8s ease-out forwards;
 }
 
-/* New keyframes for enhanced micro-interactions */
-@keyframes ripple {
-  0% {
-    transform: translate(-50%, -50%) scale(0);
-    opacity: 1;
+@layer utilities {
+  .hover-lift {
+    @apply transition-transform duration-300 ease-out;
   }
-  100% {
-    transform: translate(-50%, -50%) scale(4);
-    opacity: 0;
-  }
-}
 
-@keyframes subtleParallax {
-  0% { background-position: center 0%; }
-  100% { background-position: center -10px; }
+  .hover-lift:hover {
+    @apply -translate-y-1;
+  }
 }

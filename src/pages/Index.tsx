@@ -1,297 +1,188 @@
-import { Helmet } from "react-helmet-async";
-import { useState } from "react";
 import Header from "@/components/Header";
 import Hero from "@/components/Hero";
-import Footer from "@/components/Footer";
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import TrustSection from "@/components/TrustSection";
+import SEO from "@/components/SEO";
 import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
-import { Textarea } from "@/components/ui/textarea";
-import { useToast } from "@/hooks/use-toast";
-import { Phone, Mail, MapPin, Clock } from "lucide-react";
+import { Link } from "react-router-dom";
+import { ArrowRight, CheckCircle2, Factory, Scale, Truck } from "lucide-react";
+import Footer from "@/components/Footer";
 
-/**
- * Home page redesign:
- * - Unique layout distinct from inner pages
- * - Adds KPI strip, cost advantage explainer, process timeline, and social proof
- * - All CTAs guide to /quote
- */
-export default function Index() {
-    const kpis = [
-      { label: "MOQ per line", value: "High volume" },
-      { label: "Lead time", value: "7-8 weeks" },
-      { label: "Materials", value: "SS, Brass, MS, Aluminum, Copper, Nylon" },
-      { label: "Tolerance", value: "Industrial standard" },
-    ];
-
-  const steps = [
-    { t: "01 — RFQ", d: "Share drawings, material, qty, finish, and delivery city." },
-    { t: "02 — DFM + Quote", d: "We confirm manufacturability and landed cost." },
-    { t: "03 — Production", d: "In‑process checks; 2.5D vision inspections." },
-    { t: "04 — Shipment", d: "Consolidated routing with predictable ETAs." },
-  ];
-
-  const logos = [
-    "Automotive", "Construction", "Marine", "Aerospace"
-  ];
-
-  const { toast } = useToast();
-
+const Index = () => {
   return (
-    <>
-<Helmet>
-  <title>Bulk CNC Machined Components | Landed Cost Advantage | Mantriq</title>
-  <meta
-    name="description"
-    content="Bulk CNC turned and milled components with standard-tolerance, repeatable quality, clear landed costs, and responsive technical support for OEMs and distributors."
-  />
-  <meta name="robots" content="index,follow" />
-  <link rel="canonical" href="https://mantriqindustrial.ca/" />
-</Helmet>
+    <div className="min-h-screen bg-white">
+      <SEO
+        title="High-Volume CNC Machined Components | Mantriq Industrial"
+        description="Reliable CNC turned and milled components for OEMs. Predictable landed costs, Canadian support, and high-scale fulfillment."
+      />
+
       <Header />
+
       <main>
         <Hero />
 
-        {/* KPI strip */}
-        <section className="container mx-auto px-4 -mt-8 relative z-10">
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-3">
-            {kpis.map((k) => (
-              <Card key={k.label} className="hover-lift">
-                <CardHeader className="pb-2">
-                  <CardTitle className="text-sm text-[var(--spacecadet)]">{k.label}</CardTitle>
-                </CardHeader>
-                <CardContent>
-                  <p className="text-lg font-semibold text-[var(--oceansteel)]">{k.value}</p>
-                </CardContent>
-              </Card>
-            ))}
-          </div>
-        </section>
-
-        {/* Value prop section (distinct from inner pages) */}
-        <section className="container mx-auto px-4 py-16">
-          <div className="grid md:grid-cols-2 gap-10 items-start">
-            <div>
-              <h2 className="text-3xl md:text-4xl font-bold text-[var(--spacecadet)]">Why bulk‑standard beats precision on landed cost</h2>
-              <p className="mt-4 text-[color-mix(in_oklab,var(--text-body)_85%,white)]">
-                If you don’t need ultra‑tight tolerances, you shouldn’t be paying precision‑shop rates. We specialize in repeatable,
-                standard‑tolerance parts at volume—where labor economics and shipping aggregation create real savings.
-              </p>
-              <ul className="mt-6 space-y-3 text-[var(--text-body)]">
-                <li>• Labor differential without precision premiums</li>
-                <li>• Consolidated routing for predictable ETAs</li>
-                <li>• Standardized processes for repeatability</li>
-              </ul>
-              <div className="mt-8 flex gap-3">
-                <Button asChild>
-                  <a href="/quote">Get a Quote</a>
-                </Button>
-                <Button asChild variant="outline">
-                  <a href="/cost-advantage">Compare Your Costs</a>
-                </Button>
-              </div>
-            </div>
-            <div className="grid sm:grid-cols-2 gap-4">
-              <Card className="hover-lift">
-                <CardHeader className="pb-2">
-                  <CardTitle className="text-lg">Turning</CardTitle>
-                </CardHeader>
-                <CardContent>
-                  Ø 2 - 200 mm, threads, knurling, slotting. Batch production with sample inspections.
-                </CardContent>
-              </Card>
-              <Card className="hover-lift">
-                <CardHeader className="pb-2">
-                  <CardTitle className="text-lg">Milling</CardTitle>
-                </CardHeader>
-                <CardContent>
-                  Up to 300 mm. Fixtures for repeatability. Surface finishing options.
-                </CardContent>
-              </Card>
-              <Card className="hover-lift">
-                <CardHeader className="pb-2">
-                  <CardTitle className="text-lg">Materials</CardTitle>
-                </CardHeader>
-                <CardContent>
-                  SS, Brass, MS, Aluminum, Copper, Nylon Moulding Parts. Certificates on request.
-                </CardContent>
-              </Card>
-              <Card className="hover-lift">
-                <CardHeader className="pb-2">
-                  <CardTitle className="text-lg">QA & Traceability</CardTitle>
-                </CardHeader>
-                <CardContent>
-                  In‑process checks, 2.5D vision system. ISO 9001 certified. UCAS certified clients.
-                </CardContent>
-              </Card>
-            </div>
-          </div>
-        </section>
-
-        {/* Enhanced Contact Us section */}
-        <section id="contact" className="py-20 bg-[var(--polarice)]">
+        {/* Value Proposition Strip */}
+        <section className="bg-spacecadet py-16 border-y border-white/10 mt-[-1px]">
           <div className="container mx-auto px-4">
-            {/* Header */}
-            <div className="text-center mb-16">
-              <h2 className="text-3xl md:text-4xl font-bold text-[var(--spacecadet)] mb-4">
-                Get In Touch
-              </h2>
-              <p className="text-xl text-[var(--text-body)] max-w-3xl mx-auto">
-                Ready to discuss your project? Contact our expert team for a consultation, custom quote, and response within 24 hours. Predictable costs, fast turnaround.
-              </p>
+            <div className="grid grid-cols-1 md:grid-cols-4 gap-12 text-center md:text-left">
+              <div>
+                <h4 className="text-accent font-bold uppercase tracking-widest text-[10px] mb-2 opacity-80">Process Focus</h4>
+                <p className="text-white font-display text-lg font-semibold tracking-tight">Milling & Turning</p>
+              </div>
+              <div>
+                <h4 className="text-accent font-bold uppercase tracking-widest text-[10px] mb-2 opacity-80">Local Presence</h4>
+                <p className="text-white font-display text-lg font-semibold tracking-tight">Toronto Technical Office</p>
+              </div>
+              <div>
+                <h4 className="text-accent font-bold uppercase tracking-widest text-[10px] mb-2 opacity-80">Scale Capacity</h4>
+                <p className="text-white font-display text-lg font-semibold tracking-tight">1M+ Parts / Month</p>
+              </div>
+              <div>
+                <h4 className="text-accent font-bold uppercase tracking-widest text-[10px] mb-2 opacity-80">Client Focus</h4>
+                <p className="text-white font-display text-lg font-semibold tracking-tight">OEM & Distributor Bulk</p>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <TrustSection />
+
+        {/* Core Services Preview */}
+        <section className="py-24 bg-white">
+          <div className="container mx-auto px-4">
+            <div className="flex flex-col md:flex-row items-end justify-between mb-16 gap-6">
+              <div className="max-w-xl">
+                <h2 className="text-xs font-bold uppercase tracking-widest text-primary mb-4">Precision Manufacturing</h2>
+                <h3 className="text-4xl md:text-6xl font-extrabold text-spacecadet tracking-tighter leading-tight">
+                  High-Output CNC Solutions<span className="text-accent">.</span>
+                </h3>
+              </div>
+              <Button asChild variant="link" className="text-primary font-bold group p-0 text-sm">
+                <Link to="/capabilities" className="flex items-center">
+                  View Technical Capabilities <ArrowRight className="ml-2 w-4 h-4 group-hover:translate-x-1 transition-transform" />
+                </Link>
+              </Button>
             </div>
 
-            <div className="grid lg:grid-cols-2 gap-16">
-              {/* Contact Cards */}
-              <div className="space-y-6">
-                <h3 className="text-2xl font-bold text-[var(--spacecadet)] mb-6">
-                  Quick Contact
-                </h3>
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
-                  <Card className="hover-lift hover-glow animate-fade-in stagger-1">
-                    <CardContent className="p-6">
-                      <div className="flex items-start space-x-4">
-                        <div className="w-10 h-10 bg-[var(--oceansteel)]/10 rounded-full flex items-center justify-center">
-                          <Phone className="w-5 h-5 text-[var(--oceansteel)]" />
-                        </div>
-                        <div>
-                          <h4 className="font-bold text-[var(--spacecadet)] mb-1">Phone</h4>
-                          <p className="text-[var(--text-body)] font-medium">+1 (555) 123-4567</p>
-                          <p className="text-xs text-muted-foreground">Call for immediate assistance</p>
-                        </div>
-                      </div>
-                    </CardContent>
-                  </Card>
-
-                  <Card className="hover-lift hover-glow animate-fade-in stagger-2">
-                    <CardContent className="p-6">
-                      <div className="flex items-start space-x-4">
-                        <div className="w-10 h-10 bg-[var(--oceansteel)]/10 rounded-full flex items-center justify-center">
-                          <Mail className="w-5 h-5 text-[var(--oceansteel)]" />
-                        </div>
-                        <div>
-                          <h4 className="font-bold text-[var(--spacecadet)] mb-1">Email</h4>
-                          <p className="text-[var(--text-body)] font-medium">info@mantriqindustrial.ca</p>
-                          <p className="text-xs text-muted-foreground">Send your requirements</p>
-                        </div>
-                      </div>
-                    </CardContent>
-                  </Card>
-
-                  <Card className="hover-lift hover-glow animate-fade-in stagger-3">
-                    <CardContent className="p-6">
-                      <div className="flex items-start space-x-4">
-                        <div className="w-10 h-10 bg-[var(--oceansteel)]/10 rounded-full flex items-center justify-center">
-                          <MapPin className="w-5 h-5 text-[var(--oceansteel)]" />
-                        </div>
-                        <div>
-                          <h4 className="font-bold text-[var(--spacecadet)] mb-1">Location</h4>
-                          <p className="text-[var(--text-body)] font-medium">Ontario, Canada</p>
-                          <p className="text-xs text-muted-foreground">Serving all of Canada</p>
-                        </div>
-                      </div>
-                    </CardContent>
-                  </Card>
-
-                  <Card className="hover-lift hover-glow animate-fade-in stagger-4">
-                    <CardContent className="p-6">
-                      <div className="flex items-start space-x-4">
-                        <div className="w-10 h-10 bg-[var(--oceansteel)]/10 rounded-full flex items-center justify-center">
-                          <Clock className="w-5 h-5 text-[var(--oceansteel)]" />
-                        </div>
-                        <div>
-                          <h4 className="font-bold text-[var(--spacecadet)] mb-1">Business Hours</h4>
-                          <p className="text-[var(--text-body)] font-medium">Mon-Fri: 8AM-6PM EST</p>
-                          <p className="text-xs text-muted-foreground">Emergency support available</p>
-                        </div>
-                      </div>
-                    </CardContent>
-                  </Card>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
+              <div className="group relative overflow-hidden rounded-[32px] bg-polarice p-12 hover:bg-primary transition-colors duration-500">
+                <div className="relative z-10 text-spacecadet group-hover:text-white transition-colors duration-500">
+                  <Factory className="w-12 h-12 mb-8 opacity-90" />
+                  <h4 className="text-3xl font-extrabold mb-4 tracking-tight">CNC Turning</h4>
+                  <p className="opacity-75 mb-10 max-w-sm leading-relaxed text-sm">
+                    Automated Swiss-type and multi-axis turning specialized for high-volume production of complex cylindrical components.
+                  </p>
+                  <ul className="space-y-4 font-bold text-xs uppercase tracking-widest">
+                    <li className="flex items-center"><CheckCircle2 className="w-4 h-4 mr-3 text-accent" /> Automated Production</li>
+                    <li className="flex items-center"><CheckCircle2 className="w-4 h-4 mr-3 text-accent" /> Precision Tolerances</li>
+                  </ul>
                 </div>
-
-                {/* Why Us Teaser */}
-                <Card className="bg-[var(--oceansteel)]/5 hover-glow animate-fade-in stagger-5">
-                  <CardContent className="p-6">
-                    <h4 className="font-bold text-[var(--spacecadet)] mb-3">Why Choose Mantriq?</h4>
-                    <ul className="text-[var(--text-body)] space-y-2 text-sm">
-                      <li>• Canadian-owned and operated</li>
-                      <li>• Nationwide service with predictable ETAs</li>
-                      <li>• State-of-the-art CNC equipment</li>
-                      <li>• Rigorous quality control & traceability</li>
-                      <li>• Competitive pricing for bulk-standard parts</li>
-                      <li>• Fast 4-8 week turnaround</li>
-                    </ul>
-                  </CardContent>
-                </Card>
               </div>
 
-              {/* Single primary RFQ CTA */}
-              <Card className="hover-lift animate-slide-in-right">
-                <CardContent className="p-8">
-                  <h3 className="text-2xl font-bold text-[var(--spacecadet)] mb-4">
-                    Ready for a precise landed-cost quote?
+              <div className="group relative overflow-hidden rounded-[32px] bg-polarice p-12 hover:bg-primary transition-colors duration-500">
+                <div className="relative z-10 text-spacecadet group-hover:text-white transition-colors duration-500">
+                  <Scale className="w-12 h-12 mb-8 opacity-90" />
+                  <h4 className="text-3xl font-extrabold mb-4 tracking-tight">CNC Milling</h4>
+                  <p className="opacity-75 mb-10 max-w-sm leading-relaxed text-sm">
+                    Versatile 3, 4, and 5-axis vertical and horizontal milling centers for diverse prismatic component geometries and batch runs.
+                  </p>
+                  <ul className="space-y-4 font-bold text-xs uppercase tracking-widest">
+                    <li className="flex items-center"><CheckCircle2 className="w-4 h-4 mr-3 text-accent" /> High-Speed Machining</li>
+                    <li className="flex items-center"><CheckCircle2 className="w-4 h-4 mr-3 text-accent" /> Advanced Workholding</li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* Logistics Banner */}
+        <section className="py-24">
+          <div className="container mx-auto px-4">
+            <div className="bg-spacecadet rounded-[48px] p-12 md:p-24 relative overflow-hidden">
+              <div className="relative z-10 flex flex-col lg:flex-row items-center gap-16">
+                <div className="flex-1">
+                  <div className="flex items-center space-x-3 mb-8">
+                    <Truck className="text-accent w-6 h-6" />
+                    <span className="text-[10px] font-black uppercase tracking-[0.2em] text-white/50">Logistics & Compliance</span>
+                  </div>
+                  <h3 className="text-4xl md:text-6xl font-extrabold text-white mb-8 tracking-tighter leading-[1.1]">
+                    Worldwide Fulfillment. <br />
+                    Delivered DDP Toronto.
                   </h3>
-                  <p className="text-[var(--text-body)] mb-6 text-sm">
-                    Share your drawings, batch size, and requirements via our secure RFQ form. You will get a clear, no‑surprises quotation.
+                  <p className="text-lg text-white/60 mb-12 leading-relaxed max-w-2xl">
+                    We manage the entire international supply chain. From technical coordination at the plant to customs clearance and final delivery to your facility in Ontario or the USA.
                   </p>
-                  <Button
-                    asChild
-                    size="lg"
-                    className="w-full"
-                  >
-                    <a href="/quote">Open RFQ Form</a>
-                  </Button>
-                  <p className="text-xs text-muted-foreground text-center mt-3">
-                    Prefer email? Write to{" "}
-                    <a href="mailto:info@mantriqindustrial.ca" className="text-[var(--oceansteel)] hover:underline">
-                      info@mantriqindustrial.ca
-                    </a>
-                    .
-                  </p>
-                </CardContent>
-              </Card>
+                  <div className="flex flex-wrap gap-4">
+                    <div className="bg-white/5 border border-white/10 px-6 py-3 rounded-2xl flex items-center">
+                      <span className="font-bold text-white text-sm">Landed Cost Clarity</span>
+                    </div>
+                    <div className="bg-white/5 border border-white/10 px-6 py-3 rounded-2xl flex items-center">
+                      <span className="font-bold text-white text-sm">Traceable Quality</span>
+                    </div>
+                  </div>
+                </div>
+                <div className="hidden lg:block w-1/3 aspect-square relative group">
+                  <div className="absolute inset-0 bg-accent/20 rounded-full blur-3xl opacity-20 group-hover:opacity-40 transition-opacity"></div>
+                  <img
+                    src="/brand/logistics-visual.png"
+                    alt="Mantriq Industrial Logistics - Technical Supply Chain Management"
+                    className="w-full h-full object-cover rounded-3xl relative z-10 border border-white/10 shadow-2xl"
+                  />
+                </div>
+              </div>
             </div>
           </div>
         </section>
 
-        {/* Clients Served section */}
-        <section className="container mx-auto px-4 py-12">
-          <h2 className="text-2xl md:text-3xl font-bold text-[var(--spacecadet)] mb-6 text-center">Clients Served</h2>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-            <Card className="hover-lift">
-              <CardHeader>
-                <CardTitle className="flex items-center">
-                  <MapPin className="w-5 h-5 mr-2 text-[var(--oceansteel)]" />
-                  Trusted Suppliers
-                </CardTitle>
-              </CardHeader>
-              <CardContent>
-                <p className="text-sm text-[var(--text-body)]">Our suppliers have been serving major businesses in the UK for 15 years.</p>
-              </CardContent>
-            </Card>
-            {/* Add more clients if needed */}
+        {/* Global Support / Address Section */}
+        <section className="py-24 bg-polarice/50">
+          <div className="container mx-auto px-4">
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-20 items-center">
+              <div>
+                <h2 className="text-xs font-bold uppercase tracking-widest text-primary mb-4">Technical Presence</h2>
+                <h3 className="text-4xl font-extrabold text-spacecadet mb-8 tracking-tight">Our Toronto Headquarters.</h3>
+                <p className="text-slate-text mb-10 leading-relaxed text-lg">
+                  Located in the heart of Toronto, our technical team provides responsive account management and technical review for clients across North America.
+                </p>
+                <div className="space-y-6">
+                  <div className="flex items-start space-x-4">
+                    <div className="w-10 h-10 bg-primary/10 rounded-full flex items-center justify-center shrink-0">
+                      <ArrowRight className="w-5 h-5 text-primary" />
+                    </div>
+                    <div>
+                      <p className="font-bold text-spacecadet">18 King Street East, Suite 1400</p>
+                      <p className="text-sm text-slate-text">Toronto, Ontario M5C 1C4 Canada</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div className="relative group overflow-hidden rounded-[40px] border border-border aspect-video">
+                <img
+                  src="/brand/toronto-map.png"
+                  alt="Mantriq Industrial Toronto Headquarters - 18 King Street East"
+                  className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+                />
+                <div className="absolute inset-0 bg-spacecadet/10 group-hover:bg-transparent transition-colors duration-500"></div>
+              </div>
+            </div>
           </div>
         </section>
 
-        {/* CTA band */}
-        <section className="bg-[var(--spacecadet)] text-white py-14">
-          <div className="container mx-auto px-4 flex flex-col md:flex-row md:items-center md:justify-between gap-6">
-            <div>
-              <h3 className="text-2xl font-semibold">Ready to compare your landed costs?</h3>
-              <p className="text-white/85">Upload your drawings and requirements. We'll respond within one business day.</p>
-            </div>
-            <div className="flex gap-3">
-              <Button asChild size="lg">
-                <a href="/quote">Request Quote</a>
-              </Button>
-              <Button asChild size="lg" variant="outline">
-                <a href="/blog">Read Insights</a>
-              </Button>
-            </div>
+        {/* CTA Section */}
+        <section className="py-32 bg-white text-center">
+          <div className="container mx-auto px-4">
+            <h2 className="text-5xl md:text-7xl font-extrabold text-spacecadet mb-10 tracking-tighter">
+              The Standard for <br /> Bulk CNC Parts.
+            </h2>
+            <Button asChild size="lg" className="bg-accent text-white px-12 h-16 rounded-full font-black uppercase tracking-widest shadow-2xl shadow-accent/20 hover:scale-105 active:scale-95 transition-all">
+              <Link to="/quote">Request Technical Proposal</Link>
+            </Button>
           </div>
         </section>
       </main>
       <Footer />
-    </>
+    </div>
   );
-}
+};
+
+export default Index;

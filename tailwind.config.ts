@@ -19,8 +19,8 @@ export default {
 		},
 		extend: {
 			fontFamily: {
-				sans: ['"Source Sans Pro"', 'ui-sans-serif', 'system-ui', 'sans-serif'],
-				display: ['Inter', 'ui-sans-serif', 'system-ui', 'sans-serif']
+				sans: ['Inter', 'ui-sans-serif', 'system-ui', 'sans-serif'],
+				display: ['Outfit', 'Inter', 'ui-sans-serif', 'system-ui', 'sans-serif']
 			},
 			colors: {
 				/* Theme switchable aliases */
@@ -38,7 +38,7 @@ export default {
 				background: 'hsl(var(--background))',
 				foreground: 'hsl(var(--foreground))',
 				primary: {
-					DEFAULT: 'hsl(var(--primary))',
+					DEFAULT: 'hsl(var(--oceansteel))',
 					foreground: 'hsl(var(--primary-foreground))'
 				},
 				secondary: {
@@ -54,7 +54,7 @@ export default {
 					foreground: 'hsl(var(--muted-foreground))'
 				},
 				accent: {
-					DEFAULT: 'hsl(var(--accent))',
+					DEFAULT: 'hsl(var(--safetyorange))',
 					foreground: 'hsl(var(--accent-foreground))'
 				},
 				popover: {
@@ -65,7 +65,12 @@ export default {
 					DEFAULT: 'hsl(var(--card))',
 					foreground: 'hsl(var(--card-foreground))'
 				},
-				/* Industrial Mint palette mapped to Tailwind tokens */
+				/* Brand Palette */
+				spacecadet: 'hsl(var(--spacecadet))',
+				oceansteel: 'hsl(var(--oceansteel))',
+				polarice: 'hsl(var(--polarice))',
+				"slate-text": 'hsl(var(--slate-text))',
+				/* Legacy / Other Aliases */
 				deepNavy: 'var(--deep-navy)',
 				arcticMint: 'var(--arctic-mint)',
 				slateSteel: 'var(--slate-steel)',

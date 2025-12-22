@@ -1,55 +1,58 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <!-- Fonts: Inter (display) and Source Sans Pro (body) -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@500;600;700;800&family=Source+Sans+Pro:wght@400;600;700&display=swap" rel="stylesheet">
-    <title>Mantriq Industrial - Precision CNC Machining | Canada</title>
-    <!-- GA4 Placeholder -->
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <!-- Fonts: Inter (display) and Source Sans Pro (body) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@500;600;700;800&family=Source+Sans+Pro:wght@400;600;700&display=swap"
+    rel="stylesheet">
+  <title>Mantriq Industrial - Precision CNC Machining | Canada</title>
+  <!-- GA4 Integration (Uncomment and replace G-XXXXXXXXXX with your active tag) -->
+  <!--
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
     <script>
       window.dataLayer = window.dataLayer || [];
       function gtag(){dataLayer.push(arguments);}
-      window.gtag = gtag;
-    </script>
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-PLACEHOLDER123"></script>
-    <script>
       gtag('js', new Date());
-      gtag('config', 'G-PLACEHOLDER123');
+      gtag('config', 'G-XXXXXXXXXX');
     </script>
-    <meta name="description" content="Leading Canadian supplier of high-quality precision CNC machined components. Serving automotive, aerospace, oil & gas, medical, construction and marine industries across Canada." />
-    <meta name="author" content="Mantriq Industrial" />
+    -->
+  <meta name="description"
+    content="Leading Canadian supplier of high-quality precision CNC machined components. Serving automotive, aerospace, oil & gas, medical, construction and marine industries across Canada." />
+  <meta name="author" content="Mantriq Industrial" />
 
-    <meta property="og:title" content="Mantriq Industrial - Precision CNC Machining | Canada" />
-    <meta property="og:description" content="Leading Canadian supplier of high-quality precision CNC machined components. Serving automotive, aerospace, oil & gas, medical, construction and marine industries across Canada." />
-    <meta property="og:type" content="website" />
-    <meta property="og:image" content="/favicon.ico" />
+  <meta property="og:title" content="Mantriq Industrial - Precision CNC Machining | Canada" />
+  <meta property="og:description"
+    content="Leading Canadian supplier of high-quality precision CNC machined components. Serving automotive, aerospace, oil & gas, medical, construction and marine industries across Canada." />
+  <meta property="og:type" content="website" />
+  <meta property="og:image" content="/favicon.ico" />
 
-    <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:site" content="@mantriq_industrial" />
-    <meta name="twitter:image" content="/favicon.ico" />
-  </head>
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:site" content="@mantriq_industrial" />
+  <meta name="twitter:image" content="/favicon.ico" />
+</head>
 
-  <body>
-    <div id="root"></div>
-    
-    <!-- Hidden Netlify form for detection -->
-    <form name="contact" method="POST" data-netlify="true" netlify-honeypot="bot-field" style="display: none;">
-      <input type="hidden" name="form-name" value="contact" />
-      <p style="display: none;">
-        <label>Don't fill this out: <input name="bot-field" /></label>
-      </p>
-      <input type="text" name="firstName" required />
-      <input type="text" name="lastName" required />
-      <input type="text" name="company" />
-      <input type="email" name="email" required />
-      <input type="tel" name="phone" />
-      <input type="text" name="industry" />
-      <textarea name="projectDetails" required></textarea>
-    </form>
-    
-    <script type="module" src="/src/main.tsx"></script>
-  </body>
+<body>
+  <div id="root"></div>
+
+  <!-- Hidden Netlify form for detection -->
+  <form name="rfq" method="POST" data-netlify="true" netlify-honeypot="bot-field" style="display: none;">
+    <input type="hidden" name="form-name" value="rfq" />
+    <p style="display: none;">
+      <label>Don't fill this out: <input name="bot-field" /></label>
+    </p>
+    <input type="text" name="name" required />
+    <input type="text" name="company" />
+    <input type="email" name="email" required />
+    <input type="tel" name="phone" />
+    <textarea name="message" required></textarea>
+  </form>
+
+  <script type="module" src="/src/main.tsx"></script>
+</body>
+
 </html>

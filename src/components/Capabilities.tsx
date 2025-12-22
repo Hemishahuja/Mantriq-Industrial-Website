@@ -1,11 +1,11 @@
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
-import { 
-  ArrowRight, 
-  Settings, 
-  Target, 
-  Zap, 
-  Users, 
+import {
+  ArrowRight,
+  Settings,
+  Target,
+  Zap,
+  Users,
   Award,
   Wrench,
   Eye,
@@ -130,8 +130,8 @@ const Capabilities = () => {
             Manufacturing Excellence
           </h1>
           <p className="text-xl text-[color-mix(in_oklab,var(--text-body)_85%,white)] max-w-4xl mx-auto">
-            Family-owned precision engineering with <strong>15+ years of industry expertise</strong>. 
-            From hands-on machine operation to global logistics – we deliver quality components 
+            Family-owned precision engineering with <strong>15+ years of industry expertise</strong>.
+            From hands-on machine operation to global logistics – we deliver quality components
             to demanding industries across the United Kingdom.
           </p>
         </div>
@@ -147,15 +147,15 @@ const Capabilities = () => {
           <Card className="hover-lift">
             <CardContent className="p-8">
               <p className="text-[color-mix(in_oklab,var(--text-body)_80%,white)] mb-6 text-lg">
-                Our customers are at the heart of what we do. We believe in open communication, 
-                consistent quality, and a deep understanding of precision engineering. This commitment 
-                has made us a trusted supplier to one of the UK's leading providers of high-quality 
+                Our customers are at the heart of what we do. We believe in open communication,
+                consistent quality, and a deep understanding of precision engineering. This commitment
+                has made us a trusted supplier to one of the UK's leading providers of high-quality
                 precision-turned and milled components – a partnership spanning <strong>over 15 years</strong>.
               </p>
               <div className="grid md:grid-cols-3 gap-4">
                 {taglines.map((tagline, i) => (
-                  <div 
-                    key={i} 
+                  <div
+                    key={i}
                     className="bg-[color-mix(in_oklab,var(--oceansteel)_8%,white)] p-4 rounded-lg text-center"
                   >
                     <p className="text-[var(--spacecadet)] font-medium italic">"{tagline}"</p>
@@ -267,7 +267,7 @@ const Capabilities = () => {
                 <div>
                   <h4 className="font-semibold text-[var(--spacecadet)] mb-3">Raw Materials</h4>
                   <p className="text-[color-mix(in_oklab,var(--text-body)_80%,white)] mb-4">
-                    Premium materials sourced from trusted partners in Ludhiana, Punjab including 
+                    Premium materials sourced from trusted partners in India including
                     RINL and JSPL brands:
                   </p>
                   <ul className="space-y-2">
@@ -356,8 +356,8 @@ const Capabilities = () => {
 
         {/* CTA */}
         <div className="text-center">
-          <Button 
-            size="lg" 
+          <Button
+            size="lg"
             className="px-10 py-6 text-lg hover-lift hover-glow"
             onClick={() => (window.location.href = '/quote')}
           >

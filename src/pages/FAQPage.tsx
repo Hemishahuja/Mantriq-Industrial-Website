@@ -1,61 +1,73 @@
-import { Helmet } from "react-helmet-async";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { useReveal } from "@/hooks/useReveal";
+import SEO from "@/components/SEO";
+import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
+import { Link } from "react-router-dom";
+import { HelpCircle, ArrowRight } from "lucide-react";
 
 const faqs = [
-  { q: "What are your typical lead times?", a: "4–8 weeks door-to-door depending on batch size and finish. We provide firm ETAs at PO." },
-  { q: "What is your MOQ?", a: "1,000 pieces per line item." },
-  { q: "What tolerances do you support?", a: "Standard production tolerances. We politely decline ultra‑tight precision work (e.g., tighter than ±0.02 mm)." },
-  { q: "What materials do you machine?", a: "SS 304/316, brass, mild steel, aluminium for fasteners and hardware." },
-  { q: "Do you offer design, assembly or prototyping?", a: "No. We focus on bulk-standard CNC turning/milling, thread-rolling, and surface finishing (zinc, black‑oxide)." },
-  { q: "Where are parts manufactured?", a: "Exclusively in India via our single vetted partner factory." },
-  { q: "Payment terms?", a: "Typically 30% deposit, balance on pre‑shipment; options vary by order size and client history." },
+  { q: "What are your typical lead times?", a: "Most production orders deliver in 7-8 weeks. We provide a firm technical ETA upon PO confirmation." },
+  { q: "What is your Minimum Order Quantity (MOQ)?", a: "We specialize in volume production. Our standard MOQ is 1,000 units per line item to maintain efficiency." },
+  { q: "What tolerances do you support?", a: "We specialize in standard industrial tolerances (±0.005\" / ±0.1mm). We typically decline ultra-precision work requiring tighter than ±0.0005\"." },
+  { q: "Where is the manufacturing located?", a: "Production is handled at our technically vetted high-volume cells in India, with technical coordination and support from our Toronto office." },
+  { q: "What materials do you machine?", a: "We've specialized in Stainless Steel (304/316), Aluminum (6061), Brass, and high-performance engineering plastics." },
+  { q: "Do you offer DDP fulfillment (Landed Costs)?", a: "Yes. Our standard proposals include DDP Toronto or your facility door. We handle duties and international logistics." }
 ];
 
 export default function FAQPage() {
-  const ref = useReveal<HTMLDivElement>();
-  const faqJsonLd = {
-    "@context": "https://schema.org",
-    "@type": "FAQPage",
-    "mainEntity": faqs.map(f => ({
-      "@type": "Question",
-      "name": f.q,
-      "acceptedAnswer": { "@type": "Answer", "text": f.a }
-    }))
-  };
-
   return (
-    <>
-      <Helmet>
-        <title>Bulk CNC FAQ — Lead Times, MOQ, Tolerances | Mantriq</title>
-        <meta name="description" content="Answers to common questions about bulk CNC fastener manufacturing in India: lead times, MOQ (1k), tolerances, materials, and scope." />
-        <script type="application/ld+json">{JSON.stringify(faqJsonLd)}</script>
-      </Helmet>
+    <div className="min-h-screen bg-white">
+      <SEO
+        title="Technical FAQ | Mantriq Industrial"
+        description="Answers to common questions regarding lead times, MOQs, tolerances, and our high-volume logistics framework."
+      />
       <Header />
-      <main className="container mx-auto px-4 pt-28 pb-20">
-        <section ref={ref} className="reveal">
-          <h1 className="text-3xl md:text-4xl font-bold text-[var(--deep-navy)]">FAQ</h1>
-          <p className="mt-3 text-[color-mix(in_oklab,var(--text-body)_80%,white)]">
-            Straight answers for wholesalers and buyers of bulk-standard fasteners.
-          </p>
 
-          <div className="grid md:grid-cols-2 gap-6 mt-8">
-            {faqs.map((f) => (
-              <Card key={f.q} className="hover-lift">
-                <CardHeader>
-                  <CardTitle className="text-lg">{f.q}</CardTitle>
-                </CardHeader>
-                <CardContent>
-                  <p className="text-sm">{f.a}</p>
-                </CardContent>
-              </Card>
-            ))}
+      <main className="pt-32 pb-32">
+        <div className="container mx-auto px-4">
+          <div className="max-w-4xl mx-auto">
+            {/* Header */}
+            <div className="text-center mb-20">
+              <h1 className="text-xs font-bold uppercase tracking-[0.3em] text-accent mb-6 leading-none">Knowledge Desk</h1>
+              <h2 className="text-4xl md:text-6xl font-extrabold text-spacecadet tracking-tighter leading-tight mb-8">
+                Technical Questions<span className="text-accent">.</span>
+              </h2>
+              <p className="text-xl text-slate-text leading-relaxed opacity-80">
+                Clear answers for wholesalers, buyers, and technical coordinators looking to scale their industrial supply chain.
+              </p>
+            </div>
+
+            {/* FAQ Accordion */}
+            <div className="bg-polarice/30 p-10 md:p-14 rounded-[48px] border border-border">
+              <Accordion type="single" collapsible className="space-y-6">
+                {faqs.map((faq, i) => (
+                  <AccordionItem key={i} value={`item-${i}`} className="border-b border-border/50 pb-4">
+                    <AccordionTrigger className="text-lg font-bold text-spacecadet hover:text-primary transition-colors hover:no-underline text-left">
+                      {faq.q}
+                    </AccordionTrigger>
+                    <AccordionContent className="text-slate-text leading-relaxed opacity-80 pt-4">
+                      {faq.a}
+                    </AccordionContent>
+                  </AccordionItem>
+                ))}
+              </Accordion>
+            </div>
+
+            {/* Contact CTA */}
+            <div className="mt-20 text-center space-y-8">
+              <div className="w-16 h-16 bg-polarice rounded-2xl flex items-center justify-center mx-auto border border-border">
+                <HelpCircle className="w-8 h-8 text-primary" />
+              </div>
+              <h3 className="text-2xl font-bold text-spacecadet tracking-tight">Have a custom technical inquiry?</h3>
+              <Link to="/contact" className="inline-flex items-center text-sm font-black uppercase tracking-widest text-primary hover:underline decoration-2 underline-offset-8">
+                Consult with an Engineer
+                <ArrowRight className="ml-2 w-5 h-5" />
+              </Link>
+            </div>
           </div>
-        </section>
+        </div>
       </main>
       <Footer />
-    </>
+    </div>
   );
 }

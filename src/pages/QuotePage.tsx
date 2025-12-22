@@ -1,169 +1,157 @@
-m 
-import { Helmet } from "react-helmet-async";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
-import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "@/components/ui/card";
+import SEO from "@/components/SEO";
+import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
-import { useReveal } from "@/hooks/useReveal";
+import { Input } from "@/components/ui/input";
+import { Textarea } from "@/components/ui/textarea";
+import { useToast } from "@/hooks/use-toast";
 import { useState } from "react";
+import { FileText, ShieldCheck, Truck, ArrowRight } from "lucide-react";
 
 export default function QuotePage() {
-  const ref = useReveal<HTMLDivElement>();
+  const { toast } = useToast();
   const [submitting, setSubmitting] = useState(false);
-  const [error, setError] = useState<string | null>(null);
+  const [formData, setFormData] = useState({
+    name: "",
+    company: "",
+    email: "",
+    phone: "",
+    message: ""
+  });
 
-
-  const onSubmit = (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
-    setError(null);
-
-    const form = e.currentTarget;
-    const formData = new FormData(form);
-
-    // Client-side validation
-    const email = String(formData.get("email") || "");
-    const qty = Number(formData.get("batch") || 0);
-    const filesInput = form.querySelector<HTMLInputElement>('input[type="file"][name="files"]');
-
-    const emailOk = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
-    if (!emailOk) {
-      setError("Please enter a valid email.");
-      return;
-    }
-    if (Number.isNaN(qty) || qty < 1000) {
-      setError("Batch size must be at least 1000 pcs.");
-      return;
-    }
-    if (filesInput && !validateFiles(filesInput)) return;
-
-    setSubmitting(true);
-
-    // Netlify Forms submission (no-code email to sales)
-    fetch("/", {
-      method: "POST",
-      headers: { "Content-Type": "application/x-www-form-urlencoded" },
-      body: new URLSearchParams({
-        "form-name": "rfq",
-        ...Object.fromEntries(formData as any),
-      } as any).toString(),
-    })
-      .then(() => {
-        // GA4 conversion event (placeholder)
-        if (window.gtag) {
-          window.gtag("event", "generate_lead", { method: "rfq_form" });
-        }
-        // Preserve UTM params on redirect
-        const qs = window.location.search || "";
-        window.location.href = "/thank-you" + qs;
-      })
-      .catch(() => {
-        setError("Submission failed. Please try again or email sales@mantriqindustrial.ca.");
-        setSubmitting(false);
-      });
+  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+    const { name, value } = e.target;
+    setFormData(prev => ({ ...prev, [name]: value }));
   };
 
-  const orgJsonLd = {
-    "@context": "https://schema.org",
-    "@type": "Organization",
-    "name": "Mantriq Industrial",
-    "url": "https://mantriqindustrial.ca",
-    "address": {
-      "@type": "PostalAddress",
-      "streetAddress": "18 King St E, Suite 2400",
-      "addressLocality": "Toronto",
-      "addressRegion": "ON",
-      "postalCode": "M5C 1C4",
-      "addressCountry": "CA"
+  const onSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    setSubmitting(true);
+
+    try {
+      const netlifyFormData = new FormData();
+      netlifyFormData.append("form-name", "rfq");
+      Object.entries(formData).forEach(([key, value]) => netlifyFormData.append(key, value));
+
+      const response = await fetch("/", {
+        method: "POST",
+        headers: { "Content-Type": "application/x-www-form-urlencoded" },
+        body: new URLSearchParams(netlifyFormData as any).toString()
+      });
+
+      if (response.ok) {
+        window.location.href = "/thank-you";
+      } else {
+        throw new Error();
+      }
+    } catch {
+      toast({ title: "Error", description: "Submission failed. Please email info@mantriqindustrial.ca", variant: "destructive" });
+      setSubmitting(false);
     }
   };
 
   return (
-    <>
-      <Helmet>
-        <title>Request a Consultation or Quote | Mantriq Industrial</title>
-        <meta
-          name="description"
-          content="Share your requirements and questions with Mantriq Industrial. Our team will review your message and respond directly from info@mantriqindustrial.ca."
-        />
-        <script type="application/ld+json">{JSON.stringify(orgJsonLd)}</script>
-      </Helmet>
+    <div className="min-h-screen bg-white">
+      <SEO
+        title="Request Technical Proposal | Mantriq Industrial"
+        description="Share your technical drawings and volume requirements for a comprehensive landed-cost proposal. Canadian support, global scale."
+      />
       <Header />
-      <main className="container mx-auto px-4 pt-28 pb-20">
-        <section ref={ref} className="reveal">
-          <h1 className="text-3xl md:text-4xl font-bold text-[var(--deep-navy)]">Request a Consultation or Quote</h1>
-          <p className="mt-3 text-[color-mix(in_oklab,var(--text-body)_80%,white)]">
-            Tell us about your components, expected volumes, and timelines. Our team will review your message and follow up from info@mantriqindustrial.ca.
-          </p>
 
-          <Card className="mt-8">
-            <CardHeader>
-              <CardTitle>RFQ Form</CardTitle>
-              <CardDescription>Provide as much detail as possible for accurate landed-costs.</CardDescription>
-            </CardHeader>
-            <CardContent>
-              {/* Single unified Netlify RFQ form */}
-              <form
-                name="rfq"
-                method="POST"
-                data-netlify="true"
-                netlify-honeypot="bot-field"
-                className="grid md:grid-cols-2 gap-4"
-                onSubmit={onSubmit}
-              >
-                <input type="hidden" name="form-name" value="rfq" />
-                <p className="hidden">
-                  <label>Don’t fill this out: <input name="bot-field" /></label>
-                </p>
+      <main className="pt-32 pb-32">
+        <div className="container mx-auto px-4">
+          <div className="max-w-6xl mx-auto">
+            <div className="grid lg:grid-cols-5 gap-20 items-start">
 
-                <label className="flex flex-col gap-1">
-                  <span>First name</span>
-                  <input required className="border rounded-lg px-3 py-2" name="firstName" />
-                </label>
-                <label className="flex flex-col gap-1">
-                  <span>Last name</span>
-                  <input required className="border rounded-lg px-3 py-2" name="lastName" />
-                </label>
-                <label className="flex flex-col gap-1 md:col-span-2">
-                  <span>Company</span>
-                  <input className="border rounded-lg px-3 py-2" name="company" />
-                </label>
-                <label className="flex flex-col gap-1">
-                  <span>Email</span>
-                  <input required type="email" className="border rounded-lg px-3 py-2" name="email" />
-                </label>
-                <label className="flex flex-col gap-1">
-                  <span>Phone</span>
-                  <input className="border rounded-lg px-3 py-2" name="phone" />
-                </label>
-                <label className="flex flex-col gap-1 md:col-span-2">
-                  <span>How can we help?</span>
-                  <textarea
-                    className="border rounded-lg px-3 py-2 min-h-32"
-                    name="message"
-                    required
-                    placeholder="Briefly describe your components, approximate volumes, timelines, and any specific questions."
-                  />
-                </label>
-
-                {error && <div className="md:col-span-2 text-red-600 text-sm">{error}</div>}
-
-                <div className="md:col-span-2 flex flex-col gap-1 text-sm text-gray-600">
-                  <Button className="hover-scale" type="submit" disabled={submitting}>
-                    {submitting ? "Submitting..." : "Send Message"}
-                  </Button>
-                  <p>
-                    Or email us directly at{" "}
-                    <a href="mailto:info@mantriqindustrial.ca" className="text-[var(--oceansteel)] hover:underline">
-                      info@mantriqindustrial.ca
-                    </a>.
+              {/* Left Column: Form Info & Trust */}
+              <div className="lg:col-span-2 space-y-12">
+                <div>
+                  <h1 className="text-xs font-bold uppercase tracking-[0.3em] text-primary mb-6 leading-none">Technical RFQ</h1>
+                  <h2 className="text-4xl md:text-6xl font-extrabold text-spacecadet tracking-tighter leading-tight mb-8">
+                    Get Your Proposal<span className="text-primary">.</span>
+                  </h2>
+                  <p className="text-lg text-slate-text leading-relaxed opacity-80">
+                    Submit your production requirements for a detailed analysis and firm landed-cost quotation.
                   </p>
                 </div>
-              </form>
-            </CardContent>
-          </Card>
-        </section>
+
+                <div className="space-y-6">
+                  {[
+                    { icon: FileText, title: "Drawing Review", desc: "Technical DFM feedback included." },
+                    { icon: ShieldCheck, title: "Landed Costs", desc: "Total price delivered to your dock." },
+                    { icon: Truck, title: "Fast Lead Times", desc: "Predictable 7-8 week delivery." }
+                  ].map((item, i) => (
+                    <div key={i} className="flex items-start bg-polarice/30 p-6 rounded-3xl border border-border">
+                      <div className="w-10 h-10 bg-white rounded-xl flex items-center justify-center shrink-0 border border-border mr-4">
+                        <item.icon className="w-5 h-5 text-primary" />
+                      </div>
+                      <div>
+                        <h4 className="font-bold text-spacecadet text-sm mb-1">{item.title}</h4>
+                        <p className="text-slate-text text-xs leading-relaxed">{item.desc}</p>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+
+                <div className="p-8 border-l-4 border-primary bg-spacecadet text-white rounded-r-3xl space-y-6">
+                  <div>
+                    <p className="text-xs font-black uppercase tracking-widest text-primary mb-2">Toronto Office</p>
+                    <p className="text-sm opacity-80 leading-relaxed">
+                      18 King Street East, Suite 1400<br />
+                      Toronto, Ontario M5C 1C4 Canada
+                    </p>
+                  </div>
+                  <div className="grid grid-cols-1 gap-4 pt-4 border-t border-white/10">
+                    <div>
+                      <p className="text-[10px] uppercase tracking-widest opacity-50 font-bold mb-1">Direct Line</p>
+                      <p className="text-sm font-bold">+1 647 547 6855</p>
+                    </div>
+                    <div>
+                      <p className="text-[10px] uppercase tracking-widest opacity-50 font-bold mb-1">Email Desk</p>
+                      <p className="text-sm font-bold">info@mantriqindustrial.ca</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              {/* Right Column: RFQ Form */}
+              <div className="lg:col-span-3">
+                <div className="bg-white p-10 md:p-14 rounded-[48px] border border-border shadow-2xl shadow-primary/5">
+                  <form onSubmit={onSubmit} name="rfq" data-netlify="true" className="space-y-8">
+                    <input type="hidden" name="form-name" value="rfq" />
+                    <div className="space-y-2">
+                      <label className="text-xs font-black uppercase tracking-widest text-spacecadet/80 ml-1">Name</label>
+                      <Input name="name" value={formData.name} onChange={handleInputChange} required className="h-14 rounded-2xl border-border bg-polarice/5 focus:bg-white transition-all" />
+                    </div>
+                    <div className="space-y-2">
+                      <label className="text-xs font-black uppercase tracking-widest text-spacecadet/80 ml-1">Company</label>
+                      <Input name="company" value={formData.company} onChange={handleInputChange} required className="h-14 rounded-2xl border-border bg-polarice/5 focus:bg-white transition-all" />
+                    </div>
+                    <div className="space-y-2">
+                      <label className="text-xs font-black uppercase tracking-widest text-spacecadet/80 ml-1">Email Address</label>
+                      <Input type="email" name="email" value={formData.email} onChange={handleInputChange} required className="h-14 rounded-2xl border-border bg-polarice/5 focus:bg-white transition-all" />
+                    </div>
+                    <div className="space-y-2">
+                      <label className="text-xs font-black uppercase tracking-widest text-spacecadet/80 ml-1">Message / Requirements</label>
+                      <Textarea name="message" value={formData.message} onChange={handleInputChange} required className="min-h-[160px] rounded-2xl border-border bg-polarice/5 focus:bg-white transition-all py-4" placeholder="Briefly describe your components and requirements." />
+                    </div>
+                    <Button type="submit" disabled={submitting} className="w-full h-18 bg-accent hover:bg-spacecadet text-white rounded-2xl font-black uppercase tracking-widest transition-all shadow-xl shadow-accent/20">
+                      {submitting ? "Sending..." : "Send Message"}
+                      <ArrowRight className="ml-2 w-5 h-5" />
+                    </Button>
+                    <p className="text-center text-[10px] text-slate-text uppercase tracking-widest font-bold opacity-50 pt-4">
+                      Secure Submission • 24hr Technical Review
+                    </p>
+                  </form>
+                </div>
+              </div>
+
+            </div>
+          </div>
+        </div>
       </main>
       <Footer />
-    </>
+    </div>
   );
 }
