@@ -3,7 +3,10 @@
   <rect width="400" height="120" rx="12" fill="#0A111F"/>
   
   <!-- MANTRIQ Text -->
-  <text x="40" y="75" fill="white" style="font-family: 'Inter', sans-serif; font-weight: 900; font-size: 52px; letter-spacing: -0.05em;">MANTRIQ<tspan fill="#F97316">.</tspan></text>
+  <text x="40" y="75" fill="white" style="font-family: 'Inter', sans-serif; font-weight: 900; font-size: 52px; letter-spacing: -0.05em;">MANTRIQ</text>
+  
+  <!-- Orange dot (circle positioned after Q, at baseline) -->
+  <circle cx="314" cy="72" r="7" fill="#F97316"/>
   
   <!-- Industrial Tagline -->
   <text x="42" y="100" fill="white" opacity="0.8" style="font-family: 'Inter', sans-serif; font-weight: 600; font-size: 14px; text-transform: uppercase; letter-spacing: 0.3em;">INDUSTRIAL</text>

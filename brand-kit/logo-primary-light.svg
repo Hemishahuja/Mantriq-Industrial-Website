@@ -1,6 +1,9 @@
 <svg width="400" height="120" viewBox="0 0 400 120" fill="none" xmlns="http://www.w3.org/2000/svg">
   <!-- MANTRIQ Text -->
-  <text x="40" y="75" fill="#111827" style="font-family: 'Inter', sans-serif; font-weight: 900; font-size: 52px; letter-spacing: -0.05em;">MANTRIQ<tspan fill="#F97316">.</tspan></text>
+  <text x="40" y="75" fill="#111827" style="font-family: 'Inter', sans-serif; font-weight: 900; font-size: 52px; letter-spacing: -0.05em;">MANTRIQ</text>
+  
+  <!-- Orange dot (circle positioned after Q, at baseline) -->
+  <circle cx="314" cy="72" r="7" fill="#F97316"/>
   
   <!-- Industrial Tagline -->
   <text x="42" y="100" fill="#111827" opacity="0.6" style="font-family: 'Inter', sans-serif; font-weight: 600; font-size: 14px; text-transform: uppercase; letter-spacing: 0.3em;">INDUSTRIAL</text>

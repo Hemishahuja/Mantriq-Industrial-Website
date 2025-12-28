@@ -11,7 +11,7 @@ interface SEOProps {
 
 const SEO = ({
     title = "Bulk CNC Machined Components | Mantriq Industrial",
-    description = "Get a landed cost advantage with Mantriq Industrial. High-quality bulk CNC machined components delivered with confidence.",
+    description = "Mantriq Industrial: Canadian-Managed Global Manufacturing. Precision CNC & Industrial Supply with Local Accountability.",
     image = "/og-image.png", // Ensure this exists in public folder
     url = "https://mantriqindustrial.ca",
     canonical,

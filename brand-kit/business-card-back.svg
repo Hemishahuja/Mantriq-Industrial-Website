@@ -1,0 +1,88 @@
+<svg width="1050" height="600" viewBox="0 0 1050 600" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <style>
+      @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&amp;display=swap');
+    </style>
+  </defs>
+
+  <!-- Background: Dark Navy -->
+  <rect width="1050" height="600" rx="0" fill="#0A111F"/>
+  
+  <!-- Subtle Grid Pattern Background (High Tech Industrial feel) -->
+  <pattern id="grid" x="0" y="0" width="40" height="40" patternUnits="userSpaceOnUse">
+    <path d="M 40 0 L 0 0 0 40" fill="none" stroke="white" stroke-width="0.5" opacity="0.03"/>
+  </pattern>
+  <rect width="1050" height="600" fill="url(#grid)" />
+
+  <!-- Right Accent Bar -->
+  <rect x="1035" y="0" width="15" height="600" fill="#F97316"/>
+
+  <!-- Top Section: Name & Role -->
+  <g transform="translate(80, 100)">
+    <text x="0" y="0" fill="white" style="font-family: 'Inter', sans-serif; font-weight: 800; font-size: 42px; letter-spacing: -0.02em;">Hemish Ahuja</text>
+    <text x="0" y="32" fill="#F97316" style="font-family: 'Inter', sans-serif; font-weight: 700; font-size: 14px; letter-spacing: 0.25em; text-transform: uppercase;">Director</text>
+  </g>
+
+  <!-- Middle Section: Capabilities / Materials Grid -->
+  <g transform="translate(80, 220)">
+    <line x1="0" y1="-30" x2="880" y2="-30" stroke="white" stroke-opacity="0.1" stroke-width="1"/>
+    
+    <!-- Column 1: Core Services -->
+    <g>
+      <text x="0" y="0" fill="#F97316" style="font-family: 'Inter', sans-serif; font-weight: 700; font-size: 12px; letter-spacing: 0.15em; text-transform: uppercase;">Core Capabilities</text>
+      <g transform="translate(0, 25)" style="font-family: 'Inter', sans-serif; font-weight: 500; font-size: 15px; fill: white; opacity: 0.9;">
+        <text x="0" y="0">• High-Volume CNC Turning</text>
+        <text x="0" y="28">• Precision Milling Centers</text>
+        <text x="0" y="56">• Multi-Axis Machining</text>
+        <text x="0" y="84">• Custom Industrial Components</text>
+      </g>
+    </g>
+
+    <!-- Column 2: Materials -->
+    <g transform="translate(320, 0)">
+      <text x="0" y="0" fill="#F97316" style="font-family: 'Inter', sans-serif; font-weight: 700; font-size: 12px; letter-spacing: 0.15em; text-transform: uppercase;">Materials</text>
+      <g transform="translate(0, 25)" style="font-family: 'Inter', sans-serif; font-weight: 500; font-size: 15px; fill: white; opacity: 0.9;">
+        <text x="0" y="0">• Stainless Steel &amp; Alloys</text>
+        <text x="0" y="28">• Aluminum &amp; Brass</text>
+        <text x="0" y="56">• Carbon &amp; Tool Steel</text>
+        <text x="0" y="84">• Plastics &amp; Specialty Metals</text>
+      </g>
+    </g>
+    
+     <!-- Column 3: Industries (Optional or more materials) -->
+    <g transform="translate(640, 0)">
+       <text x="0" y="0" fill="#F97316" style="font-family: 'Inter', sans-serif; font-weight: 700; font-size: 12px; letter-spacing: 0.15em; text-transform: uppercase;">Industries</text>
+       <g transform="translate(0, 25)" style="font-family: 'Inter', sans-serif; font-weight: 500; font-size: 15px; fill: white; opacity: 0.9;">
+        <text x="0" y="0">• Aerospace &amp; Defense</text>
+        <text x="0" y="28">• Medical Devices</text>
+        <text x="0" y="56">• Oil &amp; Gas</text>
+        <text x="0" y="84">• Automotive</text>
+      </g>
+    </g>
+  </g>
+
+  <!-- Bottom Section: Contact (Compact) -->
+  <g transform="translate(80, 480)">
+    <line x1="0" y1="-40" x2="880" y2="-40" stroke="white" stroke-opacity="0.1" stroke-width="1"/>
+    
+    <g style="font-family: 'Inter', sans-serif; font-size: 14px;">
+       <!-- Phone & Email -->
+       <g fill="white" font-weight="600">
+           <text x="0" y="0">+1 647 547 6855</text>
+           <text x="0" y="25">info@mantriqindustrial.ca</text>
+       </g>
+       
+       <!-- Address & Web (Shifted Right) -->
+       <g transform="translate(320, 0)" fill="white" opacity="0.7" font-weight="400">
+           <text x="0" y="0">18 King St East, Suite 1400, Toronto, ON</text>
+           <text x="0" y="25">mantriqindustrial.ca</text>
+       </g>
+       
+       <!-- Logo Icon (Far Right) -->
+        <g transform="translate(850, -10)">
+            <text x="0" y="20" text-anchor="middle" fill="white" opacity="0.3" style="font-family: 'Inter', sans-serif; font-weight: 900; font-size: 32px;">M</text>
+            <circle cx="20" cy="24" r="4" fill="#F97316" opacity="0.8"/>
+        </g>
+    </g>
+  </g>
+</svg>

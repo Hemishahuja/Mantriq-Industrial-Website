@@ -1,0 +1,32 @@
+<svg width="1050" height="600" viewBox="0 0 1050 600" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- Background -->
+  <rect width="1050" height="600" rx="24" fill="#0A111F"/>
+  
+  <!-- Subtle accent line -->
+  <rect x="60" y="60" width="4" height="120" rx="2" fill="#F97316"/>
+  
+  <!-- Logo -->
+  <text x="80" y="110" fill="white" style="font-family: 'Inter', sans-serif; font-weight: 900; font-size: 48px; letter-spacing: -0.03em;">MANTRIQ</text>
+  <circle cx="315" cy="102" r="8" fill="#F97316"/>
+  <text x="80" y="145" fill="white" opacity="0.5" style="font-family: 'Inter', sans-serif; font-weight: 600; font-size: 12px; letter-spacing: 0.3em;">INDUSTRIAL</text>
+  
+  <!-- Name and Title -->
+  <text x="60" y="320" fill="white" style="font-family: 'Inter', sans-serif; font-weight: 800; font-size: 42px; letter-spacing: -0.02em;">Hemish Ahuja</text>
+  <text x="60" y="360" fill="#F97316" style="font-family: 'Inter', sans-serif; font-weight: 700; font-size: 14px; letter-spacing: 0.25em;">PRINCIPAL</text>
+  
+  <!-- Contact Info -->
+  <g fill="white" opacity="0.7" style="font-family: 'Inter', sans-serif; font-weight: 500; font-size: 16px;">
+    <text x="60" y="480">+1 647 547 6855</text>
+    <text x="60" y="510">info@mantriqindustrial.ca</text>
+    <text x="60" y="540">mantriqindustrial.ca</text>
+  </g>
+  
+  <!-- Address -->
+  <text x="500" y="480" fill="white" opacity="0.5" style="font-family: 'Inter', sans-serif; font-weight: 500; font-size: 14px;">18 King St East, Suite 1400</text>
+  <text x="500" y="505" fill="white" opacity="0.5" style="font-family: 'Inter', sans-serif; font-weight: 500; font-size: 14px;">Toronto, ON M5C 1C4</text>
+  <text x="500" y="530" fill="white" opacity="0.5" style="font-family: 'Inter', sans-serif; font-weight: 500; font-size: 14px;">Canada</text>
+  
+  <!-- Decorative element -->
+  <circle cx="950" cy="100" r="60" fill="#F97316" opacity="0.08"/>
+  <circle cx="980" cy="500" r="100" fill="#F97316" opacity="0.05"/>
+</svg>
